@@ -1,6 +1,6 @@
 'use strict';
 import api from './api';
-// import builder from './builder';
+import CategoryBuilder from './categoryBuilder';
 // import _ from 'lodash';
 
 class Fred {
@@ -8,27 +8,49 @@ class Fred {
     constructor(apiKey, returnType = 'json') {
         this.apiKey = apiKey;
         this.returnType = returnType;
+        this.categoryBuilder = new CategoryBuilder();
     }
 
     setApiKey(apiKey) {
         this.apiKey = apiKey;
     }
 
-    setReturnType(returnType) {
-        this.returnType = returnType;
+    getCategory(categoryId) {
+        const url = this.categoryBuilder
+            .setAPIKey(this.apiKey)
+            .setCategoryId(categoryId)
+            .setFileType(this.returnType)
+            .getUrl();
+
+        return api.get('category?' + url);
     }
 
-    getCategory(categoryId) {
-        // Replace with a builder pattern
-        return api.get('category?category_id=' +
-            categoryId +
-            '&' +
-            (this.apiKey === '' ? '' : 'api_key=' + this.apiKey) +
-            '&file_type=' + this.returnType);
+    getCategoryChildren(categoryId, realTimeStart = '', realTimeEnd = '') {
+        const url = this.categoryBuilder
+            .setAPIKey(this.apiKey)
+            .setCategoryId(categoryId)
+            .setFileType(this.returnType)
+            .setRealTimeStart(realTimeStart)
+            .setRealTimeEnd(realTimeEnd)
+            .getUrl();
+
+        return api.get('category/children?' + url);
     }
 
     getReleases() {
 
+    }
+
+    getCategoryRelated(categoryId, realTimeStart = '', realTimeEnd = '') {
+        const url = this.categoryBuilder
+            .setAPIKey(this.apiKey)
+            .setCategoryId(categoryId)
+            .setFileType(this.returnType)
+            .setRealTimeStart(realTimeStart)
+            .setRealTimeEnd(realTimeEnd)
+            .getUrl();
+
+        return api.get('category/related?' + url);
     }
 
     getSeries() {
