@@ -34,18 +34,18 @@ class CategoryBuilder extends Builder {
     }
 
     setLimit(params) {
-        const limit = params['limit'];
+        const limit = parseInt(params['limit'], 10);
 
-        if(limit === '') {
+        if(!limit || limit < 0 || limit > 1000) {
             return this;
         }
         return this.addAttribute('limit=' + limit);
     }
 
     setOffset(params) {
-        const offset = params['offset'];
+        const offset = parseInt(params['offset'], 10);
 
-        if(offset === '') {
+        if(!offset || offset < 0) {
             return this;
         }
         return this.addAttribute('offset=' + offset);
@@ -61,9 +61,9 @@ class CategoryBuilder extends Builder {
     }
 
     setSortOrder(params) {
-        const sortOrder = params['sort_oder'];
+        const sortOrder = params['sort_oder'].toLowerCase();
 
-        if(sortOrder === '') {
+        if(sortOrder === '' || (sortOrder !== 'asc' && sortOrder !== 'desc')) {
             return this;
         }
         return this.addAttribute('sort_oder=' + sortOrder);
