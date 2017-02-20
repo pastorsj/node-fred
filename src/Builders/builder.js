@@ -1,12 +1,22 @@
 'use strict';
 
-import Builder from './builder.js';
-
 // Implement a builder pattern
-class CategoryBuilder extends Builder {
+class Builder {
+    constructor() {
+        this.url = '';
+    }
 
-    setCategoryId(categoryId) {
-        return this.addAttribute('category_id=' + categoryId);
+    setAPIKey(apiKey) {
+        return this.addAttribute('api_key=' + apiKey);
+    }
+
+    setFileType(fileType) {
+        return this.addAttribute('file_type=' + fileType);
+    }
+
+    addAttribute(attribute) {
+        this.url += (this.url === '' ? '' : '&') + attribute;
+        return this;
     }
 
     isValidDate(dateString) {
@@ -123,6 +133,9 @@ class CategoryBuilder extends Builder {
         return this.addAttribute('tag_group_id=' + tagGroupId);
     }
 
+    getUrl() {
+        return this.url;
+    }
 }
 
-export default CategoryBuilder;
+export default Builder;
