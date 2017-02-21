@@ -6,17 +6,17 @@ class Builder {
         this.url = '';
     }
 
+    addAttribute(attribute) {
+        this.url += (this.url === '' ? '' : '&') + attribute;
+        return this;
+    }
+
     setAPIKey(apiKey) {
         return this.addAttribute('api_key=' + apiKey);
     }
 
     setFileType(fileType) {
         return this.addAttribute('file_type=' + fileType);
-    }
-
-    addAttribute(attribute) {
-        this.url += (this.url === '' ? '' : '&') + attribute;
-        return this;
     }
 
     isValidDate(dateString) {
