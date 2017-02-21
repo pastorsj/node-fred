@@ -2,7 +2,6 @@
 
 import Builder from './builder.js';
 
-// Implement a builder pattern
 class SeriesBuilder extends Builder {
 
     setSeriesId(seriesId) {

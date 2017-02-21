@@ -2,7 +2,6 @@
 
 import Builder from './builder.js';
 
-// Implement a builder pattern
 class SourcesBuilder extends Builder {
 
     setSourceId(sourceId) {

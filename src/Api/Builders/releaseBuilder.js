@@ -2,7 +2,6 @@
 
 import Builder from './builder.js';
 
-// Implement a builder pattern
 class CategoryBuilder extends Builder {
 
     setReleaseId(categoryId) {
