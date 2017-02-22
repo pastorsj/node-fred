@@ -9,6 +9,12 @@ class Series {
         this.seriesBuilder = new SeriesBuilder();
     }
 
+    /**
+     * Gets an economic data series.
+     * @param {Number} seriesId
+     * @param {Object} params
+     * @returns {Promise} Resolves with an economic data series or errors out
+     */
     getAllSeries(seriesId, params) {
         const url = this.seriesBuilder
             .setAPIKey(this.apiKey)
@@ -21,6 +27,12 @@ class Series {
         return api.get('series?' + url);
     }
 
+    /**
+     * Gets the categories for an economic data series.
+     * @param {Number} seriesId
+     * @param {Object} params
+     * @returns {Promise} Resolves with the categories for an economic data series or errors out
+     */
     getCategoriesForSeries(seriesId, params) {
         const url = this.seriesBuilder
             .setAPIKey(this.apiKey)
@@ -33,6 +45,12 @@ class Series {
         return api.get('series/categories?' + url);
     }
 
+    /**
+     * Gets the observations or data values for an economic data series.
+     * @param {Number} seriesId
+     * @param {Object} params
+     * @returns {Promise} Resolves with the observations or data values for an economic data series or errors out
+     */
     getObservationsForSeries(seriesId, params) {
         const url = this.seriesBuilder
             .setAPIKey(this.apiKey)
@@ -55,6 +73,12 @@ class Series {
         return api.get('series/observations?' + url);
     }
 
+    /**
+     * Gets the release for an economic data series.
+     * @param {Number} seriesId
+     * @param {Object} params
+     * @returns {Promise} Resolves with the release for an economic data series or errors out
+     */
     getReleaseForSeries(seriesId, params) {
         const url = this.seriesBuilder
             .setAPIKey(this.apiKey)
@@ -67,6 +91,12 @@ class Series {
         return api.get('series/release?' + url);
     }
 
+    /**
+     * Gets economic data series that match keywords.
+     * @param {Number} seriesId
+     * @param {Object} params
+     * @returns {Promise} Resolves with economic data series that match keywords or errors out
+     */
     getSeriesThatMatchesSearch(seriesId, params) {
         const url = this.seriesBuilder
             .setAPIKey(this.apiKey)
@@ -89,6 +119,12 @@ class Series {
         return api.get('series/search?' + url);
     }
 
+    /**
+     * Gets the tags for a series search.
+     * @param {Number} seriesId
+     * @param {Object} params
+     * @returns {Promise} Resolves with the tags for a series search or errors out
+     */
     getTagsForSeriesSearch(seriesId, params) {
         const url = this.seriesBuilder
             .setAPIKey(this.apiKey)
@@ -108,6 +144,12 @@ class Series {
         return api.get('series/search/tags?' + url);
     }
 
+    /**
+     * Gets the related tags for a series search.
+     * @param {Number} seriesId
+     * @param {Object} params
+     * @returns {Promise} Resolves with the related tags for a series search or errors out
+     */
     getRelatedTagsForSeriesSearch(seriesId, params) {
         const url = this.seriesBuilder
             .setAPIKey(this.apiKey)
@@ -128,6 +170,12 @@ class Series {
         return api.get('series/search/related_tags?' + url);
     }
 
+    /**
+     * Gets the tags for an economic data series.
+     * @param {Number} seriesId
+     * @param {Object} params
+     * @returns {Promise} Resolves with the tags for an economic data series or errors out
+     */
     getTagsForSeries(seriesId, params) {
         const url = this.seriesBuilder
             .setAPIKey(this.apiKey)
@@ -141,6 +189,13 @@ class Series {
         return api.get('series/tags?' + url);
     }
 
+    /**
+     * Gets economic data series sorted by when observations were updated on the FRED® server.
+     * @param {Number} seriesId
+     * @param {Object} params
+     * @returns {Promise} Resolves with economic data series sorted by
+     * when observations were updated on the FRED® server or errors out
+     */
     getUpdatedSeries(seriesId, params) {
         const url = this.seriesBuilder
             .setAPIKey(this.apiKey)
@@ -152,9 +207,16 @@ class Series {
             .setFilterValue(params)
             .getUrl();
 
-        return api.get('series/tags?' + url);
+        return api.get('series/updates?' + url);
     }
 
+    /**
+     * Gets the dates in history when a series' data values were revised or new data values were released.
+     * @param {Number} seriesId
+     * @param {Object} params
+     * @returns {Promise} Resolves with the dates in history when a
+     * series' data values were revised or new data values were released or errors out
+     */
     getVintageDatesSeries(seriesId, params) {
         const url = this.seriesBuilder
             .setAPIKey(this.apiKey)
@@ -166,7 +228,7 @@ class Series {
             .setSortOrder(params)
             .getUrl();
 
-        return api.get('series/tags?' + url);
+        return api.get('series/vintagedates?' + url);
     }
 
 }
