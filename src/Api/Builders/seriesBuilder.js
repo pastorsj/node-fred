@@ -11,8 +11,10 @@ class SeriesBuilder extends Builder {
     setObservationStart(params) {
         const observationStart = params['observation_start'];
 
-        if(observationStart === '' || !this.isValidDate(observationStart)) {
+        if(!observationStart) {
             return this;
+        } else if(!this.isValidDate(observationStart)) {
+            throw new Error('The format of this date is not valid. Please format the date like this: YYYY-MM-DD');
         }
         return this.addAttribute('observation_start=' + observationStart);
     }
@@ -20,8 +22,10 @@ class SeriesBuilder extends Builder {
     setObservationEnd(params) {
         const observationEnd = params['observation_end'];
 
-        if(observationEnd === '' || !this.isValidDate(observationEnd)) {
+        if(!observationEnd) {
             return this;
+        } else if(!this.isValidDate(observationEnd)) {
+            throw new Error('The format of this date is not valid. Please format the date like this: YYYY-MM-DD');
         }
         return this.addAttribute('observation_end=' + observationEnd);
     }
@@ -38,7 +42,7 @@ class SeriesBuilder extends Builder {
     setFrequency(params) {
         const frequency = params['frequency'];
 
-        if(frequency === '') {
+        if(!frequency) {
             return this;
         }
         return this.addAttribute('frequency=' + frequency);
@@ -47,7 +51,7 @@ class SeriesBuilder extends Builder {
     setAggregationMethod(params) {
         const aggregationMethod = params['aggregation_method'];
 
-        if(aggregationMethod === '') {
+        if(!aggregationMethod) {
             return this;
         }
         return this.addAttribute('aggregation_method=' + aggregationMethod);
@@ -56,7 +60,7 @@ class SeriesBuilder extends Builder {
     setOutputType(params) {
         const outputType = params['output_type'];
 
-        if(outputType === '') {
+        if(!outputType) {
             return this;
         }
         return this.addAttribute('output_type=' + outputType);
@@ -65,7 +69,7 @@ class SeriesBuilder extends Builder {
     setVintageDate(params) {
         const vintageDates = params['vintage_dates'];
 
-        if(vintageDates === '') {
+        if(!vintageDates) {
             return this;
         }
         return this.addAttribute('vintage_dates=' + vintageDates);
@@ -74,7 +78,7 @@ class SeriesBuilder extends Builder {
     setSearchType(params) {
         const searchType = params['search_type'];
 
-        if(searchType === '') {
+        if(!searchType) {
             return this;
         }
         return this.addAttribute('search_type=' + searchType);
@@ -83,7 +87,7 @@ class SeriesBuilder extends Builder {
     setSeriesSearchText(params) {
         const seriesSearchText = params['series_search_text'];
 
-        if(seriesSearchText === '') {
+        if(!seriesSearchText) {
             return this;
         }
         return this.addAttribute('series_search_text=' + seriesSearchText);
@@ -92,7 +96,7 @@ class SeriesBuilder extends Builder {
     setTagSearchText(params) {
         const tagSearchText = params['tag_search_text'];
 
-        if(tagSearchText === '') {
+        if(!tagSearchText) {
             return this;
         }
         return this.addAttribute('tag_search_text=' + tagSearchText);

@@ -28,8 +28,10 @@ class Builder {
     setRealTimeStart(params) {
         const realTimeStart = params['realtime_start'];
 
-        if(realTimeStart === '' || !this.isValidDate(realTimeStart)) {
+        if(!realTimeStart) {
             return this;
+        } else if(!this.isValidDate(realTimeStart)) {
+            throw new Error('The format of this date is not valid. Please format the date like this: YYYY-MM-DD');
         }
         return this.addAttribute('realtime_start=' + realTimeStart);
     }
@@ -37,8 +39,10 @@ class Builder {
     setRealTimeEnd(params) {
         const realTimeEnd = params['realtime_end'];
 
-        if(realTimeEnd === '' || !this.isValidDate(realTimeEnd)) {
+        if(!realTimeEnd) {
             return this;
+        } else if(!this.isValidDate(realTimeEnd)) {
+            throw new Error('The format of this date is not valid. Please format the date like this: YYYY-MM-DD');
         }
         return this.addAttribute('realtime_end=' + realTimeEnd);
     }
@@ -46,8 +50,10 @@ class Builder {
     setLimit(params) {
         const limit = parseInt(params['limit'], 10);
 
-        if(!limit || limit < 0 || limit > 1000) {
+        if(!limit) {
             return this;
+        } else if(limit < 0 || limit > 1000) {
+            throw new Error('Limit must be between 0 and 1000');
         }
         return this.addAttribute('limit=' + limit);
     }
@@ -55,8 +61,10 @@ class Builder {
     setOffset(params) {
         const offset = parseInt(params['offset'], 10);
 
-        if(!offset || offset < 0) {
+        if(!offset) {
             return this;
+        } else if(offset < 0) {
+            throw new Error('Offset must be greater than 0');
         }
         return this.addAttribute('offset=' + offset);
     }
@@ -64,25 +72,29 @@ class Builder {
     setOrderBy(params) {
         const orderBy = params['order_by'];
 
-        if(orderBy === '') {
+        if(!orderBy) {
             return this;
         }
         return this.addAttribute('order_by=' + orderBy);
     }
 
     setSortOrder(params) {
-        const sortOrder = params['sort_oder'].toLowerCase();
+        let sortOrder = params['sort_order'];
 
-        if(sortOrder === '' || (sortOrder !== 'asc' && sortOrder !== 'desc')) {
+        if(!sortOrder) {
             return this;
         }
-        return this.addAttribute('sort_oder=' + sortOrder);
+        sortOrder = sortOrder.toLowerCase();
+        if(sortOrder !== 'asc' && sortOrder !== 'desc') {
+            throw new Error('Sort order can only be either asc or desc');
+        }
+        return this.addAttribute('sort_order=' + sortOrder);
     }
 
     setFilterVariable(params) {
         const filterVariable = params['filter_variable'];
 
-        if(filterVariable === '') {
+        if(!filterVariable) {
             return this;
         }
         return this.addAttribute('filter_variable=' + filterVariable);
@@ -91,7 +103,7 @@ class Builder {
     setFilterValue(params) {
         const filterValue = params['filter_value'];
 
-        if(filterValue === '') {
+        if(!filterValue) {
             return this;
         }
         return this.addAttribute('filter_value=' + filterValue);
@@ -100,7 +112,7 @@ class Builder {
     setTagNames(params) {
         const tagNames = params['tag_names'];
 
-        if(tagNames === '') {
+        if(!tagNames) {
             return this;
         }
         return this.addAttribute('tag_names=' + tagNames);
@@ -109,7 +121,7 @@ class Builder {
     setExcludeTagNames(params) {
         const excludeTagNames = params['exclude_tag_names'];
 
-        if(excludeTagNames === '') {
+        if(!excludeTagNames) {
             return this;
         }
         return this.addAttribute('exclude_tag_names=' + excludeTagNames);
@@ -118,7 +130,7 @@ class Builder {
     setSearchText(params) {
         const searchText = params['search_text'];
 
-        if(searchText === '') {
+        if(!searchText) {
             return this;
         }
         return this.addAttribute('search_text=' + searchText);
@@ -127,7 +139,7 @@ class Builder {
     setTagGroupId(params) {
         const tagGroupId = params['tag_group_id'];
 
-        if(tagGroupId === '') {
+        if(!tagGroupId) {
             return this;
         }
         return this.addAttribute('tag_group_id=' + tagGroupId);

@@ -11,7 +11,7 @@ class CategoryBuilder extends Builder {
     setIncludeRelatedDatesWithNoData(params) {
         const includeRelatedDatesWithNoData = params['include_release_dates_with_no_data'];
 
-        if(includeRelatedDatesWithNoData === '') {
+        if(!includeRelatedDatesWithNoData) {
             return this;
         }
         return this.addAttribute('include_release_dates_with_no_data=' + includeRelatedDatesWithNoData);
@@ -20,7 +20,7 @@ class CategoryBuilder extends Builder {
     setElementId(params) {
         const elementId = params['element_id'];
 
-        if(elementId === '') {
+        if(!elementId) {
             return this;
         }
         return this.addAttribute('element_id=' + elementId);
@@ -29,18 +29,21 @@ class CategoryBuilder extends Builder {
     setIncludeObservationValues(params) {
         const includeObservationValues = params['include_observation_values'];
 
-        if(includeObservationValues === '' ||
-            !(includeObservationValues !== 'true' && includeObservationValues !== 'false')) {
+        if(!includeObservationValues) {
             return this;
+        } else if(includeObservationValues !== 'true' && includeObservationValues !== 'false') {
+            throw new Error('The include_observation_values field must either be true or false');
         }
         return this.addAttribute('include_observation_values=' + includeObservationValues);
     }
 
-    setElementId(params) {
+    setObservationDate(params) {
         const observationDate = params['observation_date'];
 
-        if(observationDate === '' || !this.isValidDate(observationDate)) {
+        if(!observationDate) {
             return this;
+        } else if(!this.isValidDate(observationDate)) {
+            throw new Error('The format of this date is not valid. Please format the date like this: YYYY-MM-DD');
         }
         return this.addAttribute('observation_date=' + observationDate);
     }
