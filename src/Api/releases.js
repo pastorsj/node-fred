@@ -108,8 +108,8 @@ class Releases {
             .setOffset(params)
             .setSortOrder(params)
             .setOrderBy(params)
-            .setFilterValue(params)
             .setFilterVariable(params)
+            .setFilterValue(params)
             .setTagNames(params)
             .setExcludeTagNames(params)
             .getUrl();
@@ -148,13 +148,13 @@ class Releases {
             .setReleaseId(releaseId)
             .setRealTimeStart(params)
             .setRealTimeEnd(params)
-            .setTagNames(params)
-            .setTagGroupId(params)
-            .setSearchText(params)
             .setLimit(params)
             .setOffset(params)
             .setSortOrder(params)
             .setOrderBy(params)
+            .setTagNames(params)
+            .setTagGroupId(params)
+            .setSearchText(params)
             .getUrl();
 
         return api.get('release/tags?' + url);
@@ -173,14 +173,14 @@ class Releases {
             .setReleaseId(releaseId)
             .setRealTimeStart(params)
             .setRealTimeEnd(params)
-            .setTagNames(params)
-            .setExcludeTagNames(params)
-            .setTagGroupId(params)
-            .setSearchText(params)
             .setLimit(params)
             .setOffset(params)
             .setSortOrder(params)
             .setOrderBy(params)
+            .setTagNames(params)
+            .setExcludeTagNames(params)
+            .setTagGroupId(params)
+            .setSearchText(params)
             .getUrl();
 
         return api.get('release/related_tags?' + url);
@@ -192,21 +192,21 @@ class Releases {
      * @param {Object} params
      * @returns {Promise} Resolves with the release table trees for a given release or errors out
      */
-    getRelatedTagsForRelease(releaseId, params) {
+    getTableTreesForRelease(releaseId, params) {
         const url = this.releaseBuilder
             .setAPIKey(this.apiKey)
             .setFileType(this.returnType)
             .setReleaseId(releaseId)
             .setRealTimeStart(params)
             .setRealTimeEnd(params)
-            .setTagNames(params)
-            .setExcludeTagNames(params)
-            .setTagGroupId(params)
-            .setSearchText(params)
             .setLimit(params)
             .setOffset(params)
             .setSortOrder(params)
             .setOrderBy(params)
+            .setTagNames(params)
+            .setExcludeTagNames(params)
+            .setTagGroupId(params)
+            .setSearchText(params)
             .getUrl();
 
         return api.get('release/related_tags?' + url);
