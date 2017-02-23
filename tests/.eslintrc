@@ -1,6 +1,7 @@
 {
     "rules": {
-        "max-nested-callbacks": 0
+        "max-nested-callbacks": 0,
+        "max-len": 0
     },
     "env": {
       "mocha": true
