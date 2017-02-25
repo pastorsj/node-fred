@@ -119,7 +119,7 @@ describe('SeriesBuilder', () => {
 
     describe('setSeriesSearchText()', () => {
         it('should set the series_search_text attribute', () => {
-            builder.setSeriesSearchText({'series_search_text': 'gdp'});
+            builder.setSeriesSearchText('gdp');
             expect(builder.url).to.be.eql('series_search_text=gdp');
         });
         it('should return the original value of this', () => {

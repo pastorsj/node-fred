@@ -126,7 +126,7 @@ class Series {
      * @param {Object} params
      * @returns {Promise} Resolves with the tags for a series search or errors out
      */
-    getTagsForSeriesSearch(seriesId, params) {
+    getTagsForSeriesSearch(seriesId, seriesSearchText, params) {
         const url = this.seriesBuilder
             .setAPIKey(this.apiKey)
             .setFileType(this.returnType)
@@ -139,7 +139,7 @@ class Series {
             .setTagNames(params)
             .setTagGroupId(params)
             .setTagSearchText(params)
-            .setSeriesSearchText(params)
+            .setSeriesSearchText(seriesSearchText)
             .getUrl();
 
         return api.get('series/search/tags?' + url);
@@ -152,7 +152,7 @@ class Series {
      * @param {Object} params
      * @returns {Promise} Resolves with the related tags for a series search or errors out
      */
-    getRelatedTagsForSeriesSearch(seriesId, params) {
+    getRelatedTagsForSeriesSearch(seriesId, seriesSearchText, params) {
         const url = this.seriesBuilder
             .setAPIKey(this.apiKey)
             .setFileType(this.returnType)
@@ -166,7 +166,7 @@ class Series {
             .setExcludeTagNames(params)
             .setTagGroupId(params)
             .setTagSearchText(params)
-            .setSeriesSearchText(params)
+            .setSeriesSearchText(seriesSearchText)
             .getUrl();
 
         return api.get('series/search/related_tags?' + url);

@@ -106,10 +106,9 @@ describe('Series', () => {
                 'sort_order': 'asc',
                 'tag_names': 'income;bea',
                 'tag_group_id': 'gen',
-                'tag_search_text': 'certaintag',
-                'series_search_text': 'rate'
+                'tag_search_text': 'certaintag'
             };
-            series.getTagsForSeriesSearch(125, params);
+            series.getTagsForSeriesSearch(125, 'rate', params);
             expect(api.get).to.have.been.calledWith('series/search/tags?api_key=testkey&file_type=json&realtime_start=2000-10-11&realtime_end=2000-10-15&limit=100&offset=10&order_by=series_id&sort_order=asc&tag_names=income;bea&tag_group_id=gen&tag_search_text=certaintag&series_search_text=rate');
         });
     });
@@ -126,10 +125,9 @@ describe('Series', () => {
                 'tag_names': 'income;bea',
                 'tag_group_id': 'gen',
                 'exclude_tag_names': 'discontinued;annual',
-                'tag_search_text': 'certaintag',
-                'series_search_text': 'rate'
+                'tag_search_text': 'certaintag'
             };
-            series.getRelatedTagsForSeriesSearch(125, params);
+            series.getRelatedTagsForSeriesSearch(125, 'rate', params);
             expect(api.get).to.have.been.calledWith('series/search/related_tags?api_key=testkey&file_type=json&realtime_start=2000-10-11&realtime_end=2000-10-15&limit=100&offset=10&order_by=series_id&sort_order=asc&tag_names=income;bea&exclude_tag_names=discontinued;annual&tag_group_id=gen&tag_search_text=certaintag&series_search_text=rate');
         });
     });
