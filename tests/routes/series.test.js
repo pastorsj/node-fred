@@ -1,8 +1,8 @@
 import chai, { expect } from 'chai';
 import sinonChai from 'sinon-chai';
 import sinon from 'sinon';
-import Series from '../src/Api/series.js';
-import api from '../src/api';
+import Series from '../../src/Api/series.js';
+import api from '../../src/api';
 
 chai.use(sinonChai);
 

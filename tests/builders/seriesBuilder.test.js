@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import SeriesBuilder from '../src/Api/Builders/seriesBuilder.js';
+import SeriesBuilder from '../../src/Api/Builders/seriesBuilder.js';
 
 describe('SeriesBuilder', () => {
     let builder;

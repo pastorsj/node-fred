@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import Builder from '../src/Api/Builders/builder.js';
+import Builder from '../../src/Api/Builders/builder.js';
 
 describe('Builder', () => {
     let builder;

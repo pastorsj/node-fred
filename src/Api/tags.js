@@ -20,13 +20,13 @@ class Tags {
             .setFileType(this.returnType)
             .setRealTimeStart(params)
             .setRealTimeEnd(params)
-            .setTagNames(params)
-            .setTagGroupId(params)
-            .setSearchText(params)
             .setLimit(params)
             .setOffset(params)
             .setOrderBy(params)
             .setSortOrder(params)
+            .setTagNames(params)
+            .setTagGroupId(params)
+            .setSearchText(params)
             .getUrl();
 
         return api.get('tags?' + url);
@@ -43,14 +43,14 @@ class Tags {
             .setFileType(this.returnType)
             .setRealTimeStart(params)
             .setRealTimeEnd(params)
-            .setTagNames(params)
-            .setExcludeTagNames(params)
-            .setTagGroupId(params)
-            .setSearchText(params)
             .setLimit(params)
             .setOffset(params)
             .setOrderBy(params)
             .setSortOrder(params)
+            .setTagNames(params)
+            .setExcludeTagNames(params)
+            .setTagGroupId(params)
+            .setSearchText(params)
             .getUrl();
 
         return api.get('related_tags?' + url);
@@ -67,12 +67,12 @@ class Tags {
             .setFileType(this.returnType)
             .setRealTimeStart(params)
             .setRealTimeEnd(params)
-            .setTagNames(params)
-            .setExcludeTagNames(params)
             .setLimit(params)
             .setOffset(params)
             .setOrderBy(params)
             .setSortOrder(params)
+            .setTagNames(params)
+            .setExcludeTagNames(params)
             .getUrl();
 
         return api.get('tags/series?' + url);

@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import ReleaseBuilder from '../src/Api/Builders/releaseBuilder.js';
+import ReleaseBuilder from '../../src/Api/Builders/releaseBuilder.js';
 
 describe('ReleaseBuilder', () => {
     let builder;
