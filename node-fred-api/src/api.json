@@ -1,0 +1,82 @@
+{
+    "routes": {
+        "category": {
+            "method": "getCategory",
+            "parameters": [
+                {
+                    "category_id": {
+                        "required": true,
+                        "type": "integer",
+                        "default": 0,
+                        "description": "The id for a category."
+                    }
+                }
+            ]
+        },
+        "category/children": {
+            "method": "getChildCategories",
+            "parameters": [
+                {
+                    "category_id": {
+                        "required": true,
+                        "type": "integer",
+                        "default": 0,
+                        "description": "The id for a category."
+                    }
+                }
+            ]
+        },
+        "category/related": {
+            "method": "getRelatedCategories",
+            "parameters": [
+                {
+                    "category_id": {
+                        "required": true,
+                        "type": "integer",
+                        "default": 0,
+                        "description": "The id for a category."
+                    }
+                }
+            ]
+        },
+        "category/series": {
+            "method": "getCategorySeries",
+            "parameters": [
+                {
+                    "category_id": {
+                        "required": true,
+                        "type": "integer",
+                        "default": 0,
+                        "description": "The id for a category."
+                    }
+                }
+            ]
+        },
+        "category/tags": {
+            "method": "getCategoryTags",
+            "parameters": [
+                {
+                    "category_id": {
+                        "required": true,
+                        "type": "integer",
+                        "default": 0,
+                        "description": "The id for a category."
+                    }
+                }
+            ]
+        },
+        "category/related_tags": {
+            "method": "getCategoryRelatedTags",
+            "parameters": [
+                {
+                    "category_id": {
+                        "required": true,
+                        "type": "integer",
+                        "default": 0,
+                        "description": "The id for a category."
+                    }
+                }
+            ]
+        }
+    }
+}

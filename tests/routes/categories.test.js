@@ -111,7 +111,7 @@ describe('Categories', () => {
         });
         it('should set the set the correct url and call get', () => {
             categories.getCategoryRelatedTags(125, params);
-            expect(api.get).to.have.been.calledWith('category/tags?api_key=testkey&category_id=125&file_type=json&realtime_start=2000-10-11&realtime_end=2000-10-15&limit=100&offset=10&order_by=series_id&sort_order=asc&tag_names=income;bea&tag_group_id=freq&search_text=us');
+            expect(api.get).to.have.been.calledWith('category/related_tags?api_key=testkey&category_id=125&file_type=json&realtime_start=2000-10-11&realtime_end=2000-10-15&limit=100&offset=10&order_by=series_id&sort_order=asc&tag_names=income;bea&tag_group_id=freq&search_text=us');
         });
     });
 });

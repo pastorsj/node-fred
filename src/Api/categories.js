@@ -195,7 +195,7 @@ class Categories {
                     .setSearchText(params)
                     .getUrl();
 
-                api.get('category/tags?' + url)
+                api.get('category/related_tags?' + url)
                     .then((res) => {
                         resolve(res.data);
                     })
