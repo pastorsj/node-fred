@@ -15,13 +15,25 @@ class Categories {
      * @returns {Promise} Resolves with the category or errors out
      */
     getCategory(categoryId) {
-        const url = this.categoryBuilder
-            .setAPIKey(this.apiKey)
-            .setCategoryId(categoryId)
-            .setFileType(this.returnType)
-            .getUrl();
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.categoryBuilder
+                    .setAPIKey(this.apiKey)
+                    .setCategoryId(categoryId)
+                    .setFileType(this.returnType)
+                    .getUrl();
 
-        return api.get('category?' + url);
+                api.get('category?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
@@ -30,16 +42,28 @@ class Categories {
      * @param {Object} params
      * @returns {Promise} Resolves with the child category or errors out
      */
-    getChildCategories(categoryId, params) {
-        const url = this.categoryBuilder
-            .setAPIKey(this.apiKey)
-            .setCategoryId(categoryId)
-            .setFileType(this.returnType)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .getUrl();
+    getChildCategories(categoryId, params = {}) {
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.categoryBuilder
+                    .setAPIKey(this.apiKey)
+                    .setCategoryId(categoryId)
+                    .setFileType(this.returnType)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .getUrl();
 
-        return api.get('category/children?' + url);
+                api.get('category/children?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
@@ -48,16 +72,28 @@ class Categories {
      * @param {Object} params
      * @returns {Promise} Resolves with the related categories or errors out
      */
-    getRelatedCategories(categoryId, params) {
-        const url = this.categoryBuilder
-            .setAPIKey(this.apiKey)
-            .setCategoryId(categoryId)
-            .setFileType(this.returnType)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .getUrl();
+    getRelatedCategories(categoryId, params = {}) {
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.categoryBuilder
+                    .setAPIKey(this.apiKey)
+                    .setCategoryId(categoryId)
+                    .setFileType(this.returnType)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .getUrl();
 
-        return api.get('category/related?' + url);
+                api.get('category/related?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
@@ -66,24 +102,36 @@ class Categories {
      * @param {Object} params
      * @returns {Promise} Resolves with the series or errors out
      */
-    getCategorySeries(categoryId, params) {
-        const url = this.categoryBuilder
-            .setAPIKey(this.apiKey)
-            .setCategoryId(categoryId)
-            .setFileType(this.returnType)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .setLimit(params)
-            .setOffset(params)
-            .setOrderBy(params)
-            .setSortOrder(params)
-            .setFilterVariable(params)
-            .setFilterValue(params)
-            .setTagNames(params)
-            .setExcludeTagNames(params)
-            .getUrl();
+    getCategorySeries(categoryId, params = {}) {
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.categoryBuilder
+                    .setAPIKey(this.apiKey)
+                    .setCategoryId(categoryId)
+                    .setFileType(this.returnType)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .setLimit(params)
+                    .setOffset(params)
+                    .setOrderBy(params)
+                    .setSortOrder(params)
+                    .setFilterVariable(params)
+                    .setFilterValue(params)
+                    .setTagNames(params)
+                    .setExcludeTagNames(params)
+                    .getUrl();
 
-        return api.get('category/series?' + url);
+                api.get('category/series?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
@@ -92,23 +140,35 @@ class Categories {
      * @param {Object} params
      * @returns {Promise} Resolves with the tags for the category or errors out
      */
-    getCategoryTags(categoryId, params) {
-        const url = this.categoryBuilder
-            .setAPIKey(this.apiKey)
-            .setCategoryId(categoryId)
-            .setFileType(this.returnType)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .setLimit(params)
-            .setOffset(params)
-            .setOrderBy(params)
-            .setSortOrder(params)
-            .setTagNames(params)
-            .setTagGroupId(params)
-            .setSearchText(params)
-            .getUrl();
+    getCategoryTags(categoryId, params = {}) {
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.categoryBuilder
+                    .setAPIKey(this.apiKey)
+                    .setCategoryId(categoryId)
+                    .setFileType(this.returnType)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .setLimit(params)
+                    .setOffset(params)
+                    .setOrderBy(params)
+                    .setSortOrder(params)
+                    .setTagNames(params)
+                    .setTagGroupId(params)
+                    .setSearchText(params)
+                    .getUrl();
 
-        return api.get('category/tags?' + url);
+                api.get('category/tags?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
@@ -117,25 +177,36 @@ class Categories {
      * @param {Object} params
      * @returns {Promise} Resolves with the related tags for the category or errors out
      */
-    getCategoryRelatedTags(categoryId, params) {
-        const url = this.categoryBuilder
-            .setAPIKey(this.apiKey)
-            .setCategoryId(categoryId)
-            .setFileType(this.returnType)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .setLimit(params)
-            .setOffset(params)
-            .setOrderBy(params)
-            .setSortOrder(params)
-            .setTagNames(params)
-            .setTagGroupId(params)
-            .setSearchText(params)
-            .getUrl();
+    getCategoryRelatedTags(categoryId, params = {}) {
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.categoryBuilder
+                    .setAPIKey(this.apiKey)
+                    .setCategoryId(categoryId)
+                    .setFileType(this.returnType)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .setLimit(params)
+                    .setOffset(params)
+                    .setOrderBy(params)
+                    .setSortOrder(params)
+                    .setTagNames(params)
+                    .setTagGroupId(params)
+                    .setSearchText(params)
+                    .getUrl();
 
-        return api.get('category/tags?' + url);
+                api.get('category/tags?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
-
 }
 
 export default Categories;

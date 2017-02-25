@@ -15,21 +15,33 @@ class Tags {
      * @returns {Promise} Resolves with a set of tags or errors out
      */
     getAllTags(params) {
-        const url = this.tagsBuilder
-            .setAPIKey(this.apiKey)
-            .setFileType(this.returnType)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .setLimit(params)
-            .setOffset(params)
-            .setOrderBy(params)
-            .setSortOrder(params)
-            .setTagNames(params)
-            .setTagGroupId(params)
-            .setSearchText(params)
-            .getUrl();
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.tagsBuilder
+                    .setAPIKey(this.apiKey)
+                    .setFileType(this.returnType)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .setLimit(params)
+                    .setOffset(params)
+                    .setOrderBy(params)
+                    .setSortOrder(params)
+                    .setTagNames(params)
+                    .setTagGroupId(params)
+                    .setSearchText(params)
+                    .getUrl();
 
-        return api.get('tags?' + url);
+                api.get('tags?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
@@ -38,22 +50,34 @@ class Tags {
      * @returns {Promise} Resolves with the related tags for one or more tags or errors out
      */
     getAllRelatedTags(params) {
-        const url = this.tagsBuilder
-            .setAPIKey(this.apiKey)
-            .setFileType(this.returnType)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .setLimit(params)
-            .setOffset(params)
-            .setOrderBy(params)
-            .setSortOrder(params)
-            .setTagNames(params)
-            .setExcludeTagNames(params)
-            .setTagGroupId(params)
-            .setSearchText(params)
-            .getUrl();
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.tagsBuilder
+                    .setAPIKey(this.apiKey)
+                    .setFileType(this.returnType)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .setLimit(params)
+                    .setOffset(params)
+                    .setOrderBy(params)
+                    .setSortOrder(params)
+                    .setTagNames(params)
+                    .setExcludeTagNames(params)
+                    .setTagGroupId(params)
+                    .setSearchText(params)
+                    .getUrl();
 
-        return api.get('related_tags?' + url);
+                api.get('related_tags?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
@@ -62,20 +86,32 @@ class Tags {
      * @returns {Promise} Resolves with the series matching tags or errors out
      */
     getAllSeriesMatchingTags(params) {
-        const url = this.tagsBuilder
-            .setAPIKey(this.apiKey)
-            .setFileType(this.returnType)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .setLimit(params)
-            .setOffset(params)
-            .setOrderBy(params)
-            .setSortOrder(params)
-            .setTagNames(params)
-            .setExcludeTagNames(params)
-            .getUrl();
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.tagsBuilder
+                    .setAPIKey(this.apiKey)
+                    .setFileType(this.returnType)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .setLimit(params)
+                    .setOffset(params)
+                    .setOrderBy(params)
+                    .setSortOrder(params)
+                    .setTagNames(params)
+                    .setExcludeTagNames(params)
+                    .getUrl();
 
-        return api.get('tags/series?' + url);
+                api.get('tags/series?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 }
 

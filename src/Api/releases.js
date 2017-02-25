@@ -16,18 +16,30 @@ class Releases {
      * @returns {Promise} Resolves with all releases of economic data or errors out
      */
     getAllReleases(params) {
-        const url = this.releaseBuilder
-            .setAPIKey(this.apiKey)
-            .setFileType(this.returnType)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .setLimit(params)
-            .setOffset(params)
-            .setOrderBy(params)
-            .setSortOrder(params)
-            .getUrl();
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.releaseBuilder
+                    .setAPIKey(this.apiKey)
+                    .setFileType(this.returnType)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .setLimit(params)
+                    .setOffset(params)
+                    .setOrderBy(params)
+                    .setSortOrder(params)
+                    .getUrl();
 
-        return api.get('releases?' + url);
+                api.get('releases?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
@@ -36,19 +48,31 @@ class Releases {
      * @returns {Promise} Resolves with all releases dates of economic data or errors out
      */
     getAllReleasesWithDates(params) {
-        const url = this.releaseBuilder
-            .setAPIKey(this.apiKey)
-            .setFileType(this.returnType)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .setLimit(params)
-            .setOffset(params)
-            .setOrderBy(params)
-            .setSortOrder(params)
-            .setIncludeRelatedDatesWithNoData(params)
-            .getUrl();
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.releaseBuilder
+                    .setAPIKey(this.apiKey)
+                    .setFileType(this.returnType)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .setLimit(params)
+                    .setOffset(params)
+                    .setOrderBy(params)
+                    .setSortOrder(params)
+                    .setIncludeRelatedDatesWithNoData(params)
+                    .getUrl();
 
-        return api.get('releases/dates?' + url);
+                api.get('releases/dates?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
@@ -57,16 +81,28 @@ class Releases {
      * @param {Object} params
      * @returns {Promise} Resolves with all releases dates of economic data or errors out
      */
-    getRelease(releaseId, params) {
-        const url = this.releaseBuilder
-            .setAPIKey(this.apiKey)
-            .setFileType(this.returnType)
-            .setReleaseId(releaseId)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .getUrl();
+    getRelease(releaseId, params = {}) {
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.releaseBuilder
+                    .setAPIKey(this.apiKey)
+                    .setFileType(this.returnType)
+                    .setReleaseId(releaseId)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .getUrl();
 
-        return api.get('release?' + url);
+                api.get('release?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
@@ -75,20 +111,32 @@ class Releases {
      * @param {Object} params
      * @returns {Promise} Resolves with all releases dates of economic data or errors out
      */
-    getReleaseWithDates(releaseId, params) {
-        const url = this.releaseBuilder
-            .setAPIKey(this.apiKey)
-            .setFileType(this.returnType)
-            .setReleaseId(releaseId)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .setLimit(params)
-            .setOffset(params)
-            .setSortOrder(params)
-            .setIncludeRelatedDatesWithNoData(params)
-            .getUrl();
+    getReleaseWithDates(releaseId, params = {}) {
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.releaseBuilder
+                    .setAPIKey(this.apiKey)
+                    .setFileType(this.returnType)
+                    .setReleaseId(releaseId)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .setLimit(params)
+                    .setOffset(params)
+                    .setSortOrder(params)
+                    .setIncludeRelatedDatesWithNoData(params)
+                    .getUrl();
 
-        return api.get('release/dates?' + url);
+                api.get('release/dates?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
@@ -97,24 +145,36 @@ class Releases {
      * @param {Object} params
      * @returns {Promise} Resolves with the series on a release of economic data or errors out
      */
-    getSeriesForRelease(releaseId, params) {
-        const url = this.releaseBuilder
-            .setAPIKey(this.apiKey)
-            .setFileType(this.returnType)
-            .setReleaseId(releaseId)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .setLimit(params)
-            .setOffset(params)
-            .setSortOrder(params)
-            .setOrderBy(params)
-            .setFilterVariable(params)
-            .setFilterValue(params)
-            .setTagNames(params)
-            .setExcludeTagNames(params)
-            .getUrl();
+    getSeriesForRelease(releaseId, params = {}) {
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.releaseBuilder
+                    .setAPIKey(this.apiKey)
+                    .setFileType(this.returnType)
+                    .setReleaseId(releaseId)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .setLimit(params)
+                    .setOffset(params)
+                    .setSortOrder(params)
+                    .setOrderBy(params)
+                    .setFilterVariable(params)
+                    .setFilterValue(params)
+                    .setTagNames(params)
+                    .setExcludeTagNames(params)
+                    .getUrl();
 
-        return api.get('release/series?' + url);
+                api.get('release/series?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
@@ -123,16 +183,28 @@ class Releases {
      * @param {Object} params
      * @returns {Promise} Resolves with the sources for a release of economic data or errors out
      */
-    getSourcesForRelease(releaseId, params) {
-        const url = this.releaseBuilder
-            .setAPIKey(this.apiKey)
-            .setFileType(this.returnType)
-            .setReleaseId(releaseId)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .getUrl();
+    getSourcesForRelease(releaseId, params = {}) {
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.releaseBuilder
+                    .setAPIKey(this.apiKey)
+                    .setFileType(this.returnType)
+                    .setReleaseId(releaseId)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .getUrl();
 
-        return api.get('release/sources?' + url);
+                api.get('release/sources?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
@@ -141,49 +213,74 @@ class Releases {
      * @param {Object} params
      * @returns {Promise} Resolves with the sources for a release of economic data or errors out
      */
-    getTagsForRelease(releaseId, params) {
-        const url = this.releaseBuilder
-            .setAPIKey(this.apiKey)
-            .setFileType(this.returnType)
-            .setReleaseId(releaseId)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .setLimit(params)
-            .setOffset(params)
-            .setSortOrder(params)
-            .setOrderBy(params)
-            .setTagNames(params)
-            .setTagGroupId(params)
-            .setSearchText(params)
-            .getUrl();
+    getTagsForRelease(releaseId, params = {}) {
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.releaseBuilder
+                    .setAPIKey(this.apiKey)
+                    .setFileType(this.returnType)
+                    .setReleaseId(releaseId)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .setLimit(params)
+                    .setOffset(params)
+                    .setSortOrder(params)
+                    .setOrderBy(params)
+                    .setTagNames(params)
+                    .setTagGroupId(params)
+                    .setSearchText(params)
+                    .getUrl();
 
-        return api.get('release/tags?' + url);
+                api.get('release/tags?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
      * Get the related FRED tags for one or more FRED tags within a release.
      * @param {Number} releaseId
+     * @param {String} tagNames
      * @param {Object} params
      * @returns {Promise} Resolves with the related FRED tags for one or more FRED tags within a release or errors out
      */
-    getRelatedTagsForRelease(releaseId, params) {
-        const url = this.releaseBuilder
-            .setAPIKey(this.apiKey)
-            .setFileType(this.returnType)
-            .setReleaseId(releaseId)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .setLimit(params)
-            .setOffset(params)
-            .setSortOrder(params)
-            .setOrderBy(params)
-            .setTagNames(params)
-            .setExcludeTagNames(params)
-            .setTagGroupId(params)
-            .setSearchText(params)
-            .getUrl();
+    getRelatedTagsForRelease(releaseId, tagNames, params = {}) {
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.releaseBuilder
+                    .setAPIKey(this.apiKey)
+                    .setFileType(this.returnType)
+                    .setReleaseId(releaseId)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .setLimit(params)
+                    .setOffset(params)
+                    .setSortOrder(params)
+                    .setOrderBy(params)
+                    .setTagNames({'tag_names': tagNames})
+                    .setExcludeTagNames(params)
+                    .setTagGroupId(params)
+                    .setSearchText(params)
+                    .getUrl();
 
-        return api.get('release/related_tags?' + url);
+                api.get('release/related_tags?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
@@ -192,24 +289,36 @@ class Releases {
      * @param {Object} params
      * @returns {Promise} Resolves with the release table trees for a given release or errors out
      */
-    getTableTreesForRelease(releaseId, params) {
-        const url = this.releaseBuilder
-            .setAPIKey(this.apiKey)
-            .setFileType(this.returnType)
-            .setReleaseId(releaseId)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .setLimit(params)
-            .setOffset(params)
-            .setSortOrder(params)
-            .setOrderBy(params)
-            .setTagNames(params)
-            .setExcludeTagNames(params)
-            .setTagGroupId(params)
-            .setSearchText(params)
-            .getUrl();
+    getTableTreesForRelease(releaseId, params = {}) {
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.releaseBuilder
+                    .setAPIKey(this.apiKey)
+                    .setFileType(this.returnType)
+                    .setReleaseId(releaseId)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .setLimit(params)
+                    .setOffset(params)
+                    .setSortOrder(params)
+                    .setOrderBy(params)
+                    .setTagNames(params)
+                    .setExcludeTagNames(params)
+                    .setTagGroupId(params)
+                    .setSearchText(params)
+                    .getUrl();
 
-        return api.get('release/related_tags?' + url);
+                api.get('release/related_tags?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
 }

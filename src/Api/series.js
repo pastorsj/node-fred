@@ -15,16 +15,28 @@ class Series {
      * @param {Object} params
      * @returns {Promise} Resolves with an economic data series or errors out
      */
-    getAllSeries(seriesId, params) {
-        const url = this.seriesBuilder
-            .setAPIKey(this.apiKey)
-            .setFileType(this.returnType)
-            .setSeriesId(seriesId)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .getUrl();
+    getAllSeries(seriesId, params = {}) {
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.seriesBuilder
+                    .setAPIKey(this.apiKey)
+                    .setFileType(this.returnType)
+                    .setSeriesId(seriesId)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .getUrl();
 
-        return api.get('series?' + url);
+                api.get('series?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
@@ -33,16 +45,28 @@ class Series {
      * @param {Object} params
      * @returns {Promise} Resolves with the categories for an economic data series or errors out
      */
-    getCategoriesForSeries(seriesId, params) {
-        const url = this.seriesBuilder
-            .setAPIKey(this.apiKey)
-            .setFileType(this.returnType)
-            .setSeriesId(seriesId)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .getUrl();
+    getCategoriesForSeries(seriesId, params = {}) {
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.seriesBuilder
+                    .setAPIKey(this.apiKey)
+                    .setFileType(this.returnType)
+                    .setSeriesId(seriesId)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .getUrl();
 
-        return api.get('series/categories?' + url);
+                api.get('series/categories?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
@@ -51,26 +75,38 @@ class Series {
      * @param {Object} params
      * @returns {Promise} Resolves with the observations or data values for an economic data series or errors out
      */
-    getObservationsForSeries(seriesId, params) {
-        const url = this.seriesBuilder
-            .setAPIKey(this.apiKey)
-            .setFileType(this.returnType)
-            .setSeriesId(seriesId)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .setLimit(params)
-            .setOffset(params)
-            .setSortOrder(params)
-            .setObservationStart(params)
-            .setObservationEnd(params)
-            .setUnits(params)
-            .setFrequency(params)
-            .setAggregationMethod(params)
-            .setOutputType(params)
-            .setVintageDate(params)
-            .getUrl();
+    getObservationsForSeries(seriesId, params = {}) {
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.seriesBuilder
+                    .setAPIKey(this.apiKey)
+                    .setFileType(this.returnType)
+                    .setSeriesId(seriesId)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .setLimit(params)
+                    .setOffset(params)
+                    .setSortOrder(params)
+                    .setObservationStart(params)
+                    .setObservationEnd(params)
+                    .setUnits(params)
+                    .setFrequency(params)
+                    .setAggregationMethod(params)
+                    .setOutputType(params)
+                    .setVintageDate(params)
+                    .getUrl();
 
-        return api.get('series/observations?' + url);
+                api.get('series/observations?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
@@ -79,16 +115,28 @@ class Series {
      * @param {Object} params
      * @returns {Promise} Resolves with the release for an economic data series or errors out
      */
-    getReleaseForSeries(seriesId, params) {
-        const url = this.seriesBuilder
-            .setAPIKey(this.apiKey)
-            .setFileType(this.returnType)
-            .setSeriesId(seriesId)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .getUrl();
+    getReleaseForSeries(seriesId, params = {}) {
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.seriesBuilder
+                    .setAPIKey(this.apiKey)
+                    .setFileType(this.returnType)
+                    .setSeriesId(seriesId)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .getUrl();
 
-        return api.get('series/release?' + url);
+                api.get('series/release?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
@@ -97,26 +145,38 @@ class Series {
      * @param {Object} params
      * @returns {Promise} Resolves with economic data series that match keywords or errors out
      */
-    getSeriesThatMatchesSearch(seriesId, params) {
-        const url = this.seriesBuilder
-            .setAPIKey(this.apiKey)
-            .setFileType(this.returnType)
-            .setSeriesId(seriesId)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .setLimit(params)
-            .setOffset(params)
-            .setOrderBy(params)
-            .setSortOrder(params)
-            .setFilterVariable(params)
-            .setFilterValue(params)
-            .setTagNames(params)
-            .setExcludeTagNames(params)
-            .setSearchText(params)
-            .setSearchType(params)
-            .getUrl();
+    getSeriesThatMatchesSearch(seriesId, params = {}) {
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.seriesBuilder
+                    .setAPIKey(this.apiKey)
+                    .setFileType(this.returnType)
+                    .setSeriesId(seriesId)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .setLimit(params)
+                    .setOffset(params)
+                    .setOrderBy(params)
+                    .setSortOrder(params)
+                    .setFilterVariable(params)
+                    .setFilterValue(params)
+                    .setTagNames(params)
+                    .setExcludeTagNames(params)
+                    .setSearchText(params)
+                    .setSearchType(params)
+                    .getUrl();
 
-        return api.get('series/search?' + url);
+                api.get('series/search?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
@@ -126,23 +186,35 @@ class Series {
      * @param {Object} params
      * @returns {Promise} Resolves with the tags for a series search or errors out
      */
-    getTagsForSeriesSearch(seriesId, seriesSearchText, params) {
-        const url = this.seriesBuilder
-            .setAPIKey(this.apiKey)
-            .setFileType(this.returnType)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .setLimit(params)
-            .setOffset(params)
-            .setOrderBy(params)
-            .setSortOrder(params)
-            .setTagNames(params)
-            .setTagGroupId(params)
-            .setTagSearchText(params)
-            .setSeriesSearchText(seriesSearchText)
-            .getUrl();
+    getTagsForSeriesSearch(seriesId, seriesSearchText, params = {}) {
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.seriesBuilder
+                    .setAPIKey(this.apiKey)
+                    .setFileType(this.returnType)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .setLimit(params)
+                    .setOffset(params)
+                    .setOrderBy(params)
+                    .setSortOrder(params)
+                    .setTagNames(params)
+                    .setTagGroupId(params)
+                    .setTagSearchText(params)
+                    .setSeriesSearchText(seriesSearchText)
+                    .getUrl();
 
-        return api.get('series/search/tags?' + url);
+                api.get('series/search/tags?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
@@ -152,24 +224,36 @@ class Series {
      * @param {Object} params
      * @returns {Promise} Resolves with the related tags for a series search or errors out
      */
-    getRelatedTagsForSeriesSearch(seriesId, seriesSearchText, params) {
-        const url = this.seriesBuilder
-            .setAPIKey(this.apiKey)
-            .setFileType(this.returnType)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .setLimit(params)
-            .setOffset(params)
-            .setOrderBy(params)
-            .setSortOrder(params)
-            .setTagNames(params)
-            .setExcludeTagNames(params)
-            .setTagGroupId(params)
-            .setTagSearchText(params)
-            .setSeriesSearchText(seriesSearchText)
-            .getUrl();
+    getRelatedTagsForSeriesSearch(seriesId, seriesSearchText, params = {}) {
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.seriesBuilder
+                    .setAPIKey(this.apiKey)
+                    .setFileType(this.returnType)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .setLimit(params)
+                    .setOffset(params)
+                    .setOrderBy(params)
+                    .setSortOrder(params)
+                    .setTagNames(params)
+                    .setExcludeTagNames(params)
+                    .setTagGroupId(params)
+                    .setTagSearchText(params)
+                    .setSeriesSearchText(seriesSearchText)
+                    .getUrl();
 
-        return api.get('series/search/related_tags?' + url);
+                api.get('series/search/related_tags?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
@@ -178,17 +262,29 @@ class Series {
      * @param {Object} params
      * @returns {Promise} Resolves with the tags for an economic data series or errors out
      */
-    getTagsForSeries(seriesId, params) {
-        const url = this.seriesBuilder
-            .setAPIKey(this.apiKey)
-            .setFileType(this.returnType)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .setOrderBy(params)
-            .setSortOrder(params)
-            .getUrl();
+    getTagsForSeries(seriesId, params = {}) {
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.seriesBuilder
+                    .setAPIKey(this.apiKey)
+                    .setFileType(this.returnType)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .setOrderBy(params)
+                    .setSortOrder(params)
+                    .getUrl();
 
-        return api.get('series/tags?' + url);
+                api.get('series/tags?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
@@ -198,18 +294,30 @@ class Series {
      * @returns {Promise} Resolves with economic data series sorted by
      * when observations were updated on the FRED® server or errors out
      */
-    getUpdatedSeries(seriesId, params) {
-        const url = this.seriesBuilder
-            .setAPIKey(this.apiKey)
-            .setFileType(this.returnType)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .setLimit(params)
-            .setOffset(params)
-            .setFilterValue(params)
-            .getUrl();
+    getUpdatedSeries(seriesId, params = {}) {
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.seriesBuilder
+                    .setAPIKey(this.apiKey)
+                    .setFileType(this.returnType)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .setLimit(params)
+                    .setOffset(params)
+                    .setFilterValue(params)
+                    .getUrl();
 
-        return api.get('series/updates?' + url);
+                api.get('series/updates?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
@@ -219,18 +327,30 @@ class Series {
      * @returns {Promise} Resolves with the dates in history when a
      * series' data values were revised or new data values were released or errors out
      */
-    getVintageDatesSeries(seriesId, params) {
-        const url = this.seriesBuilder
-            .setAPIKey(this.apiKey)
-            .setFileType(this.returnType)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .setLimit(params)
-            .setOffset(params)
-            .setSortOrder(params)
-            .getUrl();
+    getVintageDatesSeries(seriesId, params = {}) {
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.seriesBuilder
+                    .setAPIKey(this.apiKey)
+                    .setFileType(this.returnType)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .setLimit(params)
+                    .setOffset(params)
+                    .setSortOrder(params)
+                    .getUrl();
 
-        return api.get('series/vintagedates?' + url);
+                api.get('series/vintagedates?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
 }

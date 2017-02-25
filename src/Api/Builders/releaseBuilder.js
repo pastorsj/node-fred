@@ -2,10 +2,17 @@
 
 import Builder from './builder.js';
 
-class CategoryBuilder extends Builder {
+class ReleaseBuilder extends Builder {
 
-    setReleaseId(categoryId) {
-        return this.addAttribute('release_id=' + categoryId);
+    setReleaseId(releaseId) {
+        // Must be a positive integer
+        const id = parseInt(releaseId, 10);
+
+        if(id <= 0) {
+            throw new Error('The release id must be a positive integer');
+        }
+
+        return this.addAttribute('release_id=' + releaseId);
     }
 
     setIncludeRelatedDatesWithNoData(params) {
@@ -49,4 +56,4 @@ class CategoryBuilder extends Builder {
     }
 }
 
-export default CategoryBuilder;
+export default ReleaseBuilder;

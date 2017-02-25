@@ -15,18 +15,30 @@ class Sources {
      * @returns {Promise} Resolves with all sources of economic data or errors out
      */
     getAllSources(params) {
-        const url = this.sourcesBuilder
-            .setAPIKey(this.apiKey)
-            .setFileType(this.returnType)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .setLimit(params)
-            .setOffset(params)
-            .setOrderBy(params)
-            .setSortOrder(params)
-            .getUrl();
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.sourcesBuilder
+                    .setAPIKey(this.apiKey)
+                    .setFileType(this.returnType)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .setLimit(params)
+                    .setOffset(params)
+                    .setOrderBy(params)
+                    .setSortOrder(params)
+                    .getUrl();
 
-        return api.get('sources?' + url);
+                api.get('sources?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
@@ -35,16 +47,28 @@ class Sources {
      * @param {Object} params
      * @returns {Promise} Resolves with a source of economic data or errors out
      */
-    getSource(sourceId, params) {
-        const url = this.sourcesBuilder
-            .setAPIKey(this.apiKey)
-            .setFileType(this.returnType)
-            .setSourceId(sourceId)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .getUrl();
+    getSource(sourceId, params = {}) {
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.sourcesBuilder
+                    .setAPIKey(this.apiKey)
+                    .setFileType(this.returnType)
+                    .setSourceId(sourceId)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .getUrl();
 
-        return api.get('source?' + url);
+                api.get('source?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 
     /**
@@ -53,20 +77,32 @@ class Sources {
      * @param {Object} params
      * @returns {Promise} Resolves with the releases for a source or errors out
      */
-    getReleasesForSource(sourceId, params) {
-        const url = this.sourcesBuilder
-            .setAPIKey(this.apiKey)
-            .setFileType(this.returnType)
-            .setSourceId(sourceId)
-            .setRealTimeStart(params)
-            .setRealTimeEnd(params)
-            .setLimit(params)
-            .setOffset(params)
-            .setOrderBy(params)
-            .setSortOrder(params)
-            .getUrl();
+    getReleasesForSource(sourceId, params = {}) {
+        return new Promise((resolve, reject) => {
+            try {
+                const url = this.sourcesBuilder
+                    .setAPIKey(this.apiKey)
+                    .setFileType(this.returnType)
+                    .setSourceId(sourceId)
+                    .setRealTimeStart(params)
+                    .setRealTimeEnd(params)
+                    .setLimit(params)
+                    .setOffset(params)
+                    .setOrderBy(params)
+                    .setSortOrder(params)
+                    .getUrl();
 
-        return api.get('source/releases?' + url);
+                api.get('source/releases?' + url)
+                    .then((res) => {
+                        resolve(res.data);
+                    })
+                    .catch((err) => {
+                        reject(err.response.data);
+                    });
+            } catch(e) {
+                reject(e);
+            }
+        });
     }
 }
 
