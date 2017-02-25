@@ -122,6 +122,7 @@ class Series {
     /**
      * Gets the tags for a series search.
      * @param {Number} seriesId
+     * @param {String} seriesSearchText
      * @param {Object} params
      * @returns {Promise} Resolves with the tags for a series search or errors out
      */
@@ -131,7 +132,6 @@ class Series {
             .setFileType(this.returnType)
             .setRealTimeStart(params)
             .setRealTimeEnd(params)
-            .setSeriesSearchText(params)
             .setLimit(params)
             .setOffset(params)
             .setOrderBy(params)
@@ -139,6 +139,7 @@ class Series {
             .setTagNames(params)
             .setTagGroupId(params)
             .setTagSearchText(params)
+            .setSeriesSearchText(params)
             .getUrl();
 
         return api.get('series/search/tags?' + url);
@@ -147,6 +148,7 @@ class Series {
     /**
      * Gets the related tags for a series search.
      * @param {Number} seriesId
+     * @param {String} seriesSearchText
      * @param {Object} params
      * @returns {Promise} Resolves with the related tags for a series search or errors out
      */
@@ -156,7 +158,6 @@ class Series {
             .setFileType(this.returnType)
             .setRealTimeStart(params)
             .setRealTimeEnd(params)
-            .setSeriesSearchText(params)
             .setLimit(params)
             .setOffset(params)
             .setOrderBy(params)
@@ -165,6 +166,7 @@ class Series {
             .setExcludeTagNames(params)
             .setTagGroupId(params)
             .setTagSearchText(params)
+            .setSeriesSearchText(params)
             .getUrl();
 
         return api.get('series/search/related_tags?' + url);
