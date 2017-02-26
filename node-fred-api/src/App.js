@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import api from './api.json';
 
@@ -12,16 +11,43 @@ class App extends Component {
 
     render() {
         return (
-          <div className="App">
-              <div className="App-header">
-                  <img src={logo} className="App-logo" alt="logo" />
-                  <h2>Welcome to React</h2>
-              </div>
+          <div className="ui segments">
               {
-                  api && api.routes && Object.keys(api.routes).forEach((key) => {
-                      console.log(api.routes[key]);
+                  api && api.routes && Object.keys(api.routes).map((key) => {
+                      const route = api.routes[key];
+
                       return (
-                          <div> Route {api.routes[key].method} </div>
+                          <div className="ui segment">
+                            <h1>{key}</h1>
+                            <h3>{route.method}</h3>
+                            <h4>{route.description}</h4>
+                            <span>Example: <code className="ui floating message"> <i className="terminal icon"></i> {route.example} </code></span>
+                            <h3> Parameters </h3>
+                                <table className="ui celled striped table">
+                                    <thead>
+                                        <tr>
+                                            <th> Route </th>
+                                            <th> Description </th>
+                                            <th> Type </th>
+                                            <th> Default Value </th>
+                                            <th> Required? </th>
+                                        </tr>
+                                    </thead>
+                                    {
+                                        Object.keys(route.parameters).map((parameter) => {
+                                            return (
+                                                <tr>
+                                                    <th> {parameter} </th>
+                                                    <th> {route.parameters[parameter].description} </th>
+                                                    <th> {route.parameters[parameter].type} </th>
+                                                    <th> {route.parameters[parameter].default} </th>
+                                                    <th> {route.parameters[parameter].required} </th>
+                                                </tr>
+                                            );
+                                        })
+                                    }
+                                </table>
+                            </div>
                       );
                   })
               }
