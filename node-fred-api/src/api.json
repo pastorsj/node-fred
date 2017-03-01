@@ -16,56 +16,729 @@
         },
         "category/children": {
             "method": "getChildCategories",
+            "description": "Gets the child categories for a specified parent category.",
             "parameters": {
                 "category_id": {
                     "required": true,
                     "type": "integer",
                     "default": 0,
                     "description": "The id for a category."
+                },
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "9999-12-31 (latest available)",
+                    "description": "The end of the real-time period."
                 }
             }
         },
         "category/related": {
             "method": "getRelatedCategories",
+            "description": "Get the related categories for a category. A related category is a one-way relation between 2 categories that is not part of a parent-child category hierarchy. Most categories do not have related categories",
             "parameters": {
                 "category_id": {
                     "required": true,
                     "type": "integer",
                     "default": 0,
                     "description": "The id for a category."
+                },
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "9999-12-31 (latest available)",
+                    "description": "The end of the real-time period."
                 }
             }
         },
         "category/series": {
             "method": "getCategorySeries",
+            "description": "Get the series in a category.",
             "parameters": {
                 "category_id": {
                     "required": true,
                     "type": "integer",
                     "default": 0,
                     "description": "The id for a category."
+                },
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "9999-12-31 (latest available)",
+                    "description": "The end of the real-time period."
+                },
+                "limit": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 1000,
+                    "description": "The maximum number of results to return",
+                    "restrictions": "Must be an integer between 1 and 1000"
+                },
+                "offset": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "A non negative integer",
+                    "restrictions": "A non negative integer"
+                },
+                "order_by": {
+                    "required": false,
+                    "type": "string",
+                    "default": "series_id",
+                    "description": "Order results by values of the specified attribute.",
+                    "restrictions": "One of the following strings: 'series_id', 'title', 'units', 'frequency', 'seasonal_adjustment', 'realtime_start', 'realtime_end', 'last_updated', 'observation_start', 'observation_end', 'popularity'."
+                    
+                },
+                "sort_order": {
+                    "required": false,
+                    "type": "string",
+                    "default": "asc",
+                    "description": "Sort results is ascending or descending order for attribute values specified by order_by.",
+                    "restrictions": "One of the following strings: 'asc', 'desc'."
+                },
+                "filter_variable": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "The attribute to filter results by.",
+                    "restrictions": "One of the following strings: 'frequency', 'units', 'seasonal_adjustment'."
+                },
+                "filter_value": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "The value of the filter_variable attribute to filter results by."
+                },
+                "tag_names": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A semicolon delimited list of tag names that series match all of."
+                },
+                "exclude_tag_names": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A semicolon delimited list of tag names that series match none of.",
+                    "restrictions": "Parameter exclude_tag_names requires that parameter tag_names also be set to limit the number of matching series."
                 }
             }
         },
         "category/tags": {
             "method": "getCategoryTags",
+            "description": "Get the related FRED tags for one or more FRED tags within a category. Optionally, filter results by tag group or search. FRED tags are attributes assigned to series. For this request, related FRED tags are the tags assigned to series that match all tags in the tag_names parameter, no tags in the exclude_tag_names parameter, and the category set by the category_id parameter. See the related request fred/category/tags. Series are assigned tags and categories. Indirectly through series, it is possible to get the tags for a category. No tags exist for a category that does not have series.",
             "parameters": {
                 "category_id": {
                     "required": true,
                     "type": "integer",
                     "default": 0,
                     "description": "The id for a category."
+                },
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "9999-12-31 (latest available)",
+                    "description": "The end of the real-time period."
+                },
+                "limit": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 1000,
+                    "description": "The maximum number of results to return",
+                    "restrictions": "Must be an integer between 1 and 1000"
+                },
+                "offset": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "A non negative integer",
+                    "restrictions": "A non negative integer"
+                },
+                "order_by": {
+                    "required": false,
+                    "type": "string",
+                    "default": "series_id",
+                    "description": "Order results by values of the specified attribute.",
+                    "restrictions": "One of the following strings: 'series_count', 'popularity', 'created', 'name', 'group_id'."
+                },
+                "sort_order": {
+                    "required": false,
+                    "type": "string",
+                    "default": "asc",
+                    "description": "Sort results is ascending or descending order for attribute values specified by order_by.",
+                    "restrictions": "One of the following strings: 'asc', 'desc'."
+                },
+                "tag_names": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A semicolon delimited list of tag names that series match all of."
+                },
+                "tag_group_id": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A tag group id to filter tags by type.",
+                    "restrictions": "One of the following: 'freq', 'gen', 'geo', 'geot', 'rls', 'seas', 'src'."
+                },
+                "search_text": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "The words to find matching tags with."
                 }
             }
         },
         "category/related_tags": {
             "method": "getCategoryRelatedTags",
+            "description": "Get the related categories for a category. A related category is a one-way relation between 2 categories that is not part of a parent-child category hierarchy. Most categories do not have related categories",
             "parameters": {
                 "category_id": {
                     "required": true,
                     "type": "integer",
                     "default": 0,
                     "description": "The id for a category."
+                },
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "9999-12-31 (latest available)",
+                    "description": "The end of the real-time period."
+                },
+                "limit": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 1000,
+                    "description": "The maximum number of results to return",
+                    "restrictions": "Must be an integer between 1 and 1000"
+                },
+                "offset": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "A non negative integer",
+                    "restrictions": "A non negative integer"
+                },
+                "order_by": {
+                    "required": false,
+                    "type": "string",
+                    "default": "series_id",
+                    "description": "Order results by values of the specified attribute.",
+                    "restrictions": "One of the following strings: 'series_count', 'popularity', 'created', 'name', 'group_id'."
+                },
+                "sort_order": {
+                    "required": false,
+                    "type": "string",
+                    "default": "asc",
+                    "description": "Sort results is ascending or descending order for attribute values specified by order_by.",
+                    "restrictions": "One of the following strings: 'asc', 'desc'."
+                },
+                "tag_names": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A semicolon delimited list of tag names that series match all of."
+                },
+                "tag_group_id": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A tag group id to filter tags by type.",
+                    "restrictions": "One of the following: 'freq', 'gen', 'geo', 'geot', 'rls', 'seas', 'src'."
+                },
+                "search_text": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "The words to find matching tags with."
+                }
+            }
+        },
+        "releases": {
+            "method": "getAllReleases",
+            "description": "Get all releases of economic data.",
+            "parameters": {
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "9999-12-31 (latest available)",
+                    "description": "The end of the real-time period."
+                },
+                "limit": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 1000,
+                    "description": "The maximum number of results to return",
+                    "restrictions": "Must be an integer between 1 and 1000"
+                },
+                "offset": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "A non negative integer",
+                    "restrictions": "A non negative integer"
+                },
+                "order_by": {
+                    "required": false,
+                    "type": "string",
+                    "default": "series_id",
+                    "description": "Order results by values of the specified attribute.",
+                    "restrictions": "One of the following strings: 'release_id', 'name', 'press_release', 'realtime_start', 'realtime_end'."
+                },
+                "sort_order": {
+                    "required": false,
+                    "type": "string",
+                    "default": "asc",
+                    "description": "Sort results is ascending or descending order for attribute values specified by order_by.",
+                    "restrictions": "One of the following strings: 'asc', 'desc'."
+                }
+            }
+        },
+        "releases/dates": {
+            "method": "getAllReleasesWithDates",
+            "description": "Get release dates for all releases of economic data.",
+            "parameters": {
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "9999-12-31 (latest available)",
+                    "description": "The end of the real-time period."
+                },
+                "limit": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 1000,
+                    "description": "The maximum number of results to return",
+                    "restrictions": "Must be an integer between 1 and 1000"
+                },
+                "offset": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "A non negative integer",
+                    "restrictions": "A non negative integer"
+                },
+                "order_by": {
+                    "required": false,
+                    "type": "string",
+                    "default": "series_id",
+                    "description": "Order results by values of the specified attribute.",
+                    "restrictions": "One of the following strings: 'release_date', 'release_id', 'release_name'."
+                },
+                "sort_order": {
+                    "required": false,
+                    "type": "string",
+                    "default": "asc",
+                    "description": "Sort results is ascending or descending order for attribute values specified by order_by.",
+                    "restrictions": "One of the following strings: 'asc', 'desc'."
+                },
+                "include_release_dates_with_no_data": {
+                    "required": false,
+                    "type": "string",
+                    "default": false,
+                    "description": "Determines whether release dates with no data available are returned. The defalut value 'false' excludes release dates that do not have data. In particular, this excludes future release dates which may be available in the FRED release calendar or the ALFRED release calendar.",
+                    "restrictions": "One of the following strings: 'true', 'false'."
+                }
+            }
+        },
+        "release": {
+            "method": "getRelease",
+            "description": "Get a release of economic data.",
+            "parameters": {
+                "release_id": {
+                    "required": true,
+                    "type": "integer",
+                    "default": "none",
+                    "description": "The id for a release."
+                },
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "9999-12-31 (latest available)",
+                    "description": "The end of the real-time period."
+                }
+            }
+        },
+        "release/dates": {
+            "method": "getReleaseWithDates",
+            "description": "Get release dates for a release of economic data.",
+            "parameters": {
+                "release_id": {
+                    "required": true,
+                    "type": "integer",
+                    "default": "none",
+                    "description": "The id for a release."
+                },
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "9999-12-31 (latest available)",
+                    "description": "The end of the real-time period."
+                },
+                "limit": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 10000,
+                    "description": "The maximum number of results to return",
+                    "restrictions": "Must be an integer between 1 and 10000"
+                },
+                "offset": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "A non negative integer",
+                    "restrictions": "A non negative integer"
+                },
+                "sort_order": {
+                    "required": false,
+                    "type": "string",
+                    "default": "asc",
+                    "description": "Sort results is ascending or descending release date order.",
+                    "restrictions": "One of the following strings: 'asc', 'desc'."
+                },
+                "include_release_dates_with_no_data": {
+                    "required": false,
+                    "type": "string",
+                    "default": false,
+                    "description": "Determines whether release dates with no data available are returned. The defalut value 'false' excludes release dates that do not have data. In particular, this excludes future release dates which may be available in the FRED release calendar or the ALFRED release calendar.",
+                    "restrictions": "One of the following strings: 'true', 'false'."
+                }
+            }
+        },
+        "release/series": {
+            "method": "getSeriesForRelease",
+            "description": "Get the series on a release of economic data.",
+            "parameters": {
+                "release_id": {
+                    "required": true,
+                    "type": "integer",
+                    "default": "none",
+                    "description": "The id for a release."
+                },
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "9999-12-31 (latest available)",
+                    "description": "The end of the real-time period."
+                },
+                "limit": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 1000,
+                    "description": "The maximum number of results to return",
+                    "restrictions": "Must be an integer between 1 and 1000"
+                },
+                "offset": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "A non negative integer",
+                    "restrictions": "A non negative integer"
+                },
+                "order_by": {
+                    "required": false,
+                    "type": "string",
+                    "default": "series_id",
+                    "description": "Order results by values of the specified attribute.",
+                    "restrictions": "One of the following strings: 'series_id', 'title', 'units', 'frequency', 'seasonal_adjustment', 'realtime_start', 'realtime_end', 'last_updated', 'observation_start', 'observation_end', 'popularity'."
+                },
+                "sort_order": {
+                    "required": false,
+                    "type": "string",
+                    "default": "asc",
+                    "description": "Sort results is ascending or descending release date order.",
+                    "restrictions": "One of the following strings: 'asc', 'desc'."
+                },
+                "filter_variable": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "The attribute to filter results by.",
+                    "restrictions": "One of the following strings: 'frequency', 'units', 'seasonal_adjustment'."
+                },
+                "filter_value": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "The value of the filter_variable attribute to filter results by."
+                },
+                "tag_names": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A semicolon delimited list of tag names that series match all of."
+                },
+                "exclude_tag_names": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A semicolon delimited list of tag names that series match none of.",
+                    "restrictions": "Parameter exclude_tag_names requires that parameter tag_names also be set to limit the number of matching series."
+                }
+            }
+        },
+        "release/sources": {
+            "method": "getSourcesForRelease",
+            "description": "Get the sources for a release of economic data.",
+            "parameters": {
+                "release_id": {
+                    "required": true,
+                    "type": "integer",
+                    "default": "none",
+                    "description": "The id for a release."
+                },
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "9999-12-31 (latest available)",
+                    "description": "The end of the real-time period."
+                }
+            }
+        },
+        "release/tags": {
+            "method": "getTagsForRelease",
+            "description": "Get the FRED tags for a release. Optionally, filter results by tag name, tag group, or search. Series are assigned tags and releases. Indirectly through series, it is possible to get the tags for a release.",
+            "parameters": {
+                "release_id": {
+                    "required": true,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "The id for a release."
+                },
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "9999-12-31 (latest available)",
+                    "description": "The end of the real-time period."
+                },
+                "limit": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 1000,
+                    "description": "The maximum number of results to return",
+                    "restrictions": "Must be an integer between 1 and 1000"
+                },
+                "offset": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "A non negative integer",
+                    "restrictions": "A non negative integer"
+                },
+                "order_by": {
+                    "required": false,
+                    "type": "string",
+                    "default": "series_count",
+                    "description": "Order results by values of the specified attribute.",
+                    "restrictions": "One of the following strings: 'series_count', 'popularity', 'created', 'name', 'group_id'"
+                },
+                "sort_order": {
+                    "required": false,
+                    "type": "string",
+                    "default": "asc",
+                    "description": "Sort results is ascending or descending order for attribute values specified by order_by.",
+                    "restrictions": "One of the following strings: 'asc', 'desc'."
+                },
+                "tag_names": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A semicolon delimited list of tag names that series match all of."
+                },
+                "tag_group_id": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A tag group id to filter tags by type.",
+                    "restrictions": "One of the following: 'freq', 'gen', 'geo', 'geot', 'rls', 'seas', 'src'."
+                },
+                "search_text": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "The words to find matching tags with."
+                }
+            }
+        },
+        "release/related_tags": {
+            "method": "getRelatedTagsForRelease",
+            "description": "Get the related FRED tags for one or more FRED tags within a release.",
+            "parameters": {
+                "release_id": {
+                    "required": true,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "The id for a release."
+                },
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "9999-12-31 (latest available)",
+                    "description": "The end of the real-time period."
+                },
+                "limit": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 1000,
+                    "description": "The maximum number of results to return",
+                    "restrictions": "Must be an integer between 1 and 1000"
+                },
+                "offset": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "A non negative integer",
+                    "restrictions": "A non negative integer"
+                },
+                "order_by": {
+                    "required": false,
+                    "type": "string",
+                    "default": "series_count",
+                    "description": "Order results by values of the specified attribute.",
+                    "restrictions": "One of the following strings: 'series_count', 'popularity', 'created', 'name', 'group_id'"
+                },
+                "sort_order": {
+                    "required": false,
+                    "type": "string",
+                    "default": "asc",
+                    "description": "Sort results is ascending or descending order for attribute values specified by order_by.",
+                    "restrictions": "One of the following strings: 'asc', 'desc'."
+                },
+                "tag_names": {
+                    "required": true,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A semicolon delimited list of tag names that series match all of."
+                },
+                "exclude_tag_names": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A semicolon delimited list of tag names that series match none of.",
+                    "restrictions": "Parameter exclude_tag_names requires that parameter tag_names also be set to limit the number of matching series."
+                },
+                "tag_group_id": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A tag group id to filter tags by type.",
+                    "restrictions": "One of the following: 'freq', 'gen', 'geo', 'geot', 'rls', 'seas', 'src'."
+                },
+                "search_text": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "The words to find matching tags with."
+                }
+            }
+        },
+        "release/tables": {
+            "method": "getTableTreesForRelease",
+            "description": "Get release table trees for a given release. You can go directly to the tree structure by passing the appropriate element_id. You may also use a drill-down approach to start at the root (top most) element by leaving the element_id off.",
+            "parameters": {
+                "release_id": {
+                    "required": true,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "The id for a release."
+                },
+                "element_id": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 1000,
+                    "description": "The release table element id you would like to retrieve.",
+                    "restrictions": "When the parameter is not passed, the root(top most) element for the release is given."
+                },
+                "include_observation_values": {
+                    "required": false,
+                    "type": "string",
+                    "default": false,
+                    "description": "A flag to indicate that observations need to be returned. Observation value and date will only be returned for a series type element.",
+                    "restrictions": "One of the following strings: 'true', 'false'."
+                },
+                "observation_date": {
+                    "required": false,
+                    "type": "date",
+                    "default": "9999-12-31 (latest available)",
+                    "description": "The observation date to be included with the returned release table.",
+                    "restrictions": "YYYY-MM-DD formatted string"
                 }
             }
         }
