@@ -67,10 +67,9 @@ describe('Sources', () => {
                 'offset': 10,
                 'order_by': 'series_id',
                 'sort_order': 'asc',
-                'tag_names': 'income;bea',
                 'exclude_tag_names': 'discontinued;annual'
             };
-            tags.getAllSeriesMatchingTags(params);
+            tags.getAllSeriesMatchingTags('income;bea', params);
             expect(api.get).to.have.been.calledWith('tags/series?api_key=testkey&file_type=json&realtime_start=2000-10-11&realtime_end=2000-10-15&limit=100&offset=10&order_by=series_id&sort_order=asc&tag_names=income;bea&exclude_tag_names=discontinued;annual');
         });
     });

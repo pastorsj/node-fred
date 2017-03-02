@@ -741,6 +741,861 @@
                     "restrictions": "YYYY-MM-DD formatted string"
                 }
             }
+        },
+        "series": {
+            "method": "getSeries",
+            "description": "Get an economic data series.",
+            "parameters": {
+                "series_id": {
+                    "required": true,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "The id for a series."
+                },
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "9999-12-31 (latest available)",
+                    "description": "The end of the real-time period."
+                }
+            }
+        },
+        "series/categories": {
+            "method": "getCategoriesForSeries",
+            "description": "Get the categories for an economic data series.",
+            "parameters": {
+                "series_id": {
+                    "required": true,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "The id for a series."
+                },
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "9999-12-31 (latest available)",
+                    "description": "The end of the real-time period."
+                }
+            }
+        },
+        "series/observations": {
+            "method": "getObservationsForSeries",
+            "description": "Get the observations or data values for an economic data series.",
+            "parameters": {
+                "series_id": {
+                    "required": true,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "The id for a series."
+                },
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "9999-12-31 (latest available)",
+                    "description": "The end of the real-time period."
+                },
+                "limit": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 100000,
+                    "description": "The maximum number of results to return",
+                    "restrictions": "Must be an integer between 1 and 100000"
+                },
+                "offset": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "A non negative integer",
+                    "restrictions": "A non negative integer"
+                },
+                "sort_order": {
+                    "required": false,
+                    "type": "string",
+                    "default": "asc",
+                    "description": "Sort results is ascending or descending order for attribute values specified by order_by.",
+                    "restrictions": "One of the following strings: 'asc', 'desc'."
+                },
+                "observation_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "1776-07-04 (earliest available)",
+                    "description": "The start of the observation period."
+                },
+                "observation_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "9999-12-31 (latest available)",
+                    "description": "The end of the observation period."
+                },
+                "units": {
+                    "required": false,
+                    "type": "string",
+                    "default": "lin",
+                    "description": "A key that indicates a data value transformation.",
+                    "restrictions": "One of the following values: 'lin', 'chg', 'ch1', 'pch', 'pc1', 'pca', 'cch', 'cca', 'log'"
+                },
+                "frequency": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "An optional parameter that indicates a lower frequency to aggregate values to. The FRED frequency aggregation feature converts higher frequency data series into lower frequency data series (e.g. converts a monthly data series into an annual data series). In FRED, the highest frequency data is daily, and the lowest frequency data is annual. There are 3 aggregation methods available- average, sum, and end of period. See https://research.stlouisfed.org/docs/api/fred/series_observations.html for more information",
+                    "restrictions": "One of the following values: 'd', 'w', 'bw', 'm', 'q', 'sa', 'a', 'wef', 'weth', 'wew', 'wetu', 'wem', 'wesu', 'wesa', 'bwew', 'bwem'"
+                },
+                "aggregation_method": {
+                    "required": false,
+                    "type": "string",
+                    "default": "avg",
+                    "description": "A key that indicates the aggregation method used for frequency aggregation. This parameter has no affect if the frequency parameter is not set.",
+                    "restrictions": "One of the following values: 'avg', 'sum', 'eop'"
+                },
+                "output_type": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 1,
+                    "description": "An integer that indicates an output type. See https://research.stlouisfed.org/docs/api/fred/series_observations.html#output_type for more information",
+                    "restrictions": "One of the following values: '1', '2', '3', '4'"
+                },
+                "vintage_dates": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A comma separated string of YYYY-MM-DD formatted dates in history (e.g. 2000-01-01,2005-02-24). Vintage dates are used to download data as it existed on these specified dates in history. Vintage dates can be specified instead of a real-time period using realtime_start and realtime_end."
+                }
+            }
+        },
+        "series/release": {
+            "method": "getReleaseForSeries",
+            "description": "Get the release for an economic data series.",
+            "parameters": {
+                "series_id": {
+                    "required": true,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "The id for a series."
+                },
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The end of the real-time period."
+                }
+            }
+        },
+        "series/search": {
+            "method": "getSeriesThatMatchesSearch",
+            "description": "Get economic data series that match search text.",
+            "parameters": {
+                "series_id": {
+                    "required": true,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "The id for a series."
+                },
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "9999-12-31 (latest available)",
+                    "description": "The end of the real-time period."
+                },
+                "limit": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 1000,
+                    "description": "The maximum number of results to return",
+                    "restrictions": "Must be an integer between 1 and 1000"
+                },
+                "offset": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "A non negative integer",
+                    "restrictions": "A non negative integer"
+                },
+                "order_by": {
+                    "required": false,
+                    "type": "string",
+                    "default": "If the value of search_type is 'full_text' then the default value of order_by is 'search_rank'. If the value of search_type is 'series_id' then the default value of order_by is 'series_id'.",
+                    "description": "Order results by values of the specified attribute.",
+                    "restrictions": "One of the following strings: 'search_rank', 'series_id', 'title', 'units', 'frequency', 'seasonal_adjustment', 'realtime_start', 'realtime_end', 'last_updated', 'observation_start', 'observation_end', 'popularity'."
+                    
+                },
+                "sort_order": {
+                    "required": false,
+                    "type": "string",
+                    "default": "asc",
+                    "description": "Sort results is ascending or descending order for attribute values specified by order_by.",
+                    "restrictions": "One of the following strings: 'asc', 'desc'."
+                },
+                "filter_variable": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "The attribute to filter results by.",
+                    "restrictions": "One of the following strings: 'frequency', 'units', 'seasonal_adjustment'."
+                },
+                "filter_value": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "The value of the filter_variable attribute to filter results by."
+                },
+                "tag_names": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A semicolon delimited list of tag names that series match all of."
+                },
+                "exclude_tag_names": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A semicolon delimited list of tag names that series match none of.",
+                    "restrictions": "Parameter exclude_tag_names requires that parameter tag_names also be set to limit the number of matching series."
+                },
+                "search_text": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "The words to find matching tags with."
+                },
+                "search_type": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "Determines the type of search to perform.",
+                    "restrictions": "One of the following strings: 'full_text', 'series_id'. For more information, see https://research.stlouisfed.org/docs/api/fred/series_search.html#search_type"
+                }
+            }
+        },
+        "series/search/tags": {
+            "method": "getTagsForSeriesSearch",
+            "description": "Get the FRED tags for a series search. Optionally, filter results by tag name, tag group, or tag search.",
+            "parameters": {
+                "series_id": {
+                    "required": true,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "The id for a series."
+                },
+                "series_search_text": {
+                    "required": true,
+                    "type": "string",
+                    "default": "none",
+                    "description": "The words to match against economic data series."
+                },
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "9999-12-31 (latest available)",
+                    "description": "The end of the real-time period."
+                },
+                "limit": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 1000,
+                    "description": "The maximum number of results to return",
+                    "restrictions": "Must be an integer between 1 and 1000"
+                },
+                "offset": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "A non negative integer",
+                    "restrictions": "A non negative integer"
+                },
+                "order_by": {
+                    "required": false,
+                    "type": "string",
+                    "default": "series_count",
+                    "description": "Order results by values of the specified attribute.",
+                    "restrictions": "One of the following strings: 'series_count', 'popularity', 'created', 'name', 'group_id'"
+                    
+                },
+                "sort_order": {
+                    "required": false,
+                    "type": "string",
+                    "default": "asc",
+                    "description": "Sort results is ascending or descending order for attribute values specified by order_by.",
+                    "restrictions": "One of the following strings: 'asc', 'desc'."
+                },
+                "tag_names": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A semicolon delimited list of tag names that series match all of."
+                },
+                "tag_group_id": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A tag group id to filter tags by type.",
+                    "restrictions": "One of the following: 'freq', 'gen', 'geo', 'geot', 'rls', 'seas', 'src'."
+                },
+                "tag_search_text": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "The words to find matching tags with."
+                }
+            }
+        },
+        "series/search/related_tags": {
+            "method": "getRelatedTagsForSeriesSearch",
+            "description": "Get the related FRED tags for one or more FRED tags matching a series search. Optionally, filter results by tag group or tag search.",
+            "parameters": {
+                "series_id": {
+                    "required": true,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "The id for a series."
+                },
+                "series_search_text": {
+                    "required": true,
+                    "type": "string",
+                    "default": "none",
+                    "description": "The words to match against economic data series."
+                },
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "9999-12-31 (latest available)",
+                    "description": "The end of the real-time period."
+                },
+                "limit": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 1000,
+                    "description": "The maximum number of results to return",
+                    "restrictions": "Must be an integer between 1 and 1000"
+                },
+                "offset": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "A non negative integer",
+                    "restrictions": "A non negative integer"
+                },
+                "order_by": {
+                    "required": false,
+                    "type": "string",
+                    "default": "series_count",
+                    "description": "Order results by values of the specified attribute.",
+                    "restrictions": "One of the following strings: 'series_count', 'popularity', 'created', 'name', 'group_id'"
+                    
+                },
+                "sort_order": {
+                    "required": false,
+                    "type": "string",
+                    "default": "asc",
+                    "description": "Sort results is ascending or descending order for attribute values specified by order_by.",
+                    "restrictions": "One of the following strings: 'asc', 'desc'."
+                },
+                "tag_names": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A semicolon delimited list of tag names that series match all of."
+                },
+                "tag_group_id": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A tag group id to filter tags by type.",
+                    "restrictions": "One of the following: 'freq', 'gen', 'geo', 'geot', 'rls', 'seas', 'src'."
+                },
+                "exclude_tag_names": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A semicolon delimited list of tag names that series match none of.",
+                    "restrictions": "Parameter exclude_tag_names requires that parameter tag_names also be set to limit the number of matching series."
+                },
+                "tag_search_text": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "The words to find matching tags with."
+                }
+            }
+        },
+        "series/tags": {
+            "method": "getTagsForSeries",
+            "description": "Get the FRED tags for a series.",
+            "parameters": {
+                "series_id": {
+                    "required": true,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "The id for a series."
+                },
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The end of the real-time period."
+                },
+                "order_by": {
+                    "required": false,
+                    "type": "string",
+                    "default": "series_count",
+                    "description": "Order results by values of the specified attribute.",
+                    "restrictions": "One of the following strings: 'series_count', 'popularity', 'created', 'name', 'group_id'"
+                    
+                },
+                "sort_order": {
+                    "required": false,
+                    "type": "string",
+                    "default": "asc",
+                    "description": "Sort results is ascending or descending order for attribute values specified by order_by.",
+                    "restrictions": "One of the following strings: 'asc', 'desc'."
+                }
+            }
+        },
+        "series/updates": {
+            "method": "getUpdatedSeries",
+            "description": "Get economic data series sorted by when observations were updated on the FRED® server (attribute last_updated). Results are limited to series updated within the last two weeks.",
+            "parameters": {
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The end of the real-time period."
+                },
+                "limit": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 1000,
+                    "description": "The maximum number of results to return",
+                    "restrictions": "Must be an integer between 1 and 1000"
+                },
+                "offset": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "A non negative integer",
+                    "restrictions": "A non negative integer"
+                },
+                "filter_value": {
+                    "required": false,
+                    "type": "string",
+                    "default": "all",
+                    "description": "Limit results by geographic type of economic data series; namely 'macro', 'regional', and 'all'.",
+                    "restrictions": "'macro' limits results to macroeconomic data series. In general, these are series for entire countries that are not subregions of the United States. 'regional' limits results to series for parts of the US; namely, series for US states, counties, and Metropolitan Statistical Areas (MSA). 'all' does not filter results."
+                }
+            }
+        },
+        "series/vintagedates": {
+            "method": "getVintageDatesSeries",
+            "description": "Get the dates in history when a series' data values were revised or new data values were released. Vintage dates are the release dates for a series excluding release dates when the data for the series did not change.",
+            "parameters": {
+                "series_id": {
+                    "required": true,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "The id for a series."
+                },
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The end of the real-time period."
+                },
+                "limit": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 10000,
+                    "description": "The maximum number of results to return",
+                    "restrictions": "Must be an integer between 1 and 10000"
+                },
+                "offset": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "A non negative integer",
+                    "restrictions": "A non negative integer"
+                },
+                "sort_order": {
+                    "required": false,
+                    "type": "string",
+                    "default": "asc",
+                    "description": "Sort results is ascending or descending order for attribute values specified by order_by.",
+                    "restrictions": "One of the following strings: 'asc', 'desc'."
+                }
+            }
+        },
+        "sources": {
+            "method": "getAllSources",
+            "description": "Get all sources of economic data.",
+            "parameters": {
+                "series_id": {
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The end of the real-time period."
+                },
+                "limit": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 10000,
+                    "description": "The maximum number of results to return",
+                    "restrictions": "Must be an integer between 1 and 10000"
+                },
+                "offset": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "A non negative integer",
+                    "restrictions": "A non negative integer"
+                },
+                "order_by": {
+                    "required": false,
+                    "type": "string",
+                    "default": "source_id",
+                    "description": "Order results by values of the specified attribute.",
+                    "restrictions": "One of the following strings: 'source_id', 'name', 'realtime_start', 'realtime_end'."
+                    
+                },
+                "sort_order": {
+                    "required": false,
+                    "type": "string",
+                    "default": "asc",
+                    "description": "Sort results is ascending or descending order for attribute values specified by order_by.",
+                    "restrictions": "One of the following strings: 'asc', 'desc'."
+                }
+            }
+        },
+        "source": {
+            "method": "getSource",
+            "description": "Get all sources of economic data.",
+            "parameters": {
+                "source_id": {
+                    "required": true,
+                    "type": "integer",
+                    "default": "none",
+                    "description": "The id for a source."
+                },
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The end of the real-time period."
+                }
+            }
+        },
+        "source/releases": {
+            "method": "getReleasesForSource",
+            "description": "Get the releases for a source.",
+            "parameters": {
+                "source_id": {
+                    "required": true,
+                    "type": "integer",
+                    "default": "none",
+                    "description": "The id for a source."
+                },
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The end of the real-time period."
+                },
+                "limit": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 1000,
+                    "description": "The maximum number of results to return",
+                    "restrictions": "Must be an integer between 1 and 1000"
+                },
+                "offset": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "A non negative integer",
+                    "restrictions": "A non negative integer"
+                },
+                "order_by": {
+                    "required": false,
+                    "type": "string",
+                    "default": "release_id",
+                    "description": "Order results by values of the specified attribute.",
+                    "restrictions": "One of the following strings: 'release_id', 'name', 'press_release', 'realtime_start', 'realtime_end'."
+                },
+                "sort_order": {
+                    "required": false,
+                    "type": "string",
+                    "default": "asc",
+                    "description": "Sort results is ascending or descending order for attribute values specified by order_by.",
+                    "restrictions": "One of the following strings: 'asc', 'desc'."
+                }
+            }
+        },
+        "tags": {
+            "method": "getAllTags",
+            "description": "Get FRED tags. Optionally, filter results by tag name, tag group, or search. FRED tags are attributes assigned to series.",
+            "parameters": {
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The end of the real-time period."
+                },
+                "limit": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 1000,
+                    "description": "The maximum number of results to return",
+                    "restrictions": "Must be an integer between 1 and 1000"
+                },
+                "offset": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "A non negative integer",
+                    "restrictions": "A non negative integer"
+                },
+                "order_by": {
+                    "required": false,
+                    "type": "string",
+                    "default": "series_count",
+                    "description": "Order results by values of the specified attribute.",
+                    "restrictions": "One of the following strings: 'series_count', 'popularity', 'created', 'name', 'group_id'."
+                },
+                "sort_order": {
+                    "required": false,
+                    "type": "string",
+                    "default": "asc",
+                    "description": "Sort results is ascending or descending order for attribute values specified by order_by.",
+                    "restrictions": "One of the following strings: 'asc', 'desc'."
+                },
+                "tag_names": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A semicolon delimited list of tag names that series match all of."
+                },
+                "tag_group_id": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A tag group id to filter tags by type.",
+                    "restrictions": "One of the following: 'freq', 'gen', 'geo', 'geot', 'rls', 'seas', 'src'."
+                }
+            }
+        },
+        "related_tags": {
+            "method": "getAllRelatedTags",
+            "description": "Get the related FRED tags for one or more FRED tags. Optionally, filter results by tag group or search.",
+            "parameters": {
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The end of the real-time period."
+                },
+                "limit": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 1000,
+                    "description": "The maximum number of results to return",
+                    "restrictions": "Must be an integer between 1 and 1000"
+                },
+                "offset": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "A non negative integer",
+                    "restrictions": "A non negative integer"
+                },
+                "order_by": {
+                    "required": false,
+                    "type": "string",
+                    "default": "series_count",
+                    "description": "Order results by values of the specified attribute.",
+                    "restrictions": "One of the following strings: 'series_count', 'popularity', 'created', 'name', 'group_id'."
+                },
+                "sort_order": {
+                    "required": false,
+                    "type": "string",
+                    "default": "asc",
+                    "description": "Sort results is ascending or descending order for attribute values specified by order_by.",
+                    "restrictions": "One of the following strings: 'asc', 'desc'."
+                },
+                "tag_names": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A semicolon delimited list of tag names that series match all of."
+                },
+                "tag_group_id": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A tag group id to filter tags by type.",
+                    "restrictions": "One of the following: 'freq', 'gen', 'geo', 'geot', 'rls', 'seas', 'src'."
+                },
+                "exclude_tag_names": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A semicolon delimited list of tag names that series match none of.",
+                    "restrictions": "Parameter exclude_tag_names requires that parameter tag_names also be set to limit the number of matching series."
+                },
+                "search_text": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "The words to find matching tags with."
+                }
+            }
+        },
+        "tags/series": {
+            "method": "getAllSeriesMatchingTags",
+            "description": "Get the series matching all tags in the tag_names parameter and no tags in the exclude_tag_names parameter.",
+            "parameters": {
+                "tag_names": {
+                    "required": true,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A semicolon delimited list of tag names that series match all of."
+                },
+                "realtime_start": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The start of the real-time period."
+                },
+                "realtime_end": {
+                    "required": false,
+                    "type": "date",
+                    "default": "Today's Date",
+                    "description": "The end of the real-time period."
+                },
+                "limit": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 1000,
+                    "description": "The maximum number of results to return",
+                    "restrictions": "Must be an integer between 1 and 1000"
+                },
+                "offset": {
+                    "required": false,
+                    "type": "integer",
+                    "default": 0,
+                    "description": "A non negative integer",
+                    "restrictions": "A non negative integer"
+                },
+                "order_by": {
+                    "required": false,
+                    "type": "string",
+                    "default": "series_id",
+                    "description": "Order results by values of the specified attribute.",
+                    "restrictions": "One of the following strings: 'series_id', 'title', 'units', 'frequency', 'seasonal_adjustment', 'realtime_start', 'realtime_end', 'last_updated', 'observation_start', 'observation_end', 'popularity'."
+                },
+                "sort_order": {
+                    "required": false,
+                    "type": "string",
+                    "default": "asc",
+                    "description": "Sort results is ascending or descending order for attribute values specified by order_by.",
+                    "restrictions": "One of the following strings: 'asc', 'desc'."
+                },
+                "exclude_tag_names": {
+                    "required": false,
+                    "type": "string",
+                    "default": "none",
+                    "description": "A semicolon delimited list of tag names that series match none of.",
+                    "restrictions": "Parameter exclude_tag_names requires that parameter tag_names also be set to limit the number of matching series."
+                }
+            }
         }
     }
 }

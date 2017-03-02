@@ -21,13 +21,13 @@ describe('Series', () => {
         sandbox.restore();
     });
 
-    describe('getAllSeries()', () => {
+    describe('getSeries()', () => {
         it('should set the set the correct url and call get', () => {
             params = {
                 'realtime_start': '2000-10-11',
                 'realtime_end': '2000-10-15'
             };
-            series.getAllSeries(125, params);
+            series.getSeries(125, params);
             expect(api.get).to.have.been.calledWith('series?api_key=testkey&file_type=json&series_id=125&realtime_start=2000-10-11&realtime_end=2000-10-15');
         });
     });

@@ -14,7 +14,7 @@ class Tags {
      * @param {Object} params
      * @returns {Promise} Resolves with a set of tags or errors out
      */
-    getAllTags(params) {
+    getAllTags(params = {}) {
         return new Promise((resolve, reject) => {
             try {
                 const url = this.tagsBuilder
@@ -49,7 +49,7 @@ class Tags {
      * @param {Object} params
      * @returns {Promise} Resolves with the related tags for one or more tags or errors out
      */
-    getAllRelatedTags(params) {
+    getAllRelatedTags(params = {}) {
         return new Promise((resolve, reject) => {
             try {
                 const url = this.tagsBuilder
@@ -82,10 +82,11 @@ class Tags {
 
     /**
      * Gets the series matching tags.
+     * @param {string} tagNames
      * @param {Object} params
      * @returns {Promise} Resolves with the series matching tags or errors out
      */
-    getAllSeriesMatchingTags(params) {
+    getAllSeriesMatchingTags(tagNames, params = {}) {
         return new Promise((resolve, reject) => {
             try {
                 const url = this.tagsBuilder
@@ -97,7 +98,7 @@ class Tags {
                     .setOffset(params)
                     .setOrderBy(params)
                     .setSortOrder(params)
-                    .setTagNames(params)
+                    .setTagNames({'tag_names': tagNames})
                     .setExcludeTagNames(params)
                     .getUrl();
 

@@ -15,7 +15,7 @@ class Series {
      * @param {Object} params
      * @returns {Promise} Resolves with an economic data series or errors out
      */
-    getAllSeries(seriesId, params = {}) {
+    getSeries(seriesId, params = {}) {
         return new Promise((resolve, reject) => {
             try {
                 const url = this.seriesBuilder
@@ -289,12 +289,11 @@ class Series {
 
     /**
      * Gets economic data series sorted by when observations were updated on the FRED® server.
-     * @param {Number} seriesId
      * @param {Object} params
      * @returns {Promise} Resolves with economic data series sorted by
      * when observations were updated on the FRED® server or errors out
      */
-    getUpdatedSeries(seriesId, params = {}) {
+    getUpdatedSeries(params = {}) {
         return new Promise((resolve, reject) => {
             try {
                 const url = this.seriesBuilder
