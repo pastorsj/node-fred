@@ -1,6 +1,6 @@
 {
   "name": "node-fred",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Another nodejs wrapper for the st louis fed",
   "main": "index.js",
   "scripts": {
@@ -25,8 +25,7 @@
   },
   "homepage": "https://github.com/pastorsj/node-fred#readme",
   "dependencies": {
-    "axios": "^0.15.3",
-    "lodash": "^4.17.4"
+    "axios": "^0.15.3"
   },
   "devDependencies": {
     "babel": "6.5.2",
