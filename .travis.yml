@@ -1,7 +1,19 @@
 language: node_js
 node_js:
-- '5.0.0'
-- '6.0.0'
+- 5.0.0
+- 6.0.0
 sudo: false
 install:
 - npm install
+deploy:
+  provider: npm
+  email: sampastoriza@yahoo.com
+  skip_cleanup: true
+  api_key:
+    secure: U9kyJoFYJOQWdiYyET9crawBM3y0/zEjcvzXUjnNvrlD6Zf6E2b1/DA0N7mFV79tU/rvjfdIrLMX1woYZao05DeCgkXvrsC5rAADxdiemQSmUAlpW9ShxTcyeEu34eTP8K2GTBK5qUqCFOWCn1a7CjdPqSi+cUg//LNpZeMcpts=
+  on:
+    branch: master
+    tags: false
+env:
+  global:
+    secure: lT1z1UCHpBuK4DkWX10v3YYPpYkHlfv0Afgm3w9lY+d9aGh8RDOl6puU1neDN6b+NZWQYUfHQbQk3kQBtXpwOfFxsACqwbiUZyHsbFxeASw2j18qwc1BUz7mgJD4GCPu/Bah5aKKZy9fVcagaPI2x1bczLZfIv90WLR8CiFLHXcuWjgu6z9a9D78NQlHVH5TE2nC90Wd/wLPsXmFjmVnmo+gX8WRmENyezBPzJcdOLhygfk4jDlzwBy0emoPUDXxB3jOppJACOgTOkcy1Xxp/4TvVaxRYDr6q3a3u4Q9gW8bzSXOtCHZRd7m1E7vWsDcrt/G7xRkpUAp7Q6Ay3/KXz4aoPofYcCWBeCRN+IAi8Tpppe/8Ae+xC85FXs6IfaJurPPqrW7Wi5mOaKnLdbZcvDhlIwYWIL72scNgGpU9BGqGnGB3mr48z+VmL0E+DmpdUWyKNeG+OatqHfaob1voukRsx/idexJFGUYTIM770kBFQViPCgELZvcZ/Kt49O9u7KPPFh33ow9ukdEhctnxwBRw6Cuc8rsQ3wKrHhQlqdiN5PnpuwVAZ8dRSndjFh6e4aMsUWs4QutQybh5G9gAEjxGa/Px/rYrWKlTBusvfPWqYtUlV17s3Q6EEqFE+idoCvYzGgnEfDIZEfV0VaadkLzZp0lxdjVjMGNtc80x7w=
