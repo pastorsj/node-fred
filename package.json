@@ -6,8 +6,8 @@
   "scripts": {
     "build": "webpack --env build",
     "dev": "webpack --progress --colors --watch --env dev",
-    "test": "mocha --compilers js:babel-core/register --colors ./tests/**/*.test.js",
-    "test:watch": "mocha --compilers js:babel-core/register --colors -w ./tests/**/*.test.js"
+    "test": "mocha --compilers js:babel-core/register --colors --timeout 5000 ./tests/**/*.test.js",
+    "test:watch": "mocha --compilers js:babel-core/register --colors --timeout 5000 -w ./tests/**/*.test.js"
   },
   "repository": {
     "type": "git",

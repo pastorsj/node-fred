@@ -5,5 +5,9 @@
     },
     "env": {
       "mocha": true
+    },
+    "globals": {
+        "fit": true,
+        "fdescribe": true
     }
 }
