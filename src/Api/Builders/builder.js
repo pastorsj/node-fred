@@ -110,6 +110,9 @@ class Builder {
     }
 
     setTagNames(params) {
+        if (typeof (params) === 'string') {
+            return this.addAttribute('tag_names=' + params);
+        }
         const tagNames = params['tag_names'];
 
         if(!tagNames) {

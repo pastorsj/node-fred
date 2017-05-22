@@ -49,7 +49,7 @@ class Tags {
      * @param {Object} params
      * @returns {Promise} Resolves with the related tags for one or more tags or errors out
      */
-    getAllRelatedTags(params = {}) {
+    getAllRelatedTags(tagNames, params = {}) {
         return new Promise((resolve, reject) => {
             try {
                 const url = this.tagsBuilder
@@ -61,7 +61,7 @@ class Tags {
                     .setOffset(params)
                     .setOrderBy(params)
                     .setSortOrder(params)
-                    .setTagNames(params)
+                    .setTagNames(tagNames)
                     .setExcludeTagNames(params)
                     .setTagGroupId(params)
                     .setSearchText(params)
