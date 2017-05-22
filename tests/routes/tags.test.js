@@ -6,7 +6,7 @@ import api from '../../src/api';
 
 chai.use(sinonChai);
 
-describe('Sources', () => {
+describe('Tags', () => {
     let tags;
     let params;
     let sandbox;

@@ -20,7 +20,7 @@ describe('Series', () => {
             };
             series.getSeries('GNPCA', params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'series');
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'seriess');
                     done();
                 })
                 .catch((err) => {
@@ -37,7 +37,7 @@ describe('Series', () => {
             };
             series.getCategoriesForSeries('GNPCA', params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('categories');
+                    expect(res).to.have.all.keys('categories');
                     done();
                 })
                 .catch((err) => {
@@ -64,7 +64,7 @@ describe('Series', () => {
             };
             series.getObservationsForSeries('GNPCA', params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'observation_start', 'observation_end', 'units',
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'observation_start', 'observation_end', 'units',
                                                     'output_type', 'file_type', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'observations');
                     done();
                 })
@@ -82,7 +82,7 @@ describe('Series', () => {
             };
             series.getReleaseForSeries('GNPCA', params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'releasess');
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'releases');
                     done();
                 })
                 .catch((err) => {
@@ -108,7 +108,7 @@ describe('Series', () => {
             };
             series.getSeriesThatMatchesSearch('monetary+service+index', params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'series');
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'filter_variable', 'filter_value', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'seriess');
                     done();
                 })
                 .catch((err) => {
@@ -132,7 +132,7 @@ describe('Series', () => {
             };
             series.getTagsForSeriesSearch('monetary+service+index', params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
                     done();
                 })
                 .catch((err) => {
@@ -157,7 +157,7 @@ describe('Series', () => {
             };
             series.getRelatedTagsForSeriesSearch('monetary+service+index', params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
                     done();
                 })
                 .catch((err) => {
@@ -176,7 +176,7 @@ describe('Series', () => {
             };
             series.getTagsForSeries('GNPCA', params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
                     done();
                 })
                 .catch((err) => {
@@ -196,7 +196,7 @@ describe('Series', () => {
             };
             series.getUpdatedSeries(params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'filter_variable', 'filter_value', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'series');
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'filter_variable', 'filter_value', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'seriess');
                     done();
                 })
                 .catch((err) => {
@@ -215,7 +215,7 @@ describe('Series', () => {
             };
             series.getVintageDatesSeries('GNPCA', params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'vintage_dates');
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'vintage_dates');
                     done();
                 })
                 .catch((err) => {

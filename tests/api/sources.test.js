@@ -24,7 +24,7 @@ describe('Sources', () => {
             };
             sources.getAllSources(params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'sources');
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'sources');
                     done();
                 })
                 .catch((err) => {
@@ -41,7 +41,7 @@ describe('Sources', () => {
             };
             sources.getSource(1, params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'sources');
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'sources');
                     done();
                 })
                 .catch((err) => {
@@ -62,7 +62,7 @@ describe('Sources', () => {
             };
             sources.getReleasesForSource(1, params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'releases');
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'releases');
                     done();
                 })
                 .catch((err) => {

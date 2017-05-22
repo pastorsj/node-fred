@@ -25,7 +25,7 @@ describe('Releases', () => {
             };
             categories.getAllReleases(params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'releases');
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'releases');
                     done();
                 })
                 .catch((err) => {
@@ -48,7 +48,7 @@ describe('Releases', () => {
             };
             categories.getAllReleasesWithDates(params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'release_dates');
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'release_dates');
                     done();
                 })
                 .catch((err) => {
@@ -65,7 +65,7 @@ describe('Releases', () => {
             };
             categories.getRelease(82, params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'releases');
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'releases');
                     done();
                 })
                 .catch((err) => {
@@ -87,7 +87,7 @@ describe('Releases', () => {
             };
             categories.getReleaseWithDates(82, params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'release_dates');
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'release_dates');
                     done();
                 })
                 .catch((err) => {
@@ -112,7 +112,7 @@ describe('Releases', () => {
             };
             categories.getSeriesForRelease(51, params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'series');
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'filter_variable', 'filter_value', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'seriess');
                     done();
                 })
                 .catch((err) => {
@@ -129,7 +129,7 @@ describe('Releases', () => {
             };
             categories.getSourcesForRelease(125, params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'sources');
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'sources');
                     done();
                 })
                 .catch((err) => {
@@ -153,7 +153,7 @@ describe('Releases', () => {
             };
             categories.getTagsForRelease(125, params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
                     done();
                 })
                 .catch((err) => {
@@ -177,7 +177,7 @@ describe('Releases', () => {
             };
             categories.getRelatedTagsForRelease(125, 'income;bea', params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
                     done();
                 })
                 .catch((err) => {
@@ -195,7 +195,7 @@ describe('Releases', () => {
             };
             categories.getTableTreesForRelease(53, params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('name', 'element_id', 'release_id', 'elements');
+                    expect(res).to.have.all.keys('name', 'element_id', 'release_id', 'elements');
                     done();
                 })
                 .catch((err) => {

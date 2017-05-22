@@ -4,7 +4,7 @@ import Tags from '../../src/Api/tags.js';
 
 chai.use(sinonChai);
 
-describe('Sources', () => {
+describe('Tags', () => {
     let tags;
     let params;
 
@@ -27,7 +27,7 @@ describe('Sources', () => {
             };
             tags.getAllTags(params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
                     done();
                 })
                 .catch((err) => {
@@ -52,7 +52,7 @@ describe('Sources', () => {
             };
             tags.getAllRelatedTags('monetary+aggregates;weekly', params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
                     done();
                 })
                 .catch((err) => {
@@ -74,7 +74,7 @@ describe('Sources', () => {
             };
             tags.getAllSeriesMatchingTags('income;bea', params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'seriess');
                     done();
                 })
                 .catch((err) => {

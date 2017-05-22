@@ -16,7 +16,7 @@ describe('Categories', () => {
         it('should set the set the correct url and have the correct return', (done) => {
             categories.getCategory(125)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('categories');
+                    expect(res).to.have.all.keys('categories');
                     done();
                 })
                 .catch((err) => {
@@ -35,7 +35,7 @@ describe('Categories', () => {
         it('should set the set the correct url and call get', (done) => {
             categories.getChildCategories(125, params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('categories');
+                    expect(res).to.have.all.keys('categories');
                     done();
                 })
                 .catch((err) => {
@@ -54,7 +54,7 @@ describe('Categories', () => {
         it('should set the set the correct url and call get', (done) => {
             categories.getRelatedCategories(32073, params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('categories');
+                    expect(res).to.have.all.keys('categories');
                     done();
                 })
                 .catch((err) => {
@@ -81,7 +81,7 @@ describe('Categories', () => {
         it('should set the set the correct url and call get', (done) => {
             categories.getCategorySeries(125, params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'series');
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'filter_variable', 'filter_value', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'seriess');
                     done();
                 })
                 .catch((err) => {
@@ -107,7 +107,7 @@ describe('Categories', () => {
         it('should set the set the correct url and call get', (done) => {
             categories.getCategoryTags(125, params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
                     done();
                 })
                 .catch((err) => {
@@ -133,7 +133,7 @@ describe('Categories', () => {
         it('should set the set the correct url and call get', (done) => {
             categories.getCategoryRelatedTags(125, params)
                 .then((res) => {
-                    expect(res).to.contain.any.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
+                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
                     done();
                 })
                 .catch((err) => {
