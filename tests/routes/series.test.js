@@ -87,11 +87,10 @@ describe('Series', () => {
                 'exclude_tag_names': 'discontinued;annual',
                 'filter_variable': 'frequency',
                 'filter_value': 'filter',
-                'search_text': 'us',
-                'search_type': 'series_id'
+                'search_type': 'full_text'
             };
-            series.getSeriesThatMatchesSearch(125, params);
-            expect(api.get).to.have.been.calledWith('series/search?api_key=testkey&file_type=json&series_id=125&realtime_start=2000-10-11&realtime_end=2000-10-15&limit=100&offset=10&order_by=series_id&sort_order=asc&filter_variable=frequency&filter_value=filter&tag_names=income;bea&exclude_tag_names=discontinued;annual&search_text=us&search_type=series_id');
+            series.getSeriesThatMatchesSearch('monetary+service+index', params);
+            expect(api.get).to.have.been.calledWith('series/search?api_key=testkey&file_type=json&search_text=monetary+service+index&realtime_start=2000-10-11&realtime_end=2000-10-15&limit=100&offset=10&order_by=series_id&sort_order=asc&filter_variable=frequency&filter_value=filter&tag_names=income;bea&exclude_tag_names=discontinued;annual&search_type=full_text');
         });
     });
 
@@ -102,14 +101,14 @@ describe('Series', () => {
                 'realtime_end': '2000-10-15',
                 'limit': 100,
                 'offset': 10,
-                'order_by': 'series_id',
+                'order_by': 'created',
                 'sort_order': 'asc',
                 'tag_names': 'income;bea',
                 'tag_group_id': 'gen',
                 'tag_search_text': 'certaintag'
             };
-            series.getTagsForSeriesSearch(125, 'rate', params);
-            expect(api.get).to.have.been.calledWith('series/search/tags?api_key=testkey&file_type=json&realtime_start=2000-10-11&realtime_end=2000-10-15&limit=100&offset=10&order_by=series_id&sort_order=asc&tag_names=income;bea&tag_group_id=gen&tag_search_text=certaintag&series_search_text=rate');
+            series.getTagsForSeriesSearch('monetary+service+index', params);
+            expect(api.get).to.have.been.calledWith('series/search/tags?api_key=testkey&file_type=json&realtime_start=2000-10-11&realtime_end=2000-10-15&limit=100&offset=10&order_by=created&sort_order=asc&tag_names=income;bea&tag_group_id=gen&tag_search_text=certaintag&series_search_text=monetary+service+index');
         });
     });
 
@@ -120,15 +119,15 @@ describe('Series', () => {
                 'realtime_end': '2000-10-15',
                 'limit': 100,
                 'offset': 10,
-                'order_by': 'series_id',
-                'sort_order': 'asc',
+                'order_by': 'created',
+                'sort_order': 'desc',
                 'tag_names': 'income;bea',
                 'tag_group_id': 'gen',
                 'exclude_tag_names': 'discontinued;annual',
                 'tag_search_text': 'certaintag'
             };
-            series.getRelatedTagsForSeriesSearch(125, 'rate', params);
-            expect(api.get).to.have.been.calledWith('series/search/related_tags?api_key=testkey&file_type=json&realtime_start=2000-10-11&realtime_end=2000-10-15&limit=100&offset=10&order_by=series_id&sort_order=asc&tag_names=income;bea&exclude_tag_names=discontinued;annual&tag_group_id=gen&tag_search_text=certaintag&series_search_text=rate');
+            series.getRelatedTagsForSeriesSearch('monetary+service+index', params);
+            expect(api.get).to.have.been.calledWith('series/search/related_tags?api_key=testkey&file_type=json&realtime_start=2000-10-11&realtime_end=2000-10-15&limit=100&offset=10&order_by=created&sort_order=desc&tag_names=income;bea&exclude_tag_names=discontinued;annual&tag_group_id=gen&tag_search_text=certaintag&series_search_text=monetary+service+index');
         });
     });
 
@@ -137,25 +136,38 @@ describe('Series', () => {
             params = {
                 'realtime_start': '2000-10-11',
                 'realtime_end': '2000-10-15',
-                'order_by': 'series_id',
+                'order_by': 'series_count',
                 'sort_order': 'asc'
             };
-            series.getTagsForSeries(125, params);
-            expect(api.get).to.have.been.calledWith('series/tags?api_key=testkey&file_type=json&realtime_start=2000-10-11&realtime_end=2000-10-15&order_by=series_id&sort_order=asc');
+            series.getTagsForSeries('GNPCA', params);
+            expect(api.get).to.have.been.calledWith('series/tags?api_key=testkey&file_type=json&series_id=GNPCA&realtime_start=2000-10-11&realtime_end=2000-10-15&order_by=series_count&sort_order=asc');
+        });
+    });
+
+    describe('getUpdatedSeries()', () => {
+        it('should set the set the correct url and call get', () => {
+            params = {
+                'realtime_start': '2000-10-11',
+                'realtime_end': '2000-10-15',
+                'order_by': 'series_count',
+                'sort_order': 'asc',
+                'filter_value': 'regional'
+            };
+            series.getUpdatedSeries(params);
+            expect(api.get).to.have.been.calledWith('series/updates?api_key=testkey&file_type=json&realtime_start=2000-10-11&realtime_end=2000-10-15&filter_value=regional');
         });
     });
 
     describe('getVintageDatesSeries()', () => {
         it('should set the set the correct url and call get', () => {
             params = {
-                'realtime_start': '2000-10-11',
                 'realtime_end': '2000-10-15',
                 'limit': 100,
                 'offset': 10,
                 'sort_order': 'asc'
             };
-            series.getVintageDatesSeries(125, params);
-            expect(api.get).to.have.been.calledWith('series/vintagedates?api_key=testkey&file_type=json&realtime_start=2000-10-11&realtime_end=2000-10-15&limit=100&offset=10&sort_order=asc');
+            series.getVintageDatesSeries('GNPCA', params);
+            expect(api.get).to.have.been.calledWith('series/vintagedates?api_key=testkey&file_type=json&series_id=GNPCA&realtime_end=2000-10-15&limit=100&offset=10&sort_order=asc');
         });
     });
 });

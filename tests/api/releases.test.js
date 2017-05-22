@@ -195,7 +195,6 @@ describe('Releases', () => {
             };
             categories.getTableTreesForRelease(53, params)
                 .then((res) => {
-                    console.log('Res', res);
                     expect(res).to.contain.any.keys('name', 'element_id', 'release_id', 'elements');
                     done();
                 })

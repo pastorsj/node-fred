@@ -84,6 +84,13 @@ class SeriesBuilder extends Builder {
         return this.addAttribute('search_type=' + searchType);
     }
 
+    setSearchText(searchText) {
+        if(!searchText) {
+            return this;
+        }
+        return this.addAttribute('search_text=' + searchText);
+    }
+
     setSeriesSearchText(seriesSearchText) {
         return this.addAttribute('series_search_text=' + seriesSearchText);
     }

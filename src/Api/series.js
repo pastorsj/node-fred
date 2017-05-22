@@ -145,13 +145,13 @@ class Series {
      * @param {Object} params
      * @returns {Promise} Resolves with economic data series that match keywords or errors out
      */
-    getSeriesThatMatchesSearch(seriesId, params = {}) {
+    getSeriesThatMatchesSearch(searchText, params = {}) {
         return new Promise((resolve, reject) => {
             try {
                 const url = this.seriesBuilder
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
-                    .setSeriesId(seriesId)
+                    .setSearchText(searchText)
                     .setRealTimeStart(params)
                     .setRealTimeEnd(params)
                     .setLimit(params)
@@ -162,7 +162,6 @@ class Series {
                     .setFilterValue(params)
                     .setTagNames(params)
                     .setExcludeTagNames(params)
-                    .setSearchText(params)
                     .setSearchType(params)
                     .getUrl();
 
@@ -186,7 +185,7 @@ class Series {
      * @param {Object} params
      * @returns {Promise} Resolves with the tags for a series search or errors out
      */
-    getTagsForSeriesSearch(seriesId, seriesSearchText, params = {}) {
+    getTagsForSeriesSearch(seriesSearchText, params = {}) {
         return new Promise((resolve, reject) => {
             try {
                 const url = this.seriesBuilder
@@ -224,7 +223,7 @@ class Series {
      * @param {Object} params
      * @returns {Promise} Resolves with the related tags for a series search or errors out
      */
-    getRelatedTagsForSeriesSearch(seriesId, seriesSearchText, params = {}) {
+    getRelatedTagsForSeriesSearch(seriesSearchText, params = {}) {
         return new Promise((resolve, reject) => {
             try {
                 const url = this.seriesBuilder
@@ -268,6 +267,7 @@ class Series {
                 const url = this.seriesBuilder
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
+                    .setSeriesId(seriesId)
                     .setRealTimeStart(params)
                     .setRealTimeEnd(params)
                     .setOrderBy(params)
@@ -332,6 +332,7 @@ class Series {
                 const url = this.seriesBuilder
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
+                    .setSeriesId(seriesId)
                     .setRealTimeStart(params)
                     .setRealTimeEnd(params)
                     .setLimit(params)
