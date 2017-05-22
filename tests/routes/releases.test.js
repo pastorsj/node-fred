@@ -148,19 +148,12 @@ describe('Releases', () => {
     describe('getTableTreesForRelease()', () => {
         it('should set the set the correct url and call get', () => {
             params = {
-                'realtime_start': '2000-10-11',
-                'realtime_end': '2000-10-15',
-                'limit': 100,
-                'offset': 10,
-                'order_by': 'series_id',
-                'sort_order': 'asc',
-                'tag_names': 'income;bea',
-                'exclude_tag_names': 'discontinued;annual',
-                'tag_group_id': 'freq',
-                'search_text': 'us'
+                'element_id': '12886',
+                'include_observation_values': 'false',
+                'observation_date': '2000-10-15'
             };
             categories.getTableTreesForRelease(125, params);
-            expect(api.get).to.have.been.calledWith('release/related_tags?api_key=testkey&file_type=json&release_id=125&realtime_start=2000-10-11&realtime_end=2000-10-15&limit=100&offset=10&sort_order=asc&order_by=series_id&tag_names=income;bea&exclude_tag_names=discontinued;annual&tag_group_id=freq&search_text=us');
+            expect(api.get).to.have.been.calledWith('release/tables?api_key=testkey&file_type=json&release_id=125&element_id=12886&include_observation_values=false&observation_date=2000-10-15');
         });
     });
 });

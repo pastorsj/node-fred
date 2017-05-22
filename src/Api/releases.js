@@ -296,19 +296,12 @@ class Releases {
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setReleaseId(releaseId)
-                    .setRealTimeStart(params)
-                    .setRealTimeEnd(params)
-                    .setLimit(params)
-                    .setOffset(params)
-                    .setSortOrder(params)
-                    .setOrderBy(params)
-                    .setTagNames(params)
-                    .setExcludeTagNames(params)
-                    .setTagGroupId(params)
-                    .setSearchText(params)
+                    .setElementId(params)
+                    .setIncludeObservationValues(params)
+                    .setObservationDate(params)
                     .getUrl();
 
-                api.get('release/related_tags?' + url)
+                api.get('release/tables?' + url)
                     .then((res) => {
                         resolve(res.data);
                     })
