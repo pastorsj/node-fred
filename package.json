@@ -2,7 +2,7 @@
   "name": "node-fred",
   "version": "2.0.2",
   "description": "Another nodejs wrapper for the st louis fed",
-  "main": "index.js",
+  "main": "lib/node-fred.js",
   "scripts": {
     "build": "webpack --env build",
     "dev": "webpack --progress --colors --watch --env dev",
@@ -25,13 +25,14 @@
   },
   "homepage": "https://github.com/pastorsj/node-fred#readme",
   "dependencies": {
-    "axios": "^0.15.3"
+    "axios": "^0.15.3",
+    "babel-runtime": "^6.23.0"
   },
   "devDependencies": {
     "babel": "6.5.2",
     "babel-core": "6.22.1",
     "babel-eslint": "7.1.1",
-    "babel-loader": "6.2.10",
+    "babel-loader": "^6.2.10",
     "babel-plugin-add-module-exports": "0.1.2",
     "babel-preset-es2015": "6.22.0",
     "chai": "^3.4.1",
