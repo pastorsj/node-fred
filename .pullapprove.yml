@@ -50,8 +50,6 @@ groups:
 
   security:
     required: -1  # require approval from everyone
-    teams:
-      - security-reviewers
     reset_on_push:
       enabled: true
     reset_on_reopened:
