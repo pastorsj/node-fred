@@ -18,12 +18,11 @@ group_defaults:
 
 # Groups of reviewers and their respective settings
 groups:
-  example-reviewers:
-    required: 2
+  reviewers:
+    required: 1
 
     users:
-      - username_one
-      - username_two
+      - pastorsj
 
     conditions:
       branches:
