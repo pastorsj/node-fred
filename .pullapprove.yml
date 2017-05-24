@@ -18,12 +18,11 @@ group_defaults:
 
 # Groups of reviewers and their respective settings
 groups:
-  example-reviewers:
-    required: 2
+  reviewers:
+    required: 1
 
     users:
-      - username_one
-      - username_two
+      - pastorsj
 
     conditions:
       branches:
@@ -47,15 +46,3 @@ groups:
       enabled: true
 
     reject_value: -3
-
-  security:
-    required: -1  # require approval from everyone
-    teams:
-      - security-reviewers
-    reset_on_push:
-      enabled: true
-    reset_on_reopened:
-      enabled: true
-    author_approval:
-      ignored: true
-    reject_value: -100  # any rejection means a failure
