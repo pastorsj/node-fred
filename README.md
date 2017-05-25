@@ -19,11 +19,11 @@ import Fred from 'node-fred'
 
 const fred = new Fred(API_KEY);
 
-fred.releases.getRelatedTagsForRelease('86', 'sa;foreign')
-.then((res) => {
-    console.log(res);
-})
-.catch((err) => {
-    console.error(err);
-});
+fred.categories.getCategory(125)
+  .then((res) => {
+    console.log('Category', res);
+  })
+  .catch((err) => {
+    console.error('Error', err);
+  })
 ```
