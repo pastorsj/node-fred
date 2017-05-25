@@ -4,6 +4,8 @@ node_js:
 sudo: false
 install:
 - npm install
+before-deploy:
+- npm run build
 deploy:
   provider: npm
   email: sampastoriza@yahoo.com
@@ -12,6 +14,7 @@ deploy:
     secure: U9kyJoFYJOQWdiYyET9crawBM3y0/zEjcvzXUjnNvrlD6Zf6E2b1/DA0N7mFV79tU/rvjfdIrLMX1woYZao05DeCgkXvrsC5rAADxdiemQSmUAlpW9ShxTcyeEu34eTP8K2GTBK5qUqCFOWCn1a7CjdPqSi+cUg//LNpZeMcpts=
   on:
     branch: master
+    tags: true
 
 env:
   global:
