@@ -4,7 +4,7 @@ node_js:
 sudo: false
 install:
 - npm install
-before-deploy:
+before_deploy:
 - npm run build
 deploy:
   provider: npm
