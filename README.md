@@ -1,6 +1,5 @@
-[![build status](https://travis-ci.org/pastorsj/node-fred.svg?branch=master)](https://travis-ci.org/pastorsj/node-fred)
 
-# node-fred
+# node-fred &middot; [![build status](https://travis-ci.org/pastorsj/node-fred.svg?branch=master)](https://travis-ci.org/pastorsj/node-fred) [![npm version](https://img.shields.io/npm/v/node-fred.svg?style=flat)](https://www.npmjs.com/package/node-fred)
 A Fred2 API wrapper
 
 # The Fred API
