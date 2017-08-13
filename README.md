@@ -13,16 +13,36 @@ npm install node-fred --save
 ```
 
 # Example
+## Using Promises
 ``` javascript
 import Fred from 'node-fred'
 
 const fred = new Fred(API_KEY);
 
-fred.categories.getCategory(125)
-  .then((res) => {
+function getCategory(categoryID) {
+  fred.categories.getCategory(125)
+    .then((res) => {
+      console.log('Category', res);
+    })
+    .catch((err) => {
+      console.error('Error', err);
+    });
+}
+getCategory(125);
+```
+## Using async/await
+``` javascript
+import Fred from 'node-fred'
+
+const fred = new Fred(API_KEY);
+
+async function getCategory(categoryID) {
+  try {
+    const category = await fred.categories.getCategory(categoryID);
     console.log('Category', res);
-  })
-  .catch((err) => {
+  } catch (err) {
     console.error('Error', err);
-  })
+  }
+}
+getCategory(125);
 ```
