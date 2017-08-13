@@ -13,15 +13,10 @@ describe('Categories', () => {
     });
 
     describe('getCategory()', () => {
-        it('should set the set the correct url and have the correct return', (done) => {
-            categories.getCategory(125)
-                .then((res) => {
-                    expect(res).to.have.all.keys('categories');
-                    done();
-                })
-                .catch((err) => {
-                    done(err);
-                });
+        it('should set the set the correct url and have the correct return', async () => {
+            const res = await categories.getCategory(125);
+
+            expect(res).to.have.all.keys('categories');
         });
     });
 
@@ -32,15 +27,10 @@ describe('Categories', () => {
                 'realtime_end': '2000-10-15'
             };
         });
-        it('should set the set the correct url and call get', (done) => {
-            categories.getChildCategories(125, params)
-                .then((res) => {
-                    expect(res).to.have.all.keys('categories');
-                    done();
-                })
-                .catch((err) => {
-                    done(err);
-                });
+        it('should set the set the correct url and call get', async () => {
+            const res = await categories.getChildCategories(125, params);
+
+            expect(res).to.have.all.keys('categories');
         });
     });
 
@@ -51,15 +41,10 @@ describe('Categories', () => {
                 'realtime_end': '2000-10-15'
             };
         });
-        it('should set the set the correct url and call get', (done) => {
-            categories.getRelatedCategories(32073, params)
-                .then((res) => {
-                    expect(res).to.have.all.keys('categories');
-                    done();
-                })
-                .catch((err) => {
-                    done(err);
-                });
+        it('should set the set the correct url and call get', async () => {
+            const res = await categories.getRelatedCategories(32073, params);
+
+            expect(res).to.have.all.keys('categories');
         });
     });
 
@@ -78,15 +63,10 @@ describe('Categories', () => {
                 'exclude_tag_names': 'discontinued;annual'
             };
         });
-        it('should set the set the correct url and call get', (done) => {
-            categories.getCategorySeries(125, params)
-                .then((res) => {
-                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'filter_variable', 'filter_value', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'seriess');
-                    done();
-                })
-                .catch((err) => {
-                    done(err);
-                });
+        it('should set the set the correct url and call get', async () => {
+            const res = await categories.getCategorySeries(125, params);
+
+            expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'filter_variable', 'filter_value', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'seriess');
         });
     });
 
@@ -104,15 +84,10 @@ describe('Categories', () => {
                 'search_text': 'us'
             };
         });
-        it('should set the set the correct url and call get', (done) => {
-            categories.getCategoryTags(125, params)
-                .then((res) => {
-                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
-                    done();
-                })
-                .catch((err) => {
-                    done(err);
-                });
+        it('should set the set the correct url and call get', async () => {
+            const res = await categories.getCategoryTags(125, params);
+
+            expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
         });
     });
 
@@ -130,15 +105,10 @@ describe('Categories', () => {
                 'search_text': 'us'
             };
         });
-        it('should set the set the correct url and call get', (done) => {
-            categories.getCategoryRelatedTags(125, params)
-                .then((res) => {
-                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
-                    done();
-                })
-                .catch((err) => {
-                    done(err);
-                });
+        it('should set the set the correct url and call get', async () => {
+            const res = await categories.getCategoryRelatedTags(125, params);
+
+            expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
         });
     });
 });

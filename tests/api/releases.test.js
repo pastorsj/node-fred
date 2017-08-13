@@ -14,7 +14,7 @@ describe('Releases', () => {
     });
 
     describe('getAllReleases()', () => {
-        it('should set the set the correct url and call get', (done) => {
+        beforeEach(() => {
             params = {
                 'realtime_start': '2000-10-11',
                 'realtime_end': '2000-10-15',
@@ -23,20 +23,16 @@ describe('Releases', () => {
                 'order_by': 'name',
                 'sort_order': 'asc'
             };
-            categories.getAllReleases(params)
-                .then((res) => {
-                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'releases');
-                    done();
-                })
-                .catch((err) => {
-                    done(err);
-                });
+        });
+        it('should set the set the correct url and call get', async () => {
+            const res = await categories.getAllReleases(params);
 
+            expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'releases');
         });
     });
 
     describe('getAllReleasesWithDates()', () => {
-        it('should set the set the correct url and call get', (done) => {
+        beforeEach(() => {
             params = {
                 'realtime_start': '2000-10-11',
                 'realtime_end': '2000-10-15',
@@ -46,36 +42,30 @@ describe('Releases', () => {
                 'sort_order': 'asc',
                 'include_release_dates_with_no_data': 'true'
             };
-            categories.getAllReleasesWithDates(params)
-                .then((res) => {
-                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'release_dates');
-                    done();
-                })
-                .catch((err) => {
-                    done(err);
-                });
+        });
+        it('should set the set the correct url and call get', async () => {
+            const res = await categories.getAllReleasesWithDates(params);
+
+            expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'release_dates');
         });
     });
 
     describe('getRelease()', () => {
-        it('should set the set the correct url and call get', (done) => {
+        beforeEach(() => {
             params = {
                 'realtime_start': '2000-10-11',
                 'realtime_end': '2000-10-15'
             };
-            categories.getRelease(82, params)
-                .then((res) => {
-                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'releases');
-                    done();
-                })
-                .catch((err) => {
-                    done(err);
-                });
+        });
+        it('should set the set the correct url and call get', async () => {
+            const res = await categories.getRelease(82, params);
+
+            expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'releases');
         });
     });
 
     describe('getReleaseWithDates()', () => {
-        it('should set the set the correct url and call get', (done) => {
+        beforeEach(() => {
             params = {
                 'realtime_start': '2000-10-11',
                 'realtime_end': '2000-10-15',
@@ -85,19 +75,16 @@ describe('Releases', () => {
                 'sort_order': 'asc',
                 'include_release_dates_with_no_data': 'true'
             };
-            categories.getReleaseWithDates(82, params)
-                .then((res) => {
-                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'release_dates');
-                    done();
-                })
-                .catch((err) => {
-                    done(err);
-                });
+        });
+        it('should set the set the correct url and call get', async () => {
+            const res = await categories.getReleaseWithDates(82, params);
+
+            expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'release_dates');
         });
     });
 
     describe('getSeriesForRelease()', () => {
-        it('should set the set the correct url and call get', (done) => {
+        beforeEach(() => {
             params = {
                 'realtime_start': '2000-10-11',
                 'realtime_end': '2000-10-15',
@@ -110,36 +97,30 @@ describe('Releases', () => {
                 'tag_names': 'income;bea',
                 'exclude_tag_names': 'discontinued;annual'
             };
-            categories.getSeriesForRelease(51, params)
-                .then((res) => {
-                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'filter_variable', 'filter_value', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'seriess');
-                    done();
-                })
-                .catch((err) => {
-                    done(err);
-                });
+        });
+        it('should set the set the correct url and call get', async () => {
+            const res = await categories.getSeriesForRelease(51, params);
+
+            expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'filter_variable', 'filter_value', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'seriess');
         });
     });
 
     describe('getSourcesForRelease()', () => {
-        it('should set the set the correct url and call get', (done) => {
+        beforeEach(() => {
             params = {
                 'realtime_start': '2000-10-11',
                 'realtime_end': '2000-10-15'
             };
-            categories.getSourcesForRelease(125, params)
-                .then((res) => {
-                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'sources');
-                    done();
-                })
-                .catch((err) => {
-                    done(err);
-                });
+        });
+        it('should set the set the correct url and call get', async () => {
+            const res = await categories.getSourcesForRelease(125, params);
+
+            expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'sources');
         });
     });
 
     describe('getTagsForRelease()', () => {
-        it('should set the set the correct url and call get', (done) => {
+        beforeEach(() => {
             params = {
                 'realtime_start': '2000-10-11',
                 'realtime_end': '2000-10-15',
@@ -151,19 +132,16 @@ describe('Releases', () => {
                 'tag_group_id': 'freq',
                 'search_text': 'us'
             };
-            categories.getTagsForRelease(125, params)
-                .then((res) => {
-                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
-                    done();
-                })
-                .catch((err) => {
-                    done(err);
-                });
+        });
+        it('should set the set the correct url and call get', async () => {
+            const res = await categories.getTagsForRelease(125, params);
+
+            expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
         });
     });
 
     describe('getRelatedTagsForRelease()', () => {
-        it('should set the set the correct url and call get', (done) => {
+        beforeEach(() => {
             params = {
                 'realtime_start': '2000-10-11',
                 'realtime_end': '2000-10-15',
@@ -175,32 +153,26 @@ describe('Releases', () => {
                 'tag_group_id': 'freq',
                 'search_text': 'us'
             };
-            categories.getRelatedTagsForRelease(125, 'income;bea', params)
-                .then((res) => {
-                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
-                    done();
-                })
-                .catch((err) => {
-                    done(err);
-                });
+        });
+        it('should set the set the correct url and call get', async () => {
+            const res = await categories.getRelatedTagsForRelease(125, 'income;bea', params);
+
+            expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
         });
     });
 
     describe('getTableTreesForRelease()', () => {
-        it('should set the set the correct url and call get', (done) => {
+        beforeEach(() => {
             params = {
                 'element_id': '12886',
                 'include_observation_values': 'false',
                 'observation_date': '2000-10-15'
             };
-            categories.getTableTreesForRelease(53, params)
-                .then((res) => {
-                    expect(res).to.have.all.keys('name', 'element_id', 'release_id', 'elements');
-                    done();
-                })
-                .catch((err) => {
-                    done(err);
-                });
+        });
+        it('should set the set the correct url and call get', async () => {
+            const res = await categories.getTableTreesForRelease(53, params);
+
+            expect(res).to.have.all.keys('name', 'element_id', 'release_id', 'elements');
         });
     });
 });

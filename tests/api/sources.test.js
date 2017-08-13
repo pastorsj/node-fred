@@ -13,7 +13,7 @@ describe('Sources', () => {
     });
 
     describe('getAllSources()', () => {
-        it('should set the set the correct url and call get', (done) => {
+        beforeEach(() => {
             params = {
                 'realtime_start': '2000-10-11',
                 'realtime_end': '2000-10-15',
@@ -22,36 +22,30 @@ describe('Sources', () => {
                 'order_by': 'source_id',
                 'sort_order': 'asc'
             };
-            sources.getAllSources(params)
-                .then((res) => {
-                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'sources');
-                    done();
-                })
-                .catch((err) => {
-                    done(err);
-                });
+        });
+        it('should set the set the correct url and call get', async () => {
+            const res = await sources.getAllSources(params);
+
+            expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'sources');
         });
     });
 
     describe('getSource()', () => {
-        it('should set the set the correct url and call get', (done) => {
+        beforeEach(() => {
             params = {
                 'realtime_start': '2000-10-11',
                 'realtime_end': '2000-10-15'
             };
-            sources.getSource(1, params)
-                .then((res) => {
-                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'sources');
-                    done();
-                })
-                .catch((err) => {
-                    done(err);
-                });
+        });
+        it('should set the set the correct url and call get', async () => {
+            const res = await sources.getSource(1, params);
+
+            expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'sources');
         });
     });
 
     describe('getReleasesForSource()', () => {
-        it('should set the set the correct url and call get', (done) => {
+        beforeEach(() => {
             params = {
                 'realtime_start': '2000-10-11',
                 'realtime_end': '2000-10-15',
@@ -60,14 +54,11 @@ describe('Sources', () => {
                 'order_by': 'release_id',
                 'sort_order': 'asc'
             };
-            sources.getReleasesForSource(1, params)
-                .then((res) => {
-                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'releases');
-                    done();
-                })
-                .catch((err) => {
-                    done(err);
-                });
+        });
+        it('should set the set the correct url and call get', async () => {
+            const res = await sources.getReleasesForSource(1, params);
+
+            expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'releases');
         });
     });
 });

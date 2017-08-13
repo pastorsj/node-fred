@@ -13,7 +13,7 @@ describe('Tags', () => {
     });
 
     describe('getAllTags()', () => {
-        it('should set the set the correct url and call get', (done) => {
+        beforeEach(() => {
             params = {
                 'realtime_start': '2000-10-11',
                 'realtime_end': '2000-10-15',
@@ -25,19 +25,16 @@ describe('Tags', () => {
                 'tag_group_id': 'gen',
                 'search_text': 'certaintag'
             };
-            tags.getAllTags(params)
-                .then((res) => {
-                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
-                    done();
-                })
-                .catch((err) => {
-                    done(err);
-                });
+        });
+        it('should set the set the correct url and call get', async () => {
+            const res = await tags.getAllTags(params);
+
+            expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
         });
     });
 
     describe('getAllRelatedTags()', () => {
-        it('should set the set the correct url and call get', (done) => {
+        beforeEach(() => {
             params = {
                 'realtime_start': '2000-10-11',
                 'realtime_end': '2000-10-15',
@@ -50,19 +47,16 @@ describe('Tags', () => {
                 'tag_group_id': 'gen',
                 'search_text': 'certaintag'
             };
-            tags.getAllRelatedTags('monetary+aggregates;weekly', params)
-                .then((res) => {
-                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
-                    done();
-                })
-                .catch((err) => {
-                    done(err);
-                });
+        });
+        it('should set the set the correct url and call get', async () => {
+            const res = await tags.getAllRelatedTags('monetary+aggregates;weekly', params);
+
+            expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'tags');
         });
     });
 
     describe('getAllSeriesMatchingTags()', () => {
-        it('should set the set the correct url and call get', (done) => {
+        beforeEach(() => {
             params = {
                 'realtime_start': '2000-10-11',
                 'realtime_end': '2000-10-15',
@@ -72,14 +66,11 @@ describe('Tags', () => {
                 'sort_order': 'asc',
                 'exclude_tag_names': 'discontinued;annual'
             };
-            tags.getAllSeriesMatchingTags('income;bea', params)
-                .then((res) => {
-                    expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'seriess');
-                    done();
-                })
-                .catch((err) => {
-                    done(err);
-                });
+        });
+        it('should set the set the correct url and call get', async () => {
+            const res = await tags.getAllSeriesMatchingTags('income;bea', params);
+
+            expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'seriess');
         });
     });
 });
