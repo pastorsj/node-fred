@@ -46,6 +46,7 @@ class Tags {
 
     /**
      * Get the related tags for one or more tags.
+     * @param {string} tagNames
      * @param {Object} params
      * @returns {Promise} Resolves with the related tags for one or more tags or errors out
      */

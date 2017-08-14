@@ -3,6 +3,7 @@
   "version": "2.0.10",
   "description": "Another nodejs wrapper for the st louis fed",
   "main": "lib/node-fred.min.js",
+  "types": "index.d.ts",
   "scripts": {
     "build": "webpack --env build",
     "dev": "webpack --progress --colors --watch --env dev",

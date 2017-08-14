@@ -141,7 +141,7 @@ class Series {
 
     /**
      * Gets economic data series that match keywords.
-     * @param {Number} seriesId
+     * @param {String} searchText
      * @param {Object} params
      * @returns {Promise} Resolves with economic data series that match keywords or errors out
      */
