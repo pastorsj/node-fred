@@ -3,6 +3,8 @@
 // Definitions by: Sam Pastoriza <https://github.com/pastorsj>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
+export = Fred;
+
 declare class Fred {
     constructor(apiKey: string, returnType?: string);
 
