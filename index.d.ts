@@ -39,28 +39,28 @@ declare namespace FredAPI {
     }
     
     class Series {
-        getSeries(seriesId: number, params?: object): Promise<object>;
-        getCategoriesForSeries(seriesId: number, params?: object): Promise<object>;
-        getObservationsForSeries(seriesId: number, params?: object): Promise<object>;
-        getReleaseForSeries(seriesId: number, params?: object): Promise<object>;
-        getSeriesThatMatchesSearch(searchText: string, params?: object): Promise<object>;
-        getTagsForSeriesSearch(seriesSearchText: string, params?: object): Promise<object>;
-        getRelatedTagsForSeriesSearch(seriesSearchText: string, params?: object): Promise<object>;
-        getTagsForSeries(seriesId: number, params?: object): Promise<object>;
-        getUpdatedSeries(params?: object): Promise<object>;
-        getUpdatedSeries(seriesId: number, params?: object): Promise<object>;
+        getSeries(seriesId: number, params?: object): Promise<SeriesSet>;
+        getCategoriesForSeries(seriesId: number, params?: object): Promise<CategorySet>;
+        getObservationsForSeries(seriesId: number, params?: object): Promise<ObservationInfo>;
+        getReleaseForSeries(seriesId: number, params?: object): Promise<ReleaseSet>;
+        getSeriesThatMatchesSearch(searchText: string, params?: object): Promise<SeriesInfo>;
+        getTagsForSeriesSearch(seriesSearchText: string, params?: object): Promise<RelatedTagsInfo>;
+        getRelatedTagsForSeriesSearch(seriesSearchText: string, params?: object): Promise<RelatedTagsInfo>;
+        getTagsForSeries(seriesId: number, params?: object): Promise<RelatedTagsInfo>;
+        getUpdatedSeries(params?: object): Promise<UpdatedSeriesInfo>;
+        getUpdatedSeries(seriesId: number, params?: object): Promise<RevisedSeriesWithDates>;
     }
     
     class Sources {
-        getAllSources(params?: object): Promise<object>;
-        getSource(sourceId: number, params?: object): Promise<object>;
-        getReleasesForSource(sourceId: number, params?: object): Promise<object>;
+        getAllSources(params?: object): Promise<SourcesInfo>;
+        getSource(sourceId: number, params?: object): Promise<SourcesSet>;
+        getReleasesForSource(sourceId: number, params?: object): Promise<ReleaseSet>;
     }
     
     class Tags {
-        getAllTags(params?: object): Promise<object>;
-        getAllRelatedTags(tagNames: string, params?: object): Promise<object>;
-        getAllSeriesMatchingTags(tagNames: string, params?: object): Promise<object>;
+        getAllTags(params?: object): Promise<RelatedTagsInfo>;
+        getAllRelatedTags(tagNames: string, params?: object): Promise<RelatedTagsInfo>;
+        getAllSeriesMatchingTags(tagNames: string, params?: object): Promise<SeriesInfo>;
     }
     
     interface TimeInfo {
@@ -184,6 +184,53 @@ declare namespace FredAPI {
      interface ReleaseWithDate extends BasicRelease {
          release_id: number,
          date: string
-     }    
+     }
+
+     /** 
+     *  -----------------------------------------------------
+     *                  Series Typings
+     *  -----------------------------------------------------
+     */
+
+     interface SeriesInfo extends SingularSeries {
+        notes: string
+     }
+
+     interface SeriesSet extends TimeInfo {
+         series: SeriesInfo[]
+     }
+
+     interface ObservationInfo extends StandardInfo {
+        observation_start: string,
+        observation_end: string,
+        units: string,
+        output_type: number,
+        file_type: string,
+        observations: ObservationSet
+     }
+
+     interface ObservationSet extends TimeInfo {
+        date: string,
+        value: string
+     }
+
+     interface UpdatedSeriesInfo extends SeriesInfo {
+        filter_variable: string,
+        filter_value: string
+     }
+
+     interface RevisedSeriesWithDates extends StandardInfo {
+         vintage_dates: string[]
+     }
+
+     /** 
+     *  -----------------------------------------------------
+     *                  Sources Typings
+     *  -----------------------------------------------------
+     */
+
+     interface SourcesInfo extends StandardInfo {
+         sources: SingularSource[]
+     }
 }
 
