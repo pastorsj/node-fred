@@ -16,12 +16,12 @@ declare class Fred {
 }
 
 declare class Categories {
-    getCategory(categoryId: number): Promise<object>;
-    getChildCategories(categoryId: number, params?: object): Promise<object>;
-    getRelatedCategories(categoryId: number, params?: object): Promise<object>;
-    getCategorySeries(categoryId: number, params?: object): Promise<object>;
-    getCategoryTags(categoryId: number, params?: object): Promise<object>;
-    getCategoryRelatedTags(categoryId: number, params?: object): Promise<object>;
+    getCategory(categoryId: number): Promise<CategorySet>;
+    getChildCategories(categoryId: number, params?: object): Promise<CategorySet>;
+    getRelatedCategories(categoryId: number, params?: object): Promise<CategorySet>;
+    getCategorySeries(categoryId: number, params?: object): Promise<SeriesInfo>;
+    getCategoryTags(categoryId: number, params?: object): Promise<RelatedTagsInfo>;
+    getCategoryRelatedTags(categoryId: number, params?: object): Promise<RelatedTagsInfo>;
 }
 
 declare class Releases {
@@ -60,3 +60,58 @@ declare class Tags {
     getAllRelatedTags(tagNames: string, params?: object): Promise<object>;
     getAllSeriesMatchingTags(tagNames: string, params?: object): Promise<object>;
 }
+
+declare interface StandardInfo {
+    realtime_start: string,
+    realtime_end: string,
+    order_by: string,
+    sort_order: string,
+    count: number,
+    offset: number,
+    limit: number
+}
+
+declare interface CategorySet {
+    categories: Category[],
+}
+
+declare interface RelatedTagsInfo extends StandardInfo {
+    tags: Tag[]
+}
+
+declare interface SeriesInfo extends StandardInfo {
+    series: SingularSeries[]
+}
+
+declare interface Category {
+    id: number,
+    name: string,
+    parent_id: number
+}
+
+declare interface Tag {
+    name: string,
+    group_id: string,
+    notes: string,
+    created: string,
+    popularity: number,
+    series_count: number
+}
+
+declare interface SingularSeries {
+    id: string,
+    realtime_start: string,
+    realtime_end: string,
+    title: string,
+    observation_start: string,
+    observation_end: string,
+    frequency: string,
+    frequency_short: string,
+    units: string,
+    units_short: string,
+    seasonal_adjustment: string,
+    seasonal_adjustment_short: string,
+    last_updated: string,
+    popularity: number
+}
+
