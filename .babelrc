@@ -1,4 +1,4 @@
 {
-  "presets": ["es2015", "es2017"],
+  "presets": ["env"],
   "plugins": ["transform-runtime"]
 }
