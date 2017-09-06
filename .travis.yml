@@ -4,9 +4,9 @@ node_js:
 sudo: false
 install:
 - npm install
-test:
+script:
 - npm run test-travis
-after_test:
+after_success:
 - test -e ./coverage/lcov.info && cat ./coverage/lcov.info | coveralls
 before_deploy:
 - npm run build
