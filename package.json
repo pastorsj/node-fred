@@ -8,7 +8,9 @@
     "build": "webpack --env build",
     "dev": "webpack --progress --colors --watch --env dev",
     "test": "mocha --compilers js:babel-core/register --colors --timeout 5000 ./tests/**/*.test.js",
-    "test:watch": "mocha --compilers js:babel-core/register --colors --timeout 5000 -w ./tests/**/*.test.js"
+    "test:watch": "mocha --compilers js:babel-core/register --colors --timeout 5000 -w ./tests/**/*.test.js",
+    "cover": "istanbul cover node_modules/mocha/bin/_mocha -- --compilers js:babel-core/register --colors --timeout 5000 --reporter dot ./tests/**/*.test.js",
+    "cover:coveralls": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --compilers js:babel-core/register --colors --timeout 5000 --reporter spec ./tests/**/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -37,8 +39,10 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-es2017": "^6.24.1",
     "chai": "^3.4.1",
+    "coveralls": "^2.13.1",
     "eslint": "^3.15.0",
     "eslint-loader": "^1.9.0",
+    "istanbul": "^1.1.0-alpha.1",
     "mocha": "^3.2.0",
     "sinon": "^1.17.7",
     "sinon-chai": "^2.8.0",
