@@ -5,7 +5,7 @@ sudo: false
 install:
 - npm install
 script:
-- npm run test-travis
+- npm run cover:coveralls
 after_success:
 - test -e ./coverage/lcov.info && cat ./coverage/lcov.info | coveralls
 before_deploy:
