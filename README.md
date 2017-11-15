@@ -1,5 +1,6 @@
 
-# node-fred &middot; [![build status](https://travis-ci.org/pastorsj/node-fred.svg?branch=master)](https://travis-ci.org/pastorsj/node-fred)[![npm version](https://img.shields.io/npm/v/node-fred.svg?style=flat)](https://www.npmjs.com/package/node-fred)[![Coverage Status](https://coveralls.io/repos/github/pastorsj/node-fred/badge.svg?branch=master)](https://coveralls.io/github/pastorsj/node-fred?branch=master)[![Greenkeeper badge](https://badges.greenkeeper.io/pastorsj/node-fred.svg)](https://greenkeeper.io/)
+# node-fred &middot; 
+[![build status](https://travis-ci.org/pastorsj/node-fred.svg?branch=master)](https://travis-ci.org/pastorsj/node-fred) [![npm version](https://img.shields.io/npm/v/node-fred.svg?style=flat)](https://www.npmjs.com/package/node-fred) [![Coverage Status](https://coveralls.io/repos/github/pastorsj/node-fred/badge.svg?branch=master)](https://coveralls.io/github/pastorsj/node-fred?branch=master) [![Greenkeeper badge](https://badges.greenkeeper.io/pastorsj/node-fred.svg)](https://greenkeeper.io/)
 
 A Fred2 API wrapper
 
