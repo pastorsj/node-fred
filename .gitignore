@@ -39,4 +39,7 @@ jspm_packages
 .DS_Store
 testAPI/
 
+# Build/Prod
 lib/
+.cache
+dist/
