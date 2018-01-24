@@ -4,6 +4,6 @@ reject_regex: '^(Rejected|:-1:)'
 reset_on_push: false
 reviewers:
   members:
-  - Prescientje
+  - pastorsj
   name: pullapprove
   required: 1
