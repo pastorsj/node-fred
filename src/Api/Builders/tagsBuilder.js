@@ -1,6 +1,4 @@
-'use strict';
-
-import Builder from './builder.js';
+import Builder from './builder';
 
 class TagsBuilder extends Builder {
 }

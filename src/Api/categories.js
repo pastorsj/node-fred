@@ -1,4 +1,3 @@
-'use strict';
 import api from '../api';
 import CategoryBuilder from './Builders/categoryBuilder';
 
@@ -23,14 +22,14 @@ class Categories {
                     .setFileType(this.returnType)
                     .getUrl();
 
-                api.get('category?' + url)
+                api.get(`category?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
@@ -53,14 +52,14 @@ class Categories {
                     .setRealTimeEnd(params)
                     .getUrl();
 
-                api.get('category/children?' + url)
+                api.get(`category/children?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
@@ -83,14 +82,14 @@ class Categories {
                     .setRealTimeEnd(params)
                     .getUrl();
 
-                api.get('category/related?' + url)
+                api.get(`category/related?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
@@ -121,14 +120,14 @@ class Categories {
                     .setExcludeTagNames(params)
                     .getUrl();
 
-                api.get('category/series?' + url)
+                api.get(`category/series?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
@@ -158,14 +157,14 @@ class Categories {
                     .setSearchText(params)
                     .getUrl();
 
-                api.get('category/tags?' + url)
+                api.get(`category/tags?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
@@ -195,14 +194,14 @@ class Categories {
                     .setSearchText(params)
                     .getUrl();
 
-                api.get('category/related_tags?' + url)
+                api.get(`category/related_tags?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });

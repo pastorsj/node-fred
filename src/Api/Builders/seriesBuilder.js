@@ -1,109 +1,105 @@
-'use strict';
-
-import Builder from './builder.js';
+import Builder from './builder';
 
 class SeriesBuilder extends Builder {
-
     setSeriesId(seriesId) {
-        return this.addAttribute('series_id=' + seriesId);
+        return this.addAttribute(`series_id=${seriesId}`);
     }
 
     setObservationStart(params) {
-        const observationStart = params['observation_start'];
+        const observationStart = params.observation_start;
 
-        if(!observationStart) {
+        if (!observationStart) {
             return this;
-        } else if(!this.isValidDate(observationStart)) {
+        } else if (!this.isValidDate(observationStart)) {
             throw new Error('The format of this date is not valid. Please format the date like this: YYYY-MM-DD');
         }
-        return this.addAttribute('observation_start=' + observationStart);
+        return this.addAttribute(`observation_start=${observationStart}`);
     }
 
     setObservationEnd(params) {
-        const observationEnd = params['observation_end'];
+        const observationEnd = params.observation_end;
 
-        if(!observationEnd) {
+        if (!observationEnd) {
             return this;
-        } else if(!this.isValidDate(observationEnd)) {
+        } else if (!this.isValidDate(observationEnd)) {
             throw new Error('The format of this date is not valid. Please format the date like this: YYYY-MM-DD');
         }
-        return this.addAttribute('observation_end=' + observationEnd);
+        return this.addAttribute(`observation_end=${observationEnd}`);
     }
 
     setUnits(params) {
-        const units = params['units'];
+        const { units } = params;
 
-        if(units === '') {
+        if (units === '') {
             return this;
         }
-        return this.addAttribute('units=' + units);
+        return this.addAttribute(`units=${units}`);
     }
 
     setFrequency(params) {
-        const frequency = params['frequency'];
+        const { frequency } = params;
 
-        if(!frequency) {
+        if (!frequency) {
             return this;
         }
-        return this.addAttribute('frequency=' + frequency);
+        return this.addAttribute(`frequency=${frequency}`);
     }
 
     setAggregationMethod(params) {
-        const aggregationMethod = params['aggregation_method'];
+        const aggregationMethod = params.aggregation_method;
 
-        if(!aggregationMethod) {
+        if (!aggregationMethod) {
             return this;
         }
-        return this.addAttribute('aggregation_method=' + aggregationMethod);
+        return this.addAttribute(`aggregation_method=${aggregationMethod}`);
     }
 
     setOutputType(params) {
-        const outputType = params['output_type'];
+        const outputType = params.output_type;
 
-        if(!outputType) {
+        if (!outputType) {
             return this;
         }
-        return this.addAttribute('output_type=' + outputType);
+        return this.addAttribute(`output_type=${outputType}`);
     }
 
     setVintageDate(params) {
-        const vintageDates = params['vintage_dates'];
+        const vintageDates = params.vintage_dates;
 
-        if(!vintageDates) {
+        if (!vintageDates) {
             return this;
         }
-        return this.addAttribute('vintage_dates=' + vintageDates);
+        return this.addAttribute(`vintage_dates=${vintageDates}`);
     }
 
     setSearchType(params) {
-        const searchType = params['search_type'];
+        const searchType = params.search_type;
 
-        if(!searchType) {
+        if (!searchType) {
             return this;
         }
-        return this.addAttribute('search_type=' + searchType);
+        return this.addAttribute(`search_type=${searchType}`);
     }
 
     setSearchText(searchText) {
-        if(!searchText) {
+        if (!searchText) {
             return this;
         }
-        return this.addAttribute('search_text=' + searchText);
+        return this.addAttribute(`search_text=${searchText}`);
     }
 
     setSeriesSearchText(seriesSearchText) {
-        return this.addAttribute('series_search_text=' + seriesSearchText);
+        return this.addAttribute(`series_search_text=${seriesSearchText}`);
     }
 
     setTagSearchText(params) {
-        const tagSearchText = params['tag_search_text'];
+        const tagSearchText = params.tag_search_text;
 
-        if(!tagSearchText) {
+        if (!tagSearchText) {
             return this;
         }
-        return this.addAttribute('tag_search_text=' + tagSearchText);
+        return this.addAttribute(`tag_search_text=${tagSearchText}`);
     }
-
 }
 
 export default SeriesBuilder;

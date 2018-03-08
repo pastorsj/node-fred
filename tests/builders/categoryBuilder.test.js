@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import CategoryBuilder from '../../src/Api/Builders/categoryBuilder.js';
+import CategoryBuilder from '../../src/Api/Builders/categoryBuilder';
 
 describe('CategoryBuilder', () => {
     let builder;

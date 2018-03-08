@@ -5,14 +5,16 @@
   "main": "lib/index.js",
   "types": "index.d.ts",
   "scripts": {
-    "build": "webpack --env build",
+    "build": "webpack --optimize-minimize --mode production",
     "parcel": "parcel src/index.js",
     "parcel-build": "parcel build -d lib/ src/index.js",
-    "dev": "webpack --progress --colors --watch --env dev",
-    "test": "mocha --compilers js:babel-core/register --colors --timeout 5000 ./tests/**/*.test.js",
-    "test:watch": "mocha --compilers js:babel-core/register --colors --timeout 5000 -w ./tests/**/*.test.js",
-    "cover": "istanbul cover node_modules/mocha/bin/_mocha -- --compilers js:babel-core/register --colors --timeout 5000 --reporter dot ./tests/**/*.test.js",
-    "cover:coveralls": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --compilers js:babel-core/register --colors --timeout 5000 --reporter spec ./tests/**/*.test.js"
+    "dev": "webpack --progress --colors --watch --mode production",
+    "lint": "eslint src/* tests/*",
+    "autofix": "eslint --fix src/* tests/*",
+    "test": "mocha --require babel-core/register --colors --timeout 5000 ./tests/**/*.test.js",
+    "test:watch": "mocha --require babel-core/register --colors --timeout 5000 -w ./tests/**/*.test.js",
+    "cover": "istanbul cover node_modules/mocha/bin/_mocha -- --require babel-core/register --colors --timeout 5000 --reporter dot ./tests/**/*.test.js",
+    "cover:coveralls": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --require babel-core/register --colors --timeout 5000 --reporter spec ./tests/**/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -30,25 +32,28 @@
   },
   "homepage": "https://github.com/pastorsj/node-fred#readme",
   "dependencies": {
-    "axios": "^0.17.0",
-    "babel-runtime": "^6.25.0"
+    "axios": "^0.18.0",
+    "babel-runtime": "^6.26.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-eslint": "8.2.1",
-    "babel-loader": "^7.1.1",
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "8.2.2",
+    "babel-loader": "^7.1.4",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.6.0",
+    "babel-preset-env": "^1.6.1",
     "chai": "^4.1.2",
     "coveralls": "^3.0.0",
-    "eslint": "^4.10.0",
-    "eslint-loader": "^1.9.0",
+    "eslint": "^4.18.2",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-import": "^2.9.0",
     "istanbul": "^1.1.0-alpha.1",
-    "parcel-bundler": "^1.2.1",
-    "mocha": "^5.0.0",
-    "sinon": "^4.1.2",
-    "sinon-chai": "^2.8.0",
-    "webpack": "^3.5.4",
+    "mocha": "^5.0.4",
+    "parcel-bundler": "^1.6.2",
+    "sinon": "^4.4.2",
+    "sinon-chai": "^3.0.0",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.10",
     "yargs": "^11.0.0"
   }
 }

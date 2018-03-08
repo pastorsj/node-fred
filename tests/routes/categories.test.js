@@ -1,7 +1,7 @@
 import chai, { expect } from 'chai';
 import sinonChai from 'sinon-chai';
 import sinon from 'sinon';
-import Categories from '../../src/Api/categories.js';
+import Categories from '../../src/Api/categories';
 import api from '../../src/api';
 
 chai.use(sinonChai);
@@ -31,8 +31,8 @@ describe('Categories', () => {
     describe('getChildCategories()', () => {
         beforeEach(() => {
             params = {
-                'realtime_start': '2000-10-11',
-                'realtime_end': '2000-10-15'
+                realtime_start: '2000-10-11',
+                realtime_end: '2000-10-15'
             };
         });
         it('should set the set the correct url and call get', () => {
@@ -44,8 +44,8 @@ describe('Categories', () => {
     describe('getRelatedCategories()', () => {
         beforeEach(() => {
             params = {
-                'realtime_start': '2000-10-11',
-                'realtime_end': '2000-10-15'
+                realtime_start: '2000-10-11',
+                realtime_end: '2000-10-15'
             };
         });
         it('should set the set the correct url and call get', () => {
@@ -57,16 +57,16 @@ describe('Categories', () => {
     describe('getCategorySeries()', () => {
         beforeEach(() => {
             params = {
-                'realtime_start': '2000-10-11',
-                'realtime_end': '2000-10-15',
-                'limit': 100,
-                'offset': 10,
-                'order_by': 'series_id',
-                'sort_order': 'asc',
-                'filter_variable': 'frequency',
-                'filter_value': 'filter',
-                'tag_names': 'income;bea',
-                'exclude_tag_names': 'discontinued;annual'
+                realtime_start: '2000-10-11',
+                realtime_end: '2000-10-15',
+                limit: 100,
+                offset: 10,
+                order_by: 'series_id',
+                sort_order: 'asc',
+                filter_variable: 'frequency',
+                filter_value: 'filter',
+                tag_names: 'income;bea',
+                exclude_tag_names: 'discontinued;annual'
             };
         });
         it('should set the set the correct url and call get', () => {
@@ -78,15 +78,15 @@ describe('Categories', () => {
     describe('getCategoryTags()', () => {
         beforeEach(() => {
             params = {
-                'realtime_start': '2000-10-11',
-                'realtime_end': '2000-10-15',
-                'limit': 100,
-                'offset': 10,
-                'order_by': 'series_id',
-                'sort_order': 'asc',
-                'tag_names': 'income;bea',
-                'tag_group_id': 'freq',
-                'search_text': 'us'
+                realtime_start: '2000-10-11',
+                realtime_end: '2000-10-15',
+                limit: 100,
+                offset: 10,
+                order_by: 'series_id',
+                sort_order: 'asc',
+                tag_names: 'income;bea',
+                tag_group_id: 'freq',
+                search_text: 'us'
             };
         });
         it('should set the set the correct url and call get', () => {
@@ -98,15 +98,15 @@ describe('Categories', () => {
     describe('getCategoryRelatedTags()', () => {
         beforeEach(() => {
             params = {
-                'realtime_start': '2000-10-11',
-                'realtime_end': '2000-10-15',
-                'limit': 100,
-                'offset': 10,
-                'order_by': 'series_id',
-                'sort_order': 'asc',
-                'tag_names': 'income;bea',
-                'tag_group_id': 'freq',
-                'search_text': 'us'
+                realtime_start: '2000-10-11',
+                realtime_end: '2000-10-15',
+                limit: 100,
+                offset: 10,
+                order_by: 'series_id',
+                sort_order: 'asc',
+                tag_names: 'income;bea',
+                tag_group_id: 'freq',
+                search_text: 'us'
             };
         });
         it('should set the set the correct url and call get', () => {

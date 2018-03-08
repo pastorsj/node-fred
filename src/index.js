@@ -1,4 +1,3 @@
-'use strict';
 import Series from './Api/series';
 import Categories from './Api/categories';
 import Releases from './Api/releases';
