@@ -1,4 +1,3 @@
-'use strict';
 import api from '../api';
 import SourcesBuilder from './Builders/sourcesBuilder';
 
@@ -28,14 +27,14 @@ class Sources {
                     .setSortOrder(params)
                     .getUrl();
 
-                api.get('sources?' + url)
+                api.get(`sources?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
@@ -58,14 +57,14 @@ class Sources {
                     .setRealTimeEnd(params)
                     .getUrl();
 
-                api.get('source?' + url)
+                api.get(`source?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
@@ -92,14 +91,14 @@ class Sources {
                     .setSortOrder(params)
                     .getUrl();
 
-                api.get('source/releases?' + url)
+                api.get(`source/releases?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });

@@ -1,6 +1,6 @@
 import chai, { expect } from 'chai';
 import sinonChai from 'sinon-chai';
-import Sources from '../../src/Api/sources.js';
+import Sources from '../../src/Api/sources';
 
 chai.use(sinonChai);
 
@@ -9,18 +9,18 @@ describe('Sources', () => {
     let params;
 
     beforeEach(() => {
-        sources = new Sources(process.env['FRED_API_KEY'], 'json');
+        sources = new Sources(process.env.FRED_API_KEY, 'json');
     });
 
     describe('getAllSources()', () => {
         beforeEach(() => {
             params = {
-                'realtime_start': '2000-10-11',
-                'realtime_end': '2000-10-15',
-                'limit': 100,
-                'offset': 10,
-                'order_by': 'source_id',
-                'sort_order': 'asc'
+                realtime_start: '2000-10-11',
+                realtime_end: '2000-10-15',
+                limit: 100,
+                offset: 10,
+                order_by: 'source_id',
+                sort_order: 'asc'
             };
         });
         it('should set the set the correct url and call get', async () => {
@@ -33,8 +33,8 @@ describe('Sources', () => {
     describe('getSource()', () => {
         beforeEach(() => {
             params = {
-                'realtime_start': '2000-10-11',
-                'realtime_end': '2000-10-15'
+                realtime_start: '2000-10-11',
+                realtime_end: '2000-10-15'
             };
         });
         it('should set the set the correct url and call get', async () => {
@@ -47,12 +47,12 @@ describe('Sources', () => {
     describe('getReleasesForSource()', () => {
         beforeEach(() => {
             params = {
-                'realtime_start': '2000-10-11',
-                'realtime_end': '2000-10-15',
-                'limit': 100,
-                'offset': 10,
-                'order_by': 'release_id',
-                'sort_order': 'asc'
+                realtime_start: '2000-10-11',
+                realtime_end: '2000-10-15',
+                limit: 100,
+                offset: 10,
+                order_by: 'release_id',
+                sort_order: 'asc'
             };
         });
         it('should set the set the correct url and call get', async () => {

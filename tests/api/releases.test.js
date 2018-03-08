@@ -1,6 +1,6 @@
 import chai, { expect } from 'chai';
 import sinonChai from 'sinon-chai';
-import Releases from '../../src/Api/releases.js';
+import Releases from '../../src/Api/releases';
 
 chai.use(sinonChai);
 
@@ -10,18 +10,18 @@ describe('Releases', () => {
     let params;
 
     beforeEach(() => {
-        categories = new Releases(process.env['FRED_API_KEY'], 'json');
+        categories = new Releases(process.env.FRED_API_KEY, 'json');
     });
 
     describe('getAllReleases()', () => {
         beforeEach(() => {
             params = {
-                'realtime_start': '2000-10-11',
-                'realtime_end': '2000-10-15',
-                'limit': 100,
-                'offset': 10,
-                'order_by': 'name',
-                'sort_order': 'asc'
+                realtime_start: '2000-10-11',
+                realtime_end: '2000-10-15',
+                limit: 100,
+                offset: 10,
+                order_by: 'name',
+                sort_order: 'asc'
             };
         });
         it('should set the set the correct url and call get', async () => {
@@ -34,13 +34,13 @@ describe('Releases', () => {
     describe('getAllReleasesWithDates()', () => {
         beforeEach(() => {
             params = {
-                'realtime_start': '2000-10-11',
-                'realtime_end': '2000-10-15',
-                'limit': 100,
-                'offset': 10,
-                'order_by': 'release_date',
-                'sort_order': 'asc',
-                'include_release_dates_with_no_data': 'true'
+                realtime_start: '2000-10-11',
+                realtime_end: '2000-10-15',
+                limit: 100,
+                offset: 10,
+                order_by: 'release_date',
+                sort_order: 'asc',
+                include_release_dates_with_no_data: 'true'
             };
         });
         it('should set the set the correct url and call get', async () => {
@@ -53,8 +53,8 @@ describe('Releases', () => {
     describe('getRelease()', () => {
         beforeEach(() => {
             params = {
-                'realtime_start': '2000-10-11',
-                'realtime_end': '2000-10-15'
+                realtime_start: '2000-10-11',
+                realtime_end: '2000-10-15'
             };
         });
         it('should set the set the correct url and call get', async () => {
@@ -67,13 +67,13 @@ describe('Releases', () => {
     describe('getReleaseWithDates()', () => {
         beforeEach(() => {
             params = {
-                'realtime_start': '2000-10-11',
-                'realtime_end': '2000-10-15',
-                'limit': 100,
-                'offset': 10,
-                'order_by': 'series_id',
-                'sort_order': 'asc',
-                'include_release_dates_with_no_data': 'true'
+                realtime_start: '2000-10-11',
+                realtime_end: '2000-10-15',
+                limit: 100,
+                offset: 10,
+                order_by: 'series_id',
+                sort_order: 'asc',
+                include_release_dates_with_no_data: 'true'
             };
         });
         it('should set the set the correct url and call get', async () => {
@@ -86,16 +86,16 @@ describe('Releases', () => {
     describe('getSeriesForRelease()', () => {
         beforeEach(() => {
             params = {
-                'realtime_start': '2000-10-11',
-                'realtime_end': '2000-10-15',
-                'limit': 100,
-                'offset': 10,
-                'order_by': 'series_id',
-                'sort_order': 'asc',
-                'filter_variable': 'frequency',
-                'filter_value': 'filter',
-                'tag_names': 'income;bea',
-                'exclude_tag_names': 'discontinued;annual'
+                realtime_start: '2000-10-11',
+                realtime_end: '2000-10-15',
+                limit: 100,
+                offset: 10,
+                order_by: 'series_id',
+                sort_order: 'asc',
+                filter_variable: 'frequency',
+                filter_value: 'filter',
+                tag_names: 'income;bea',
+                exclude_tag_names: 'discontinued;annual'
             };
         });
         it('should set the set the correct url and call get', async () => {
@@ -108,8 +108,8 @@ describe('Releases', () => {
     describe('getSourcesForRelease()', () => {
         beforeEach(() => {
             params = {
-                'realtime_start': '2000-10-11',
-                'realtime_end': '2000-10-15'
+                realtime_start: '2000-10-11',
+                realtime_end: '2000-10-15'
             };
         });
         it('should set the set the correct url and call get', async () => {
@@ -122,15 +122,15 @@ describe('Releases', () => {
     describe('getTagsForRelease()', () => {
         beforeEach(() => {
             params = {
-                'realtime_start': '2000-10-11',
-                'realtime_end': '2000-10-15',
-                'limit': 100,
-                'offset': 10,
-                'order_by': 'series_count',
-                'sort_order': 'asc',
-                'tag_names': 'income;bea',
-                'tag_group_id': 'freq',
-                'search_text': 'us'
+                realtime_start: '2000-10-11',
+                realtime_end: '2000-10-15',
+                limit: 100,
+                offset: 10,
+                order_by: 'series_count',
+                sort_order: 'asc',
+                tag_names: 'income;bea',
+                tag_group_id: 'freq',
+                search_text: 'us'
             };
         });
         it('should set the set the correct url and call get', async () => {
@@ -143,15 +143,15 @@ describe('Releases', () => {
     describe('getRelatedTagsForRelease()', () => {
         beforeEach(() => {
             params = {
-                'realtime_start': '2000-10-11',
-                'realtime_end': '2000-10-15',
-                'limit': 100,
-                'offset': 10,
-                'order_by': 'popularity',
-                'sort_order': 'asc',
-                'exclude_tag_names': 'discontinued;annual',
-                'tag_group_id': 'freq',
-                'search_text': 'us'
+                realtime_start: '2000-10-11',
+                realtime_end: '2000-10-15',
+                limit: 100,
+                offset: 10,
+                order_by: 'popularity',
+                sort_order: 'asc',
+                exclude_tag_names: 'discontinued;annual',
+                tag_group_id: 'freq',
+                search_text: 'us'
             };
         });
         it('should set the set the correct url and call get', async () => {
@@ -164,9 +164,9 @@ describe('Releases', () => {
     describe('getTableTreesForRelease()', () => {
         beforeEach(() => {
             params = {
-                'element_id': '12886',
-                'include_observation_values': 'false',
-                'observation_date': '2000-10-15'
+                element_id: '12886',
+                include_observation_values: 'false',
+                observation_date: '2000-10-15'
             };
         });
         it('should set the set the correct url and call get', async () => {

@@ -1,9 +1,7 @@
-'use strict';
 import api from '../api';
 import ReleaseBuilder from './Builders/releaseBuilder';
 
 class Releases {
-
     constructor(apiKey, returnType) {
         this.apiKey = apiKey;
         this.returnType = returnType;
@@ -29,14 +27,14 @@ class Releases {
                     .setSortOrder(params)
                     .getUrl();
 
-                api.get('releases?' + url)
+                api.get(`releases?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
@@ -62,14 +60,14 @@ class Releases {
                     .setIncludeRelatedDatesWithNoData(params)
                     .getUrl();
 
-                api.get('releases/dates?' + url)
+                api.get(`releases/dates?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
@@ -92,14 +90,14 @@ class Releases {
                     .setRealTimeEnd(params)
                     .getUrl();
 
-                api.get('release?' + url)
+                api.get(`release?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
@@ -126,14 +124,14 @@ class Releases {
                     .setIncludeRelatedDatesWithNoData(params)
                     .getUrl();
 
-                api.get('release/dates?' + url)
+                api.get(`release/dates?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
@@ -164,14 +162,14 @@ class Releases {
                     .setExcludeTagNames(params)
                     .getUrl();
 
-                api.get('release/series?' + url)
+                api.get(`release/series?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
@@ -194,14 +192,14 @@ class Releases {
                     .setRealTimeEnd(params)
                     .getUrl();
 
-                api.get('release/sources?' + url)
+                api.get(`release/sources?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
@@ -231,14 +229,14 @@ class Releases {
                     .setSearchText(params)
                     .getUrl();
 
-                api.get('release/tags?' + url)
+                api.get(`release/tags?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
@@ -249,7 +247,8 @@ class Releases {
      * @param {Number} releaseId
      * @param {String} tagNames
      * @param {Object} params
-     * @returns {Promise} Resolves with the related FRED tags for one or more FRED tags within a release or errors out
+     * @returns {Promise} Resolves with the related FRED tags for
+     * one or more FRED tags within a release or errors out
      */
     getRelatedTagsForRelease(releaseId, tagNames, params = {}) {
         return new Promise((resolve, reject) => {
@@ -264,20 +263,20 @@ class Releases {
                     .setOffset(params)
                     .setSortOrder(params)
                     .setOrderBy(params)
-                    .setTagNames({'tag_names': tagNames})
+                    .setTagNames({ tag_names: tagNames })
                     .setExcludeTagNames(params)
                     .setTagGroupId(params)
                     .setSearchText(params)
                     .getUrl();
 
-                api.get('release/related_tags?' + url)
+                api.get(`release/related_tags?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
@@ -287,7 +286,8 @@ class Releases {
      * Gets release table trees for a given release.
      * @param {Number} releaseId
      * @param {Object} params
-     * @returns {Promise} Resolves with the release table trees for a given release or errors out
+     * @returns {Promise} Resolves with the release table
+     * trees for a given release or errors out
      */
     getTableTreesForRelease(releaseId, params = {}) {
         return new Promise((resolve, reject) => {
@@ -301,19 +301,18 @@ class Releases {
                     .setObservationDate(params)
                     .getUrl();
 
-                api.get('release/tables?' + url)
+                api.get(`release/tables?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
     }
-
 }
 
 export default Releases;

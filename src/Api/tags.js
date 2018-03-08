@@ -1,4 +1,3 @@
-'use strict';
 import api from '../api';
 import TagsBuilder from './Builders/tagsBuilder';
 
@@ -31,14 +30,14 @@ class Tags {
                     .setSearchText(params)
                     .getUrl();
 
-                api.get('tags?' + url)
+                api.get(`tags?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
@@ -68,14 +67,14 @@ class Tags {
                     .setSearchText(params)
                     .getUrl();
 
-                api.get('related_tags?' + url)
+                api.get(`related_tags?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
@@ -99,18 +98,18 @@ class Tags {
                     .setOffset(params)
                     .setOrderBy(params)
                     .setSortOrder(params)
-                    .setTagNames({'tag_names': tagNames})
+                    .setTagNames({ tag_names: tagNames })
                     .setExcludeTagNames(params)
                     .getUrl();
 
-                api.get('tags/series?' + url)
+                api.get(`tags/series?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });

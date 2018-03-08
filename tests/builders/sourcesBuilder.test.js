@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import SourcesBuilder from '../../src/Api/Builders/sourcesBuilder.js';
+import SourcesBuilder from '../../src/Api/Builders/sourcesBuilder';
 
 describe('SourcesBuilder', () => {
     let builder;

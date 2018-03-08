@@ -1,4 +1,3 @@
-'use strict';
 import api from '../api';
 import SeriesBuilder from './Builders/seriesBuilder';
 
@@ -26,14 +25,14 @@ class Series {
                     .setRealTimeEnd(params)
                     .getUrl();
 
-                api.get('series?' + url)
+                api.get(`series?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
@@ -56,14 +55,14 @@ class Series {
                     .setRealTimeEnd(params)
                     .getUrl();
 
-                api.get('series/categories?' + url)
+                api.get(`series/categories?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
@@ -73,7 +72,8 @@ class Series {
      * Gets the observations or data values for an economic data series.
      * @param {Number} seriesId
      * @param {Object} params
-     * @returns {Promise} Resolves with the observations or data values for an economic data series or errors out
+     * @returns {Promise} Resolves with the observations or data values
+     * for an economic data series or errors out
      */
     getObservationsForSeries(seriesId, params = {}) {
         return new Promise((resolve, reject) => {
@@ -96,14 +96,14 @@ class Series {
                     .setVintageDate(params)
                     .getUrl();
 
-                api.get('series/observations?' + url)
+                api.get(`series/observations?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
@@ -126,14 +126,14 @@ class Series {
                     .setRealTimeEnd(params)
                     .getUrl();
 
-                api.get('series/release?' + url)
+                api.get(`series/release?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
@@ -165,14 +165,14 @@ class Series {
                     .setSearchType(params)
                     .getUrl();
 
-                api.get('series/search?' + url)
+                api.get(`series/search?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
@@ -203,14 +203,14 @@ class Series {
                     .setSeriesSearchText(seriesSearchText)
                     .getUrl();
 
-                api.get('series/search/tags?' + url)
+                api.get(`series/search/tags?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
@@ -242,14 +242,14 @@ class Series {
                     .setSeriesSearchText(seriesSearchText)
                     .getUrl();
 
-                api.get('series/search/related_tags?' + url)
+                api.get(`series/search/related_tags?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
@@ -274,14 +274,14 @@ class Series {
                     .setSortOrder(params)
                     .getUrl();
 
-                api.get('series/tags?' + url)
+                api.get(`series/tags?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
@@ -306,21 +306,22 @@ class Series {
                     .setFilterValue(params)
                     .getUrl();
 
-                api.get('series/updates?' + url)
+                api.get(`series/updates?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
     }
 
     /**
-     * Gets the dates in history when a series' data values were revised or new data values were released.
+     * Gets the dates in history when a series' data values were
+     * revised or new data values were released.
      * @param {Number} seriesId
      * @param {Object} params
      * @returns {Promise} Resolves with the dates in history when a
@@ -340,19 +341,18 @@ class Series {
                     .setSortOrder(params)
                     .getUrl();
 
-                api.get('series/vintagedates?' + url)
+                api.get(`series/vintagedates?${url}`)
                     .then((res) => {
                         resolve(res.data);
                     })
                     .catch((err) => {
                         reject(err.response.data);
                     });
-            } catch(e) {
+            } catch (e) {
                 reject(e);
             }
         });
     }
-
 }
 
 export default Series;
