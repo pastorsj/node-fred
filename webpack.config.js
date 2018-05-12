@@ -39,13 +39,7 @@ const config = {
     },
     plugins: [],
     externals: {
-        axios: 'axios',
-        lodash: {
-            commonjs: 'lodash',
-            commonjs2: 'lodash',
-            amd: '_',
-            root: '_'
-        }
+        axios: 'axios'
     }
 };
 
