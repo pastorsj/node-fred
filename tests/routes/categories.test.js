@@ -12,7 +12,7 @@ describe('Categories', () => {
     let sandbox;
 
     beforeEach(() => {
-        sandbox = sinon.sandbox.create();
+        sandbox = sinon.createSandbox();
         categories = new Categories('testkey', 'json');
         sandbox.spy(api, 'get');
     });
