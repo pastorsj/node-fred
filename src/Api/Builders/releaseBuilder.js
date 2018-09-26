@@ -35,7 +35,8 @@ class ReleaseBuilder extends Builder {
 
         if (!includeObservationValues) {
             return this;
-        } else if (includeObservationValues !== 'true' && includeObservationValues !== 'false') {
+        }
+        if (includeObservationValues !== 'true' && includeObservationValues !== 'false') {
             throw new Error('The include_observation_values field must either be true or false');
         }
         return this.addAttribute(`include_observation_values=${includeObservationValues}`);
@@ -46,7 +47,8 @@ class ReleaseBuilder extends Builder {
 
         if (!observationDate) {
             return this;
-        } else if (!this.isValidDate(observationDate)) {
+        }
+        if (!this.isValidDate(observationDate)) {
             throw new Error('The format of this date is not valid. Please format the date like this: YYYY-MM-DD');
         }
         return this.addAttribute(`observation_date=${observationDate}`);
