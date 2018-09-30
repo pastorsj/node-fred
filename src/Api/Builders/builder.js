@@ -27,7 +27,8 @@ class Builder {
 
         if (!realTimeStart) {
             return this;
-        } else if (!this.isValidDate(realTimeStart)) {
+        }
+        if (!this.isValidDate(realTimeStart)) {
             throw new Error('The format of this date is not valid. Please format the date like this: YYYY-MM-DD');
         }
         return this.addAttribute(`realtime_start=${realTimeStart}`);
@@ -38,7 +39,8 @@ class Builder {
 
         if (!realTimeEnd) {
             return this;
-        } else if (!this.isValidDate(realTimeEnd)) {
+        }
+        if (!this.isValidDate(realTimeEnd)) {
             throw new Error('The format of this date is not valid. Please format the date like this: YYYY-MM-DD');
         }
         return this.addAttribute(`realtime_end=${realTimeEnd}`);
@@ -49,7 +51,8 @@ class Builder {
 
         if (!limit) {
             return this;
-        } else if (limit < 0 || limit > 1000) {
+        }
+        if (limit < 0 || limit > 1000) {
             throw new Error('Limit must be between 0 and 1000');
         }
         return this.addAttribute(`limit=${limit}`);
@@ -60,7 +63,8 @@ class Builder {
 
         if (!offset) {
             return this;
-        } else if (offset < 0) {
+        }
+        if (offset < 0) {
             throw new Error('Offset must be greater than 0');
         }
         return this.addAttribute(`offset=${offset}`);

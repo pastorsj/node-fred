@@ -10,7 +10,8 @@ class SeriesBuilder extends Builder {
 
         if (!observationStart) {
             return this;
-        } else if (!this.isValidDate(observationStart)) {
+        }
+        if (!this.isValidDate(observationStart)) {
             throw new Error('The format of this date is not valid. Please format the date like this: YYYY-MM-DD');
         }
         return this.addAttribute(`observation_start=${observationStart}`);
@@ -21,7 +22,8 @@ class SeriesBuilder extends Builder {
 
         if (!observationEnd) {
             return this;
-        } else if (!this.isValidDate(observationEnd)) {
+        }
+        if (!this.isValidDate(observationEnd)) {
             throw new Error('The format of this date is not valid. Please format the date like this: YYYY-MM-DD');
         }
         return this.addAttribute(`observation_end=${observationEnd}`);
