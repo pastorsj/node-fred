@@ -5,7 +5,6 @@ class Categories {
     constructor(apiKey, returnType) {
         this.apiKey = apiKey;
         this.returnType = returnType;
-        this.categoryBuilder = new CategoryBuilder();
     }
 
     /**
@@ -16,7 +15,7 @@ class Categories {
     getCategory(categoryId) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.categoryBuilder
+                const url = new CategoryBuilder()
                     .setAPIKey(this.apiKey)
                     .setCategoryId(categoryId)
                     .setFileType(this.returnType)
@@ -44,7 +43,7 @@ class Categories {
     getChildCategories(categoryId, params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.categoryBuilder
+                const url = new CategoryBuilder()
                     .setAPIKey(this.apiKey)
                     .setCategoryId(categoryId)
                     .setFileType(this.returnType)
@@ -74,7 +73,7 @@ class Categories {
     getRelatedCategories(categoryId, params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.categoryBuilder
+                const url = new CategoryBuilder()
                     .setAPIKey(this.apiKey)
                     .setCategoryId(categoryId)
                     .setFileType(this.returnType)
@@ -104,7 +103,7 @@ class Categories {
     getCategorySeries(categoryId, params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.categoryBuilder
+                const url = new CategoryBuilder()
                     .setAPIKey(this.apiKey)
                     .setCategoryId(categoryId)
                     .setFileType(this.returnType)
@@ -142,7 +141,7 @@ class Categories {
     getCategoryTags(categoryId, params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.categoryBuilder
+                const url = new CategoryBuilder()
                     .setAPIKey(this.apiKey)
                     .setCategoryId(categoryId)
                     .setFileType(this.returnType)
@@ -179,7 +178,7 @@ class Categories {
     getCategoryRelatedTags(categoryId, params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.categoryBuilder
+                const url = new CategoryBuilder()
                     .setAPIKey(this.apiKey)
                     .setCategoryId(categoryId)
                     .setFileType(this.returnType)
