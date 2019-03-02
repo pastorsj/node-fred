@@ -1,6 +1,6 @@
 {
     "name": "node-fred",
-    "version": "2.1.1",
+    "version": "2.1.2",
     "description": "Another nodejs wrapper for the st louis fed",
     "main": "lib/index.js",
     "types": "index.d.ts",
