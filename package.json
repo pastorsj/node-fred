@@ -1,60 +1,60 @@
 {
-  "name": "node-fred",
-  "version": "2.1.1",
-  "description": "Another nodejs wrapper for the st louis fed",
-  "main": "lib/index.js",
-  "types": "index.d.ts",
-  "scripts": {
-    "build": "webpack --optimize-minimize --mode production",
-    "parcel": "parcel src/index.js",
-    "parcel-build": "parcel build -d lib/ src/index.js",
-    "dev": "webpack --progress --colors --watch --mode production",
-    "lint": "eslint src/* tests/*",
-    "autofix": "eslint --fix src/* tests/*",
-    "test": "mocha --compilers js:@babel/register --colors --timeout 5000 ./tests/**/*.test.js",
-    "test:watch": "mocha --compilers js:@babel/register --colors --timeout 5000 -w ./tests/**/*.test.js",
-    "cover": "istanbul cover node_modules/mocha/bin/_mocha -- --compilers js:@babel/register --colors --timeout 5000 --reporter dot ./tests/**/*.test.js",
-    "cover:coveralls": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --compilers js:@babel/register --colors --timeout 5000 --reporter spec ./tests/**/*.test.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pastorsj/node-fred.git"
-  },
-  "keywords": [
-    "fred2",
-    "fred",
-    "nodejs"
-  ],
-  "author": "pastorsj",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/pastorsj/node-fred/issues"
-  },
-  "homepage": "https://github.com/pastorsj/node-fred#readme",
-  "dependencies": {
-    "axios": "^0.18.0",
-    "@babel/runtime": "^7.0.0"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.1.0",
-    "@babel/plugin-transform-runtime": "^7.1.0",
-    "@babel/preset-env": "^7.1.0",
-    "@babel/register": "^7.0.0",
-    "babel-cli": "^6.26.0",
-    "babel-loader": "^8.0.2",
-    "babel-eslint": "10.0.0",
-    "chai": "^4.1.2",
-    "coveralls": "^3.0.2",
-    "eslint": "^5.6.0",
-    "eslint-config-airbnb-base": "^13.1.0",
-    "eslint-loader": "^2.1.1",
-    "eslint-plugin-import": "^2.14.0",
-    "istanbul": "^1.1.0-alpha.1",
-    "mocha": "^5.2.0",
-    "parcel-bundler": "^1.10.0",
-    "sinon": "^6.3.4",
-    "sinon-chai": "^3.2.0",
-    "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.1"
-  }
+    "name": "node-fred",
+    "version": "2.1.1",
+    "description": "Another nodejs wrapper for the st louis fed",
+    "main": "lib/index.js",
+    "types": "index.d.ts",
+    "scripts": {
+        "build": "webpack --optimize-minimize --mode production",
+        "parcel": "parcel src/index.js",
+        "parcel-build": "parcel build -d lib/ src/index.js",
+        "dev": "webpack --progress --colors --watch --mode production",
+        "lint": "eslint src/* tests/*",
+        "autofix": "eslint --fix src/* tests/*",
+        "test": "mocha --require @babel/register --colors --timeout 5000 ./tests/**/*.test.js",
+        "test:watch": "mocha --require @babel/register --colors --timeout 5000 -w ./tests/**/*.test.js",
+        "cover": "istanbul cover node_modules/mocha/bin/_mocha -- --require @babel/register --colors --timeout 5000 --reporter dot ./tests/**/*.test.js",
+        "cover:coveralls": "istanbul cover node_modules/mocha/bin/_mocha --report lcovonly -- --require @babel/register --colors --timeout 5000 --reporter spec ./tests/**/*.test.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/pastorsj/node-fred.git"
+    },
+    "keywords": [
+        "fred2",
+        "fred",
+        "nodejs"
+    ],
+    "author": "pastorsj",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/pastorsj/node-fred/issues"
+    },
+    "homepage": "https://github.com/pastorsj/node-fred#readme",
+    "dependencies": {
+        "axios": "^0.18.0",
+        "@babel/runtime": "^7.3.4"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.3.4",
+        "@babel/plugin-transform-runtime": "^7.3.4",
+        "@babel/preset-env": "^7.3.4",
+        "@babel/register": "^7.0.0",
+        "babel-cli": "^6.26.0",
+        "babel-loader": "^8.0.5",
+        "babel-eslint": "10.0.1",
+        "chai": "^4.2.0",
+        "coveralls": "^3.0.3",
+        "eslint": "^5.15.0",
+        "eslint-config-airbnb-base": "^13.1.0",
+        "eslint-loader": "^2.1.2",
+        "eslint-plugin-import": "^2.16.0",
+        "istanbul": "^1.1.0-alpha.1",
+        "mocha": "^6.0.2",
+        "parcel-bundler": "^1.11.0",
+        "sinon": "^7.2.6",
+        "sinon-chai": "^3.3.0",
+        "webpack": "^4.29.6",
+        "webpack-cli": "^3.2.3"
+    }
 }

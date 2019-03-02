@@ -3,7 +3,7 @@
 
 const path = require('path');
 
-let libraryName = 'node-fred';
+const libraryName = 'node-fred';
 
 const config = {
     entry: __dirname + '/src/index.js',
