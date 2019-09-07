@@ -5,7 +5,6 @@ class Sources {
     constructor(apiKey, returnType) {
         this.apiKey = apiKey;
         this.returnType = returnType;
-        this.sourcesBuilder = new SourcesBuilder();
     }
 
     /**
@@ -16,7 +15,7 @@ class Sources {
     getAllSources(params) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.sourcesBuilder
+                const url = new SourcesBuilder()
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setRealTimeStart(params)
@@ -49,7 +48,7 @@ class Sources {
     getSource(sourceId, params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.sourcesBuilder
+                const url = new SourcesBuilder()
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setSourceId(sourceId)
@@ -79,7 +78,7 @@ class Sources {
     getReleasesForSource(sourceId, params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.sourcesBuilder
+                const url = new SourcesBuilder()
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setSourceId(sourceId)

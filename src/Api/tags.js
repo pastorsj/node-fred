@@ -5,7 +5,6 @@ class Tags {
     constructor(apiKey, returnType) {
         this.apiKey = apiKey;
         this.returnType = returnType;
-        this.tagsBuilder = new TagsBuilder();
     }
 
     /**
@@ -16,7 +15,7 @@ class Tags {
     getAllTags(params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.tagsBuilder
+                const url = new TagsBuilder()
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setRealTimeStart(params)
@@ -52,7 +51,7 @@ class Tags {
     getAllRelatedTags(tagNames, params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.tagsBuilder
+                const url = new TagsBuilder()
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setRealTimeStart(params)
@@ -89,7 +88,7 @@ class Tags {
     getAllSeriesMatchingTags(tagNames, params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.tagsBuilder
+                const url = new TagsBuilder()
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setRealTimeStart(params)

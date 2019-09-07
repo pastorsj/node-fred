@@ -5,7 +5,6 @@ class Series {
     constructor(apiKey, returnType) {
         this.apiKey = apiKey;
         this.returnType = returnType;
-        this.seriesBuilder = new SeriesBuilder();
     }
 
     /**
@@ -17,7 +16,7 @@ class Series {
     getSeries(seriesId, params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.seriesBuilder
+                const url = new SeriesBuilder()
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setSeriesId(seriesId)
@@ -47,7 +46,7 @@ class Series {
     getCategoriesForSeries(seriesId, params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.seriesBuilder
+                const url = new SeriesBuilder()
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setSeriesId(seriesId)
@@ -78,7 +77,7 @@ class Series {
     getObservationsForSeries(seriesId, params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.seriesBuilder
+                const url = new SeriesBuilder()
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setSeriesId(seriesId)
@@ -118,7 +117,7 @@ class Series {
     getReleaseForSeries(seriesId, params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.seriesBuilder
+                const url = new SeriesBuilder()
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setSeriesId(seriesId)
@@ -148,7 +147,7 @@ class Series {
     getSeriesThatMatchesSearch(searchText, params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.seriesBuilder
+                const url = new SeriesBuilder()
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setSearchText(searchText)
@@ -188,7 +187,7 @@ class Series {
     getTagsForSeriesSearch(seriesSearchText, params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.seriesBuilder
+                const url = new SeriesBuilder()
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setRealTimeStart(params)
@@ -226,7 +225,7 @@ class Series {
     getRelatedTagsForSeriesSearch(seriesSearchText, params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.seriesBuilder
+                const url = new SeriesBuilder()
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setRealTimeStart(params)
@@ -264,7 +263,7 @@ class Series {
     getTagsForSeries(seriesId, params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.seriesBuilder
+                const url = new SeriesBuilder()
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setSeriesId(seriesId)
@@ -296,7 +295,7 @@ class Series {
     getUpdatedSeries(params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.seriesBuilder
+                const url = new SeriesBuilder()
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setRealTimeStart(params)
@@ -330,7 +329,7 @@ class Series {
     getVintageDatesSeries(seriesId, params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.seriesBuilder
+                const url = new SeriesBuilder()
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setSeriesId(seriesId)

@@ -5,7 +5,6 @@ class Releases {
     constructor(apiKey, returnType) {
         this.apiKey = apiKey;
         this.returnType = returnType;
-        this.releaseBuilder = new ReleaseBuilder();
     }
 
     /**
@@ -16,7 +15,7 @@ class Releases {
     getAllReleases(params) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.releaseBuilder
+                const url = new ReleaseBuilder()
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setRealTimeStart(params)
@@ -48,7 +47,7 @@ class Releases {
     getAllReleasesWithDates(params) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.releaseBuilder
+                const url = new ReleaseBuilder()
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setRealTimeStart(params)
@@ -82,7 +81,7 @@ class Releases {
     getRelease(releaseId, params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.releaseBuilder
+                const url = new ReleaseBuilder()
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setReleaseId(releaseId)
@@ -112,7 +111,7 @@ class Releases {
     getReleaseWithDates(releaseId, params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.releaseBuilder
+                const url = new ReleaseBuilder()
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setReleaseId(releaseId)
@@ -146,7 +145,7 @@ class Releases {
     getSeriesForRelease(releaseId, params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.releaseBuilder
+                const url = new ReleaseBuilder()
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setReleaseId(releaseId)
@@ -184,7 +183,7 @@ class Releases {
     getSourcesForRelease(releaseId, params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.releaseBuilder
+                const url = new ReleaseBuilder()
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setReleaseId(releaseId)
@@ -214,7 +213,7 @@ class Releases {
     getTagsForRelease(releaseId, params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.releaseBuilder
+                const url = new ReleaseBuilder()
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setReleaseId(releaseId)
@@ -253,7 +252,7 @@ class Releases {
     getRelatedTagsForRelease(releaseId, tagNames, params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.releaseBuilder
+                const url = new ReleaseBuilder()
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setReleaseId(releaseId)
@@ -292,7 +291,7 @@ class Releases {
     getTableTreesForRelease(releaseId, params = {}) {
         return new Promise((resolve, reject) => {
             try {
-                const url = this.releaseBuilder
+                const url = new ReleaseBuilder()
                     .setAPIKey(this.apiKey)
                     .setFileType(this.returnType)
                     .setReleaseId(releaseId)
