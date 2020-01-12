@@ -1,18 +1,17 @@
-'use strict';
-/* global __dirname, require, module */
-
 const path = require('path');
 
 const libraryName = 'node-fred';
 
 const config = {
-    entry: __dirname + '/src/index.js',
+    entry: path.join(__dirname, 'src', 'index.js'),
     devtool: 'source-map',
+    target: 'node',
     output: {
-        path: __dirname + '/lib',
+        path: path.join(__dirname, 'lib'),
         filename: 'index.js',
         library: libraryName,
         libraryTarget: 'umd',
+        libraryExport: 'default',
         umdNamedDefine: true
     },
     module: {
