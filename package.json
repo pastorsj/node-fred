@@ -52,7 +52,7 @@
         "istanbul": "^1.1.0-alpha.1",
         "mocha": "^7.0.0",
         "parcel-bundler": "^1.12.3",
-        "sinon": "^8.0.4",
+        "sinon": "^9.0.0",
         "sinon-chai": "^3.4.0",
         "webpack": "^4.41.5",
         "webpack-cli": "^3.3.10"
