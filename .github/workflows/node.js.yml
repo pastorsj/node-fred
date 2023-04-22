@@ -32,4 +32,5 @@ jobs:
             - run: |
                   touch .env
                   echo FRED_API_KEY=$FRED_API_KEY >> .env
+                  cat .env
                   npm test
