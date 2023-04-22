@@ -32,7 +32,7 @@ class SeriesBuilder extends Builder {
     setUnits(params) {
         const { units } = params;
 
-        if (units === '') {
+        if (!units || units === '') {
             return this;
         }
         return this.addAttribute(`units=${units}`);
