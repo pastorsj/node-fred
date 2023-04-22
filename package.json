@@ -5,7 +5,7 @@
     "main": "lib/index.js",
     "types": "index.d.ts",
     "scripts": {
-        "build": "webpack --optimize-minimize --mode production",
+        "build": "webpack --mode production",
         "dev": "webpack --progress --colors --watch --mode production",
         "lint": "eslint src/* tests/*",
         "autofix": "eslint --fix src/* tests/*",
