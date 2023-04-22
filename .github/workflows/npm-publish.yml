@@ -17,6 +17,8 @@ jobs:
                   node-version: 16
             - run: npm ci
             - run: npm test
+              env:
+                  FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
 
     publish-npm:
         needs: build
