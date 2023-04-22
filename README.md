@@ -1,6 +1,6 @@
 # node-fred &middot;
 
-![build status](https://github.com/pastorsj/node-fred/actions/workflows/node.js.yml/badge.svg)
+[![build status](https://github.com/pastorsj/node-fred/actions/workflows/node.js.yml/badge.svg)](https://github.com/pastorsj/node-fred/actions)
 [![npm version](https://img.shields.io/npm/v/node-fred.svg?style=flat)](https://www.npmjs.com/package/node-fred)
 [![Coverage Status](https://coveralls.io/repos/github/pastorsj/node-fred/badge.svg?branch=master)](https://coveralls.io/github/pastorsj/node-fred?branch=master)
 
