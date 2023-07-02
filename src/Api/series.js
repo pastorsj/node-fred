@@ -9,7 +9,7 @@ class Series {
 
     /**
      * Gets an economic data series.
-     * @param {Number} seriesId
+     * @param {String} seriesId
      * @param {Object} params
      * @returns {Promise} Resolves with an economic data series or errors out
      */
@@ -39,7 +39,7 @@ class Series {
 
     /**
      * Gets the categories for an economic data series.
-     * @param {Number} seriesId
+     * @param {String} seriesId
      * @param {Object} params
      * @returns {Promise} Resolves with the categories for an economic data series or errors out
      */
@@ -69,7 +69,7 @@ class Series {
 
     /**
      * Gets the observations or data values for an economic data series.
-     * @param {Number} seriesId
+     * @param {String} seriesId
      * @param {Object} params
      * @returns {Promise} Resolves with the observations or data values
      * for an economic data series or errors out
@@ -110,7 +110,7 @@ class Series {
 
     /**
      * Gets the release for an economic data series.
-     * @param {Number} seriesId
+     * @param {String} seriesId
      * @param {Object} params
      * @returns {Promise} Resolves with the release for an economic data series or errors out
      */
@@ -179,7 +179,7 @@ class Series {
 
     /**
      * Gets the tags for a series search.
-     * @param {Number} seriesId
+     * @param {String} seriesId
      * @param {String} seriesSearchText
      * @param {Object} params
      * @returns {Promise} Resolves with the tags for a series search or errors out
@@ -217,7 +217,7 @@ class Series {
 
     /**
      * Gets the related tags for a series search.
-     * @param {Number} seriesId
+     * @param {String} seriesId
      * @param {String} seriesSearchText
      * @param {Object} params
      * @returns {Promise} Resolves with the related tags for a series search or errors out
@@ -256,7 +256,7 @@ class Series {
 
     /**
      * Gets the tags for an economic data series.
-     * @param {Number} seriesId
+     * @param {String} seriesId
      * @param {Object} params
      * @returns {Promise} Resolves with the tags for an economic data series or errors out
      */
@@ -321,7 +321,7 @@ class Series {
     /**
      * Gets the dates in history when a series' data values were
      * revised or new data values were released.
-     * @param {Number} seriesId
+     * @param {String} seriesId
      * @param {Object} params
      * @returns {Promise} Resolves with the dates in history when a
      * series' data values were revised or new data values were released or errors out
