@@ -40,7 +40,7 @@ declare namespace FredAPI {
     class Series {
         getSeries(seriesId: string, params?: object): Promise<SeriesSet>;
         getCategoriesForSeries(seriesId: string, params?: object): Promise<CategorySet>;
-        getObservationsForSeries(seriesId: string, params?: object): Promise<ObservationInfo>;
+        getObservationsForSeries(seriesId: string, params?: object): Promise<ObservationSet>;
         getReleaseForSeries(seriesId: string, params?: object): Promise<ReleaseSet>;
         getSeriesThatMatchesSearch(searchText: string, params?: object): Promise<SeriesInfo>;
         getTagsForSeriesSearch(seriesSearchText: string, params?: object): Promise<RelatedTagsInfo>;
@@ -199,16 +199,16 @@ declare namespace FredAPI {
         series: SeriesInfo[];
     }
 
-    interface ObservationInfo extends StandardInfo {
+    interface ObservationSet extends StandardInfo {
         observation_start: string;
         observation_end: string;
         units: string;
         output_type: number;
         file_type: string;
-        observations: ObservationSet;
+        observations: ObservationInfo[];
     }
 
-    interface ObservationSet extends TimeInfo {
+    interface ObservationInfo extends TimeInfo {
         date: string;
         value: string;
     }
