@@ -1,5 +1,5 @@
-import api from '../api';
-import TagsBuilder from './Builders/tagsBuilder';
+import api from '../api.js';
+import TagsBuilder from './Builders/tagsBuilder.js';
 
 class Tags {
     constructor(apiKey, returnType) {

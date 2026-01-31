@@ -1,8 +1,8 @@
-import Series from './Api/series';
-import Categories from './Api/categories';
-import Releases from './Api/releases';
-import Sources from './Api/sources';
-import Tags from './Api/tags';
+import Series from './Api/series.js';
+import Categories from './Api/categories.js';
+import Releases from './Api/releases.js';
+import Sources from './Api/sources.js';
+import Tags from './Api/tags.js';
 
 class Fred {
     // Return type is either xml or json, defaults to json

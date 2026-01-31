@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import SeriesBuilder from '../../src/Api/Builders/seriesBuilder';
+import SeriesBuilder from '../../src/Api/Builders/seriesBuilder.js';
 
 describe('SeriesBuilder', () => {
     let builder;
@@ -136,6 +136,30 @@ describe('SeriesBuilder', () => {
         });
         it('should return the original value of this', () => {
             const ret = builder.setTagSearchText({});
+
+            expect(ret).to.be.eql(builder);
+        });
+    });
+
+    describe('setStartTime()', () => {
+        it('should set the start_time attribute', () => {
+            builder.setStartTime({ start_time: '0600' });
+            expect(builder.url).to.be.eql('start_time=0600');
+        });
+        it('should return the original value of this', () => {
+            const ret = builder.setStartTime({});
+
+            expect(ret).to.be.eql(builder);
+        });
+    });
+
+    describe('setEndTime()', () => {
+        it('should set the end_time attribute', () => {
+            builder.setEndTime({ end_time: '1200' });
+            expect(builder.url).to.be.eql('end_time=1200');
+        });
+        it('should return the original value of this', () => {
+            const ret = builder.setEndTime({});
 
             expect(ret).to.be.eql(builder);
         });

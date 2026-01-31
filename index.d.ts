@@ -35,6 +35,8 @@ declare namespace FredAPI {
         getTagsForRelease(releaseId: number, params?: object): Promise<RelatedTagsInfo>;
         getRelatedTagsForRelease(releaseId: number, tagNames: string, params?: object): Promise<RelatedTagsInfo>;
         getTableTreesForRelease(releaseId: number, params?: object): Promise<TableTreesInfo>;
+        getObservationsForRelease(releaseId: number, params?: V2ObservationsParams): Promise<V2ObservationsResponse>;
+        getAllObservationsForRelease(releaseId: number, params?: V2AllObservationsParams): Promise<V2AllObservationsResponse>;
     }
 
     class Series {
@@ -183,6 +185,64 @@ declare namespace FredAPI {
     interface ReleaseWithDate extends BasicRelease {
         release_id: number;
         date: string;
+    }
+
+    /**
+     *  -----------------------------------------------------
+     *                  V2 API Typings
+     *  -----------------------------------------------------
+     */
+
+    interface V2ObservationsParams {
+        format?: 'json' | 'csv';
+        limit?: number;
+        next_cursor?: string;
+    }
+
+    interface V2AllObservationsParams {
+        limit?: number;
+        maxObservations?: number;
+    }
+
+    interface V2ObservationsResponse {
+        has_more: boolean;
+        next_cursor: string;
+        release: V2ReleaseInfo;
+        series: V2SeriesWithObservations[];
+    }
+
+    interface V2AllObservationsResponse {
+        release: V2ReleaseInfo;
+        series: V2SeriesWithObservations[];
+        total_observations: number;
+    }
+
+    interface V2ReleaseInfo {
+        release_id: number;
+        name: string;
+        url: string;
+        sources: V2SourceInfo[];
+    }
+
+    interface V2SourceInfo {
+        name: string;
+        url: string;
+    }
+
+    interface V2SeriesWithObservations {
+        series_id: string;
+        title: string;
+        frequency: string;
+        units: string;
+        seasonal_adjustment: string;
+        last_updated: string;
+        copyright_id: string;
+        observations: V2Observation[];
+    }
+
+    interface V2Observation {
+        date: string;
+        value: string;
     }
 
     /**

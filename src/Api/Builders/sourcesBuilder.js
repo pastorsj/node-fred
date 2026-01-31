@@ -1,4 +1,4 @@
-import Builder from './builder';
+import Builder from './builder.js';
 
 class SourcesBuilder extends Builder {
     setSourceId(sourceId) {
