@@ -1,8 +1,9 @@
-import chai, { expect } from 'chai';
+import * as chai from 'chai';
+import { expect } from 'chai';
 import sinonChai from 'sinon-chai';
 import sinon from 'sinon';
-import Sources from '../../src/Api/sources';
-import api from '../../src/api';
+import Sources from '../../src/Api/sources.js';
+import api from '../../src/api.js';
 
 chai.use(sinonChai);
 

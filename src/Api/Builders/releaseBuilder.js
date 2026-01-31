@@ -1,4 +1,4 @@
-import Builder from './builder';
+import Builder from './builder.js';
 
 class ReleaseBuilder extends Builder {
     setReleaseId(releaseId) {
@@ -52,6 +52,36 @@ class ReleaseBuilder extends Builder {
             throw new Error('The format of this date is not valid. Please format the date like this: YYYY-MM-DD');
         }
         return this.addAttribute(`observation_date=${observationDate}`);
+    }
+
+    setNextCursor(params) {
+        const nextCursor = params.next_cursor;
+
+        if (!nextCursor) {
+            return this;
+        }
+        return this.addAttribute(`next_cursor=${nextCursor}`);
+    }
+
+    setFormat(params) {
+        const { format } = params;
+
+        if (!format) {
+            return this;
+        }
+        return this.addAttribute(`format=${format}`);
+    }
+
+    setV2Limit(params) {
+        const limit = parseInt(params.limit, 10);
+
+        if (!limit) {
+            return this;
+        }
+        if (limit < 0 || limit > 500000) {
+            throw new Error('Limit must be between 0 and 500000 for v2/release/observations');
+        }
+        return this.addAttribute(`limit=${limit}`);
     }
 }
 

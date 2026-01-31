@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import Builder from '../../src/Api/Builders/builder';
+import Builder from '../../src/Api/Builders/builder.js';
 
 describe('Builder', () => {
     let builder;
@@ -190,6 +190,63 @@ describe('Builder', () => {
         it('should set the api_key attribute to the url', () => {
             builder.setAPIKey('18209onnn98');
             expect(builder.getUrl()).to.be.eql('api_key=18209onnn98');
+        });
+    });
+
+    describe('setObservationsLimit()', () => {
+        it('should set the limit attribute for observations', () => {
+            builder.setObservationsLimit({ limit: '10000' });
+            expect(builder.url).to.be.eql('limit=10000');
+        });
+        it('should allow limits up to 100000', () => {
+            builder.setObservationsLimit({ limit: '100000' });
+            expect(builder.url).to.be.eql('limit=100000');
+        });
+        it('should return the original value of this', () => {
+            const ret = builder.setObservationsLimit({});
+
+            expect(ret).to.be.eql(builder);
+        });
+        it('should throw an exception since the limit was greater than 100000', () => {
+            expect(() => { builder.setObservationsLimit({ limit: '100001' }); }).to.throw(Error);
+        });
+    });
+
+    describe('setVintageDatesLimit()', () => {
+        it('should set the limit attribute for vintage dates', () => {
+            builder.setVintageDatesLimit({ limit: '5000' });
+            expect(builder.url).to.be.eql('limit=5000');
+        });
+        it('should allow limits up to 10000', () => {
+            builder.setVintageDatesLimit({ limit: '10000' });
+            expect(builder.url).to.be.eql('limit=10000');
+        });
+        it('should return the original value of this', () => {
+            const ret = builder.setVintageDatesLimit({});
+
+            expect(ret).to.be.eql(builder);
+        });
+        it('should throw an exception since the limit was greater than 10000', () => {
+            expect(() => { builder.setVintageDatesLimit({ limit: '10001' }); }).to.throw(Error);
+        });
+    });
+
+    describe('setReleaseDatesLimit()', () => {
+        it('should set the limit attribute for release dates', () => {
+            builder.setReleaseDatesLimit({ limit: '5000' });
+            expect(builder.url).to.be.eql('limit=5000');
+        });
+        it('should allow limits up to 10000', () => {
+            builder.setReleaseDatesLimit({ limit: '10000' });
+            expect(builder.url).to.be.eql('limit=10000');
+        });
+        it('should return the original value of this', () => {
+            const ret = builder.setReleaseDatesLimit({});
+
+            expect(ret).to.be.eql(builder);
+        });
+        it('should throw an exception since the limit was greater than 10000', () => {
+            expect(() => { builder.setReleaseDatesLimit({ limit: '10001' }); }).to.throw(Error);
         });
     });
 });

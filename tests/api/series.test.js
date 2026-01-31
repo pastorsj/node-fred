@@ -1,6 +1,7 @@
-import chai, { expect } from 'chai';
+import * as chai from 'chai';
+import { expect } from 'chai';
 import sinonChai from 'sinon-chai';
-import Series from '../../src/Api/series';
+import Series from '../../src/Api/series.js';
 
 chai.use(sinonChai);
 
@@ -61,8 +62,19 @@ describe('Series', () => {
             const res = await series.getObservationsForSeries('GNPCA', params);
 
             expect(res).to.have.all.keys(
-                'realtime_start', 'realtime_end', 'observation_start', 'observation_end', 'units',
-                'output_type', 'file_type', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'observations'
+                'realtime_start',
+                'realtime_end',
+                'observation_start',
+                'observation_end',
+                'units',
+                'output_type',
+                'file_type',
+                'order_by',
+                'sort_order',
+                'count',
+                'offset',
+                'limit',
+                'observations'
             );
         });
     });
@@ -177,6 +189,26 @@ describe('Series', () => {
             const res = await series.getUpdatedSeries(params);
 
             expect(res).to.have.all.keys('realtime_start', 'realtime_end', 'filter_variable', 'filter_value', 'order_by', 'sort_order', 'count', 'offset', 'limit', 'seriess');
+        });
+        it('should accept start_time and end_time parameters', async () => {
+            // start_time must be within the last two weeks
+            const now = new Date();
+            const yesterday = new Date(now);
+            yesterday.setDate(yesterday.getDate() - 1);
+            const formatTime = (d) => {
+                const year = d.getFullYear();
+                const month = String(d.getMonth() + 1).padStart(2, '0');
+                const day = String(d.getDate()).padStart(2, '0');
+                return `${year}${month}${day}0600`;
+            };
+            const timeParams = {
+                filter_value: 'regional',
+                start_time: formatTime(yesterday),
+                end_time: formatTime(now)
+            };
+            const res = await series.getUpdatedSeries(timeParams);
+
+            expect(res).to.have.property('seriess');
         });
     });
 

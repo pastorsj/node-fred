@@ -1,4 +1,4 @@
-import Builder from './builder';
+import Builder from './builder.js';
 
 class SeriesBuilder extends Builder {
     setSeriesId(seriesId) {
@@ -101,6 +101,24 @@ class SeriesBuilder extends Builder {
             return this;
         }
         return this.addAttribute(`tag_search_text=${tagSearchText}`);
+    }
+
+    setStartTime(params) {
+        const startTime = params.start_time;
+
+        if (!startTime) {
+            return this;
+        }
+        return this.addAttribute(`start_time=${startTime}`);
+    }
+
+    setEndTime(params) {
+        const endTime = params.end_time;
+
+        if (!endTime) {
+            return this;
+        }
+        return this.addAttribute(`end_time=${endTime}`);
     }
 }
 

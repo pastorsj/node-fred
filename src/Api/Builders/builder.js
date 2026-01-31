@@ -58,6 +58,30 @@ class Builder {
         return this.addAttribute(`limit=${limit}`);
     }
 
+    setLimitWithMax(params, maxLimit) {
+        const limit = parseInt(params.limit, 10);
+
+        if (!limit) {
+            return this;
+        }
+        if (limit < 0 || limit > maxLimit) {
+            throw new Error(`Limit must be between 0 and ${maxLimit}`);
+        }
+        return this.addAttribute(`limit=${limit}`);
+    }
+
+    setObservationsLimit(params) {
+        return this.setLimitWithMax(params, 100000);
+    }
+
+    setVintageDatesLimit(params) {
+        return this.setLimitWithMax(params, 10000);
+    }
+
+    setReleaseDatesLimit(params) {
+        return this.setLimitWithMax(params, 10000);
+    }
+
     setOffset(params) {
         const offset = parseInt(params.offset, 10);
 

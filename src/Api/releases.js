@@ -1,5 +1,5 @@
-import api from '../api';
-import ReleaseBuilder from './Builders/releaseBuilder';
+import api from '../api.js';
+import ReleaseBuilder from './Builders/releaseBuilder.js';
 
 class Releases {
     constructor(apiKey, returnType) {
@@ -52,7 +52,7 @@ class Releases {
                     .setFileType(this.returnType)
                     .setRealTimeStart(params)
                     .setRealTimeEnd(params)
-                    .setLimit(params)
+                    .setReleaseDatesLimit(params)
                     .setOffset(params)
                     .setOrderBy(params)
                     .setSortOrder(params)
@@ -117,7 +117,7 @@ class Releases {
                     .setReleaseId(releaseId)
                     .setRealTimeStart(params)
                     .setRealTimeEnd(params)
-                    .setLimit(params)
+                    .setReleaseDatesLimit(params)
                     .setOffset(params)
                     .setSortOrder(params)
                     .setIncludeRelatedDatesWithNoData(params)
@@ -311,6 +311,94 @@ class Releases {
                 reject(e);
             }
         });
+    }
+
+    /**
+     * Gets observations for a release (single page). (v2 API)
+     * Note: v2 API uses Bearer token authentication via Authorization header
+     * Includes automatic retry with exponential backoff on rate limit errors.
+     * @param {Number} releaseId - The release ID
+     * @param {Object} params - Optional parameters
+     * @param {String} params.format - Output format (json or csv, default: json)
+     * @param {Number} params.limit - Observations per page (default: 10000, max: 500000)
+     * @param {String} params.next_cursor - Cursor for pagination
+     * @returns {Promise} Resolves with observations for a release or errors out
+     */
+    getObservationsForRelease(releaseId, params = {}) {
+        const url = new ReleaseBuilder()
+            .setReleaseId(releaseId)
+            .setFormat(params)
+            .setV2Limit(params)
+            .setNextCursor(params)
+            .getUrl();
+
+        return api.get(`v2/release/observations?${url}`, {
+            headers: {
+                Authorization: `Bearer ${this.apiKey}`
+            }
+        })
+            .then((res) => res.data)
+            .catch((err) => {
+                throw err.response ? err.response.data : err;
+            });
+    }
+
+    /**
+     * Gets all observations for a release with automatic pagination. (v2 API)
+     * Fetches all pages until has_more is false or maxObservations is reached.
+     * @param {Number} releaseId - The release ID
+     * @param {Object} params - Optional parameters
+     * @param {Number} params.limit - Observations per page (default: 10000, max: 500000)
+     * @param {Number} params.maxObservations - Max total observations to fetch (optional)
+     * @returns {Promise} Resolves with all observations accumulated across pages
+     */
+    getAllObservationsForRelease(releaseId, params = {}) {
+        const { maxObservations, ...requestParams } = params;
+        const pageLimit = requestParams.limit || 10000;
+        const allSeries = {};
+        let totalObservations = 0;
+        let release = null;
+
+        const mergeSeries = (response) => {
+            if (!release) {
+                release = response.release;
+            }
+            response.series.forEach((series) => {
+                if (!allSeries[series.series_id]) {
+                    allSeries[series.series_id] = { ...series, observations: [] };
+                }
+                allSeries[series.series_id].observations.push(...series.observations);
+                totalObservations += series.observations.length;
+            });
+        };
+
+        const fetchPage = (cursor) => {
+            const pageParams = { ...requestParams, limit: pageLimit };
+            if (cursor) {
+                pageParams.next_cursor = cursor;
+            }
+
+            return this.getObservationsForRelease(releaseId, pageParams)
+                .then((response) => {
+                    mergeSeries(response);
+
+                    const shouldContinue = response.has_more
+                        && response.next_cursor
+                        && (!maxObservations || totalObservations < maxObservations);
+
+                    if (shouldContinue) {
+                        return fetchPage(response.next_cursor);
+                    }
+
+                    return {
+                        release,
+                        series: Object.values(allSeries),
+                        total_observations: totalObservations
+                    };
+                });
+        };
+
+        return fetchPage(null);
     }
 }
 

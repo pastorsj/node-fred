@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import Fred from '../../src/index';
+import Fred from '../../src/index.js';
 
 describe('index test case', () => {
     it('should construct several routes', () => {

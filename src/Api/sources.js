@@ -1,5 +1,5 @@
-import api from '../api';
-import SourcesBuilder from './Builders/sourcesBuilder';
+import api from '../api.js';
+import SourcesBuilder from './Builders/sourcesBuilder.js';
 
 class Sources {
     constructor(apiKey, returnType) {

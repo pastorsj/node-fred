@@ -1,6 +1,7 @@
-import chai, { expect } from 'chai';
+import * as chai from 'chai';
+import { expect } from 'chai';
 import sinonChai from 'sinon-chai';
-import Tags from '../../src/Api/tags';
+import Tags from '../../src/Api/tags.js';
 
 chai.use(sinonChai);
 

@@ -1,9 +1,9 @@
-import chai, { expect } from 'chai';
+import * as chai from 'chai';
+import { expect } from 'chai';
 import sinonChai from 'sinon-chai';
-import Releases from '../../src/Api/releases';
+import Releases from '../../src/Api/releases.js';
 
 chai.use(sinonChai);
-
 
 describe('Releases', () => {
     let categories;
@@ -173,6 +173,49 @@ describe('Releases', () => {
             const res = await categories.getTableTreesForRelease(53, params);
 
             expect(res).to.have.all.keys('name', 'element_id', 'release_id', 'elements');
+        });
+    });
+
+    describe('getObservationsForRelease()', () => {
+        beforeEach(() => {
+            params = {
+                format: 'json',
+                limit: 1000
+            };
+        });
+        it('should get observations for a release via v2 API', async () => {
+            const res = await categories.getObservationsForRelease(10, params);
+            expect(res).to.have.all.keys('has_more', 'next_cursor', 'release', 'series');
+            expect(res.series).to.be.an('array');
+            expect(res.series[0]).to.have.property('observations');
+        });
+        it('should handle pagination with next_cursor', async () => {
+            // First request
+            const res1 = await categories.getObservationsForRelease(10, { limit: 100 });
+            expect(res1).to.have.property('has_more');
+            expect(res1).to.have.property('next_cursor');
+
+            // If there's more data, test pagination
+            if (res1.has_more && res1.next_cursor) {
+                const res2 = await categories.getObservationsForRelease(10, {
+                    limit: 100,
+                    next_cursor: res1.next_cursor
+                });
+                expect(res2).to.have.property('series');
+            }
+        });
+    });
+
+    describe('getAllObservationsForRelease()', () => {
+        it('should fetch and accumulate observations', async () => {
+            // Use maxObservations smaller than limit to avoid multiple API calls and rate limits
+            const res = await categories.getAllObservationsForRelease(10, {
+                limit: 1000,
+                maxObservations: 500
+            });
+            expect(res).to.have.all.keys('release', 'series', 'total_observations');
+            expect(res.series).to.be.an('array');
+            expect(res.total_observations).to.be.at.least(1);
         });
     });
 });

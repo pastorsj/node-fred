@@ -1,5 +1,5 @@
-import api from '../api';
-import CategoryBuilder from './Builders/categoryBuilder';
+import api from '../api.js';
+import CategoryBuilder from './Builders/categoryBuilder.js';
 
 class Categories {
     constructor(apiKey, returnType) {

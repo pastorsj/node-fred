@@ -43,3 +43,4 @@ testAPI/
 lib/
 .cache
 dist/
+.env

@@ -1,5 +1,5 @@
-import api from '../api';
-import SeriesBuilder from './Builders/seriesBuilder';
+import api from '../api.js';
+import SeriesBuilder from './Builders/seriesBuilder.js';
 
 class Series {
     constructor(apiKey, returnType) {
@@ -83,7 +83,7 @@ class Series {
                     .setSeriesId(seriesId)
                     .setRealTimeStart(params)
                     .setRealTimeEnd(params)
-                    .setLimit(params)
+                    .setObservationsLimit(params)
                     .setOffset(params)
                     .setSortOrder(params)
                     .setObservationStart(params)
@@ -303,6 +303,8 @@ class Series {
                     .setLimit(params)
                     .setOffset(params)
                     .setFilterValue(params)
+                    .setStartTime(params)
+                    .setEndTime(params)
                     .getUrl();
 
                 api.get(`series/updates?${url}`)
@@ -335,7 +337,7 @@ class Series {
                     .setSeriesId(seriesId)
                     .setRealTimeStart(params)
                     .setRealTimeEnd(params)
-                    .setLimit(params)
+                    .setVintageDatesLimit(params)
                     .setOffset(params)
                     .setSortOrder(params)
                     .getUrl();

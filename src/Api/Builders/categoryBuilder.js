@@ -1,4 +1,4 @@
-import Builder from './builder';
+import Builder from './builder.js';
 
 class CategoryBuilder extends Builder {
     setCategoryId(categoryId) {
